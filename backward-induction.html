@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>The Classical Problem by Backward Induction – SECRETARY PROBLEM ATLAS</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">SECRETARY PROBLEM ATLAS</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./classical.html"> 
+<span class="menu-text">Classical Problem</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./simulations.html"> 
+<span class="menu-text">Simulations</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./backward-induction.html" aria-current="page"> 
+<span class="menu-text">Backward Induction</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./timeline.html"> 
+<span class="menu-text">Timeline</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./references.html"> 
+<span class="menu-text">References</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-classical-secretary-problem" id="toc-the-classical-secretary-problem" class="nav-link active" data-scroll-target="#the-classical-secretary-problem">The Classical Secretary Problem</a>
+  <ul class="collapse">
+  <li><a href="#a-complete-backward-induction-solution" id="toc-a-complete-backward-induction-solution" class="nav-link" data-scroll-target="#a-complete-backward-induction-solution">A complete backward-induction solution</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">The Classical Problem by Backward Induction</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="the-classical-secretary-problem" class="level1 problem-hero">
+<h1>The Classical Secretary Problem</h1>
+<section id="a-complete-backward-induction-solution" class="level2">
+<h2 class="anchored" data-anchor-id="a-complete-backward-induction-solution">A complete backward-induction solution</h2>
+<p>We derive the optimal stopping rule from the Bellman recursion</p>
+<p><span class="math display">\[
+V_n=\max\{U_n,W_n\},
+\]</span></p>
+<p>where <span class="math inline">\(U_n\)</span> is the value of stopping at stage <span class="math inline">\(n\)</span> and <span class="math inline">\(W_n\)</span> is the value of continuing.</p>
+</section>
+</section>
+<div class="atlas-section">
+<section id="the-model" class="level2">
+<h2 class="anchored" data-anchor-id="the-model">1. The model</h2>
+<p>There are <span class="math inline">\(N\)</span> candidates with distinct absolute ranks</p>
+<p><span class="math display">\[
+1,2,\ldots,N,
+\]</span></p>
+<p>where absolute rank <span class="math inline">\(1\)</span> denotes the best candidate.</p>
+<p>The candidates arrive in a uniformly random order. After interviewing candidate <span class="math inline">\(n\)</span>, the decision maker must either:</p>
+<ul>
+<li>accept the candidate and stop, or</li>
+<li>reject the candidate permanently and continue.</li>
+</ul>
+<p>The objective is to maximize the probability of selecting the candidate of absolute rank <span class="math inline">\(1\)</span>.</p>
+<p>Only relative ranks are observed. The absolute ranks of the candidates are not known during the selection process.</p>
+<hr>
+</section>
+<section id="relative-ranks" class="level2">
+<h2 class="anchored" data-anchor-id="relative-ranks">2. Relative ranks</h2>
+<p>Let <span class="math inline">\(X_n\)</span> denote the absolute rank of the candidate interviewed at time <span class="math inline">\(n\)</span>. Define the relative rank</p>
+<p><span class="math display">\[
+R_n
+=
+1+\sum_{j=1}^{n-1}\mathbf{1}_{\{X_j&lt;X_n\}}.
+\]</span></p>
+<p>Thus, <span class="math inline">\(R_n\)</span> is the rank of candidate <span class="math inline">\(n\)</span> among the first <span class="math inline">\(n\)</span> candidates.</p>
+<p>In particular,</p>
+<p>$$</p>
+<p>R_n=1 $$</p>
+<p>means that candidate <span class="math inline">\(n\)</span> is better than every candidate observed previouslylkj</p>
+<p>sebelumnya. Such a candidate is called a <strong>record</strong>.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A candidate can be the overall best only if they are a record when observed. Therefore, it is never optimal to accept a candidate with <span class="math inline">\(R_n&gt;1\)</span>.</p>
+</div>
+</div>
+</section>
+<section id="uniformity-oflkj-of-relative-ranks" class="level2">
+<h2 class="anchored" data-anchor-id="uniformity-oflkj-of-relative-ranks">3. Uniformity oflkj of relative ranks</h2>
+<section id="theorem" class="level3">
+<h3 class="anchored" data-anchor-id="theorem">Theorem</h3>
+<p>Under a uniformly random arrival order,</p>
+<p><span class="math display">\[
+R_n\sim \operatorname{Uniform}\{1,\ldots,n\}.
+\]</span></p>
+<p>Moreover, the relative ranks</p>
+<p><span class="math display">\[
+R_1,R_2,\ldots,R_N
+\]</span></p>
+<p>are mutually independent.</p>
+</section>
+<section id="proof" class="level3">
+<h3 class="anchored" data-anchor-id="proof">Proof</h3>
+<p>Every permutation</p>
+<p><span class="math display">\[
+(X_1,\ldots,X_N)
+\]</span></p>
+<p>of the absolute ranks corresponds uniquely to a sequence of relative ranks satisfying</p>
+<p><span class="math display">\[
+R_n\in\{1,\ldots,n\}.
+\]</span></p>
+<p>Conversely, every sequence</p>
+<p><span class="math display">\[
+(r_1,\ldots,r_N),
+\qquad
+r_n\in\{1,\ldots,n\},
+\]</span></p>
+<p>determines a unique permutation.</p>
+<p>There are</p>
+<p><span class="math display">\[
+1\cdot2\cdots N=N!
+\]</span></p>
+<p>possible relative-rank sequences, exactly matching the <span class="math inline">\(N!\)</span> permutations of the absolute ranks.</p>
+<p>Since every permutation is equally likely, every admissible relative-rank sequence has probability <span class="math inline">\(1/N!\)</span>. Therefore,</p>
+<p><span class="math display">\[
+\Pr(R_1=r_1,\ldots,R_N=r_N)
+=
+\prod_{n=1}^{N}\frac1n.
+\]</span></p>
+<p>It follows that the relative ranks are independent and</p>
+<p><span class="math display">\[
+\Pr(R_n=j)=\frac1n,
+\qquad
+j=1,\ldots,n.
+\]</span></p>
+<p>In particular,</p>
+<p><span class="math display">\[
+\Pr(R_n=1)=\frac1n.
+\]</span></p>
+<hr>
+</section>
+</section>
+<section id="the-reward-from-stopping" class="level2">
+<h2 class="anchored" data-anchor-id="the-reward-from-stopping">4. The reward from stopping</h2>
+<p>Suppose candidate <span class="math inline">\(n\)</span> is a record. Define</p>
+<p><span class="math display">\[
+U_n
+=
+\Pr(X_n=1\mid R_n=1).
+\]</span></p>
+<p>This is the conditional probability of winning if we stop at stage <span class="math inline">\(n\)</span>.</p>
+<p>Now,</p>
+<p><span class="math display">\[
+\Pr(X_n=1)=\frac1N,
+\]</span></p>
+<p>because the overall best candidate is equally likely to occupy any of the <span class="math inline">\(N\)</span> positions. Also,</p>
+<p><span class="math display">\[
+\Pr(R_n=1)=\frac1n.
+\]</span></p>
+<p>Since <span class="math inline">\(X_n=1\)</span> implies <span class="math inline">\(R_n=1\)</span>,</p>
+<p><span class="math display">\[
+\Pr(X_n=1,R_n=1)
+=
+\Pr(X_n=1)
+=
+\frac1N.
+\]</span></p>
+<p>Therefore,</p>
+<p><span class="math display">\[
+U_n
+=
+\frac{\Pr(X_n=1,R_n=1)}
+     {\Pr(R_n=1)}
+=
+\frac{1/N}{1/n}.
+\]</span></p>
+<p>Consequently,</p>
+<p><span class="math display">\[
+\boxed{U_n=\frac nN}.
+\]</span></p>
+<p>Thus, when candidate <span class="math inline">\(n\)</span> is a record, accepting that candidate succeeds with probability <span class="math inline">\(n/N\)</span>.</p>
+<p>If <span class="math inline">\(R_n&gt;1\)</span>, the candidate cannot be the overall best, so the stopping reward is zero.</p>
+<hr>
+</section>
+<section id="the-continuation-value" class="level2">
+<h2 class="anchored" data-anchor-id="the-continuation-value">5. The continuation value</h2>
+<p>Let <span class="math inline">\(W_n\)</span> denote the optimal probability of eventually selecting the overall best after candidate <span class="math inline">\(n\)</span> has been rejected.</p>
+<p>When candidate <span class="math inline">\(n\)</span> is a record, define</p>
+<p><span class="math display">\[
+V_n=\max\{U_n,W_n\}.
+\]</span></p>
+<p>At stage <span class="math inline">\(n+1\)</span>, two cases are possible.</p>
+<section id="case-1-candidate-n1-is-a-record" class="level3">
+<h3 class="anchored" data-anchor-id="case-1-candidate-n1-is-a-record">Case 1: Candidate <span class="math inline">\(n+1\)</span> is a record</h3>
+<p>This occurs with probability</p>
+<p><span class="math display">\[
+\Pr(R_{n+1}=1)=\frac1{n+1}.
+\]</span></p>
+<p>The decision maker may then stop or continue. Therefore, the optimal value is</p>
+<p><span class="math display">\[
+V_{n+1}.
+\]</span></p>
+</section>
+<section id="case-2-candidate-n1-is-not-a-record" class="level3">
+<h3 class="anchored" data-anchor-id="case-2-candidate-n1-is-not-a-record">Case 2: Candidate <span class="math inline">\(n+1\)</span> is not a record</h3>
+<p>This occurs with probability</p>
+<p><span class="math display">\[
+\Pr(R_{n+1}&gt;1)=\frac n{n+1}.
+\]</span></p>
+<p>A nonrecord cannot be the overall best, so it must be rejected. The remaining value is</p>
+<p><span class="math display">\[
+W_{n+1}.
+\]</span></p>
+<p>Combining the two cases gives the Bellman recursion</p>
+<p><span class="math display">\[
+\boxed{
+W_n
+=
+\frac1{n+1}V_{n+1}
++
+\frac n{n+1}W_{n+1}
+}.
+\]</span></p>
+<p>Together with</p>
+<p><span class="math display">\[
+U_n=\frac nN
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+V_n=\max\{U_n,W_n\},
+\]</span></p>
+<p>we obtain the backward-induction system</p>
+<p><span class="math display">\[
+\boxed{
+\begin{aligned}
+U_n&amp;=\frac nN,\\[4pt]
+V_n&amp;=\max\{U_n,W_n\},\\[4pt]
+W_n&amp;=
+\frac1{n+1}V_{n+1}
++
+\frac n{n+1}W_{n+1}.
+\end{aligned}
+}
+\]</span></p>
+<hr>
+</section>
+</section>
+<section id="terminal-condition" class="level2">
+<h2 class="anchored" data-anchor-id="terminal-condition">6. Terminal condition</h2>
+<p>At the final stage, there is no future candidate. Therefore,</p>
+<p><span class="math display">\[
+W_N=0.
+\]</span></p>
+<p>If candidate <span class="math inline">\(N\)</span> is a record, that candidate must be the overall best. Hence,</p>
+<p><span class="math display">\[
+U_N=1.
+\]</span></p>
+<p>It follows that</p>
+<p><span class="math display">\[
+V_N=\max\{1,0\}=1.
+\]</span></p>
+<p>These terminal values allow the recursion to be evaluated backward from <span class="math inline">\(n=N\)</span> to <span class="math inline">\(n=1\)</span>.</p>
+<hr>
+</section>
+<section id="the-optimal-decision-rule" class="level2">
+<h2 class="anchored" data-anchor-id="the-optimal-decision-rule">7. The optimal decision rule</h2>
+<p>When candidate <span class="math inline">\(n\)</span> is a record, compare</p>
+<p><span class="math display">\[
+U_n=\frac nN
+\]</span></p>
+<p>with <span class="math inline">\(W_n\)</span>.</p>
+<p>The optimal decision is</p>
+<p><span class="math display">\[
+\begin{cases}
+\text{stop}, &amp; U_n\geq W_n,\\[4pt]
+\text{continue}, &amp; U_n&lt;W_n.
+\end{cases}
+\]</span></p>
+<p>Equivalently,</p>
+<p><span class="math display">\[
+\boxed{
+\text{accept candidate }n
+\iff
+R_n=1
+\text{ and }
+\frac nN\geq W_n.
+}
+\]</span></p>
+<p>The stopping value <span class="math inline">\(U_n=n/N\)</span> increases with <span class="math inline">\(n\)</span>. Meanwhile, the value of waiting decreases as the end of the observation horizon approaches. Therefore, the stopping and continuation values cross at a threshold.</p>
+<p>Consequently, there is an integer <span class="math inline">\(r\)</span> such that:</p>
+<ul>
+<li>record candidates in positions <span class="math inline">\(1,\ldots,r\)</span> are rejected;</li>
+<li>the first record after position <span class="math inline">\(r\)</span> is accepted.</li>
+</ul>
+<p>The threshold rule is therefore derived from backward induction; it is not assumed in advance.</p>
+<hr>
+</section>
+<section id="complete-example-n10" class="level2">
+<h2 class="anchored" data-anchor-id="complete-example-n10">8. Complete example: <span class="math inline">\(N=10\)</span></h2>
+<p>We now solve the problem recursively for ten candidates.</p>
+<p>The terminal values are</p>
+<p><span class="math display">\[
+W_{10}=0,
+\qquad
+U_{10}=1,
+\qquad
+V_{10}=1.
+\]</span></p>
+<p>At stage <span class="math inline">\(9\)</span>,</p>
+<p><span class="math display">\[
+W_9
+=
+\frac1{10}V_{10}
++
+\frac9{10}W_{10}
+=
+\frac1{10}.
+\]</span></p>
+<p>Since</p>
+<p><span class="math display">\[
+U_9=\frac9{10}&gt;\frac1{10}=W_9,
+\]</span></p>
+<p>we stop at a record in position <span class="math inline">\(9\)</span>.</p>
+<p>Continuing backward gives the following table.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Stage <span class="math inline">\(n\)</span></th>
+<th style="text-align: right;">Stop value <span class="math inline">\(U_n=n/10\)</span></th>
+<th style="text-align: right;">Continue value <span class="math inline">\(W_n\)</span></th>
+<th style="text-align: right;">Value <span class="math inline">\(V_n\)</span></th>
+<th style="text-align: left;">Decision at a record</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><span class="math inline">\(10\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(0\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: left;">Stop</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span class="math inline">\(9\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(9/10\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(1/10\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(9/10\)</span></td>
+<td style="text-align: left;">Stop</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><span class="math inline">\(8\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(4/5\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(17/90\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(4/5\)</span></td>
+<td style="text-align: left;">Stop</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span class="math inline">\(7\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(7/10\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(191/720\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(7/10\)</span></td>
+<td style="text-align: left;">Stop</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><span class="math inline">\(6\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(3/5\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(55/168\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(3/5\)</span></td>
+<td style="text-align: left;">Stop</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span class="math inline">\(5\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(1/2\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(1879/5040\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(1/2\)</span></td>
+<td style="text-align: left;">Stop</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><span class="math inline">\(4\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(2/5\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(2509/6300\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(2/5\)</span></td>
+<td style="text-align: left;">Stop</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span class="math inline">\(3\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(3/10\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(3349/8400\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(3349/8400\)</span></td>
+<td style="text-align: left;">Continue</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><span class="math inline">\(2\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(1/5\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(3349/8400\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(3349/8400\)</span></td>
+<td style="text-align: left;">Continue</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(1/10\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(3349/8400\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(3349/8400\)</span></td>
+<td style="text-align: left;">Continue</td>
+</tr>
+</tbody>
+</table>
+<p>The first stage at which stopping becomes optimal is <span class="math inline">\(n=4\)</span>. Therefore, the optimal policy is</p>
+<p><span class="math display">\[
+\boxed{
+\text{reject candidates }1,2,3
+\text{ and accept the first later record.}
+}
+\]</span></p>
+<p>Thus, the optimal rejection threshold is</p>
+<p><span class="math display">\[
+\boxed{r^\star=3}.
+\]</span></p>
+<p>The optimal success probability is</p>
+<p><span class="math display">\[
+\boxed{
+V_1
+=
+\frac{3349}{8400}
+\approx 0.3986904762.
+}
+\]</span></p>
+<hr>
+</section>
+<section id="recovering-the-exact-threshold-formula" class="level2">
+<h2 class="anchored" data-anchor-id="recovering-the-exact-threshold-formula">9. Recovering the exact threshold formula</h2>
+<p>Suppose the first <span class="math inline">\(r\)</span> candidates have been rejected. Under the threshold strategy, the overall best is selected if:</p>
+<ol type="1">
+<li>the overall best occurs at some position <span class="math inline">\(k&gt;r\)</span>; and</li>
+<li>the best among the first <span class="math inline">\(k-1\)</span> candidates occurs among the first <span class="math inline">\(r\)</span>.</li>
+</ol>
+<p>For a fixed <span class="math inline">\(k&gt;r\)</span>,</p>
+<p><span class="math display">\[
+\Pr(X_k=1)=\frac1N.
+\]</span></p>
+<p>Conditional on the overall best appearing at position <span class="math inline">\(k\)</span>, the best candidate among positions <span class="math inline">\(1,\ldots,k-1\)</span> is equally likely to occupy any of those <span class="math inline">\(k-1\)</span> positions. Therefore,</p>
+<p><span class="math display">\[
+\Pr\left(
+\text{best of the first }k-1
+\text{ lies among the first }r
+\right)
+=
+\frac r{k-1}.
+\]</span></p>
+<p>Hence,</p>
+<p><span class="math display">\[
+\Pr(\text{win with the best at }k)
+=
+\frac1N\frac r{k-1}.
+\]</span></p>
+<p>Summing over <span class="math inline">\(k=r+1,\ldots,N\)</span> gives</p>
+<p><span class="math display">\[
+\boxed{
+P_N(r)
+=
+\frac rN
+\sum_{k=r+1}^{N}\frac1{k-1}
+}.
+\]</span></p>
+<p>Equivalently,</p>
+<p><span class="math display">\[
+\boxed{
+P_N(r)
+=
+\frac rN
+\sum_{j=r}^{N-1}\frac1j
+}.
+\]</span></p>
+<p>This is precisely the continuation value <span class="math inline">\(W_r\)</span> obtained after rejecting the first <span class="math inline">\(r\)</span> candidates:</p>
+<p><span class="math display">\[
+\boxed{W_r=P_N(r)}.
+\]</span></p>
+<hr>
+</section>
+<section id="characterization-of-the-optimal-threshold" class="level2">
+<h2 class="anchored" data-anchor-id="characterization-of-the-optimal-threshold">10. Characterization of the optimal threshold</h2>
+<p>The optimal threshold is the integer <span class="math inline">\(r^\star\)</span> for which it is optimal to continue at <span class="math inline">\(r^\star\)</span> but stop at the next record.</p>
+<p>Continuing at stage <span class="math inline">\(r\)</span> requires</p>
+<p><span class="math display">\[
+W_r\geq U_r.
+\]</span></p>
+<p>Using</p>
+<p><span class="math display">\[
+W_r
+=
+\frac rN\sum_{j=r}^{N-1}\frac1j
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+U_r=\frac rN,
+\]</span></p>
+<p>this condition becomes</p>
+<p><span class="math display">\[
+\sum_{j=r}^{N-1}\frac1j\geq 1.
+\]</span></p>
+<p>Stopping at a record in position <span class="math inline">\(r+1\)</span> requires</p>
+<p><span class="math display">\[
+U_{r+1}\geq W_{r+1},
+\]</span></p>
+<p>which is equivalent to</p>
+<p><span class="math display">\[
+\sum_{j=r+1}^{N-1}\frac1j\leq 1.
+\]</span></p>
+<p>Therefore, the optimal threshold is characterized by</p>
+<p><span class="math display">\[
+\boxed{
+\sum_{j=r^\star+1}^{N-1}\frac1j
+\leq 1
+\leq
+\sum_{j=r^\star}^{N-1}\frac1j
+}.
+\]</span></p>
+<p>Equivalently,</p>
+<p><span class="math display">\[
+\boxed{
+r^\star
+=
+\min\left\{
+r:
+\sum_{j=r+1}^{N-1}\frac1j\leq 1
+\right\}.
+}
+\]</span></p>
+<p>For <span class="math inline">\(N=10\)</span>,</p>
+<p><span class="math display">\[
+\sum_{j=4}^{9}\frac1j&lt;1
+\]</span></p>
+<p>but</p>
+<p><span class="math display">\[
+\sum_{j=3}^{9}\frac1j&gt;1.
+\]</span></p>
+<p>Therefore,</p>
+<p><span class="math display">\[
+r^\star=3.
+\]</span></p>
+<hr>
+</section>
+<section id="the-asymptotic-1e-rule" class="level2">
+<h2 class="anchored" data-anchor-id="the-asymptotic-1e-rule">11. The asymptotic <span class="math inline">\(1/e\)</span> rule</h2>
+<p>For large <span class="math inline">\(N\)</span>, the harmonic sum satisfies</p>
+<p><span class="math display">\[
+\sum_{j=r}^{N-1}\frac1j
+\approx
+\int_r^N\frac{dx}{x}
+=
+\log\left(\frac Nr\right).
+\]</span></p>
+<p>At the optimal threshold, this quantity is approximately <span class="math inline">\(1\)</span>. Thus,</p>
+<p><span class="math display">\[
+\log\left(\frac{N}{r^\star}\right)\approx 1.
+\]</span></p>
+<p>Exponentiating gives</p>
+<p><span class="math display">\[
+\frac{N}{r^\star}\approx e,
+\]</span></p>
+<p>and therefore</p>
+<p><span class="math display">\[
+\boxed{
+\frac{r^\star}{N}\longrightarrow\frac1e
+}.
+\]</span></p>
+<p>The optimal success probability satisfies</p>
+<p><span class="math display">\[
+P_N(r^\star)
+=
+\frac{r^\star}{N}
+\sum_{j=r^\star}^{N-1}\frac1j.
+\]</span></p>
+<p>Since</p>
+<p><span class="math display">\[
+\frac{r^\star}{N}\longrightarrow\frac1e
+\]</span></p>
+<p>and the harmonic sum converges to <span class="math inline">\(1\)</span>,</p>
+<p><span class="math display">\[
+\boxed{
+P_N(r^\star)\longrightarrow\frac1e
+}.
+\]</span></p>
+<p>Thus, for a large number of candidates, the optimal strategy is approximately:</p>
+<ol type="1">
+<li>reject the first <span class="math inline">\(N/e\)</span> candidates;</li>
+<li>accept the first subsequent record.</li>
+</ol>
+<p>Both the optimal rejection proportion and the limiting success probability approach</p>
+<p><span class="math display">\[
+\boxed{\frac1e\approx 0.367879}.
+\]</span></p>
+<hr>
+</section>
+<section id="final-result" class="level2">
+<h2 class="anchored" data-anchor-id="final-result">12. Final result</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Optimal classical secretary rule
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For <span class="math inline">\(N\)</span> candidates arriving in uniformly random order:</p>
+<ol type="1">
+<li><p>Determine the threshold <span class="math inline">\(r^\star\)</span> from</p>
+<p><span class="math display">\[
+\sum_{j=r^\star+1}^{N-1}\frac1j
+\leq 1
+\leq
+\sum_{j=r^\star}^{N-1}\frac1j.
+\]</span></p></li>
+<li><p>Reject the first <span class="math inline">\(r^\star\)</span> candidates.</p></li>
+<li><p>Accept the first later candidate whose relative rank is <span class="math inline">\(1\)</span>.</p></li>
+</ol>
+<p>The rule follows from the recursion</p>
+<p><span class="math display">\[
+V_n=\max\{U_n,W_n\},
+\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+U_n=\frac nN
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+W_n
+=
+\frac1{n+1}V_{n+1}
++
+\frac n{n+1}W_{n+1}.
+\]</span></p>
+<p>As <span class="math inline">\(N\to\infty\)</span>,</p>
+<p><span class="math display">\[
+\frac{r^\star}{N}\longrightarrow\frac1e,
+\qquad
+P_N(r^\star)\longrightarrow\frac1e.
+\]</span></p>
+</div>
+</div>
+<hr>
+</section>
+<section id="the-backward-induction-theorem" class="level2">
+<h2 class="anchored" data-anchor-id="the-backward-induction-theorem">13. The backward-induction theorem</h2>
+<p>The preceding solution is an application of the general finite-horizon optimal stopping theorem <span class="citation" data-cites="chow1971 ferguson2010 shiryaev2007">(<a href="#ref-chow1971" role="doc-biblioref">Chow, Robbins, and Siegmund 1971</a>; <a href="#ref-ferguson2010" role="doc-biblioref">Ferguson 2010</a>; <a href="#ref-shiryaev2007" role="doc-biblioref">Shiryaev 2007</a>)</span>.</p>
+<section id="theorem-1" class="level3">
+<h3 class="anchored" data-anchor-id="theorem-1">Theorem</h3>
+<p>Let</p>
+<p><span class="math display">\[
+(\Omega,\mathcal F,\{\mathcal F_n\}_{n=1}^{N},\Pr)
+\]</span></p>
+<p>be a filtered probability space. Let</p>
+<p><span class="math display">\[
+U_1,U_2,\ldots,U_N
+\]</span></p>
+<p>be an integrable adapted reward process, where <span class="math inline">\(U_n\)</span> is the reward obtained by stopping at time <span class="math inline">\(n\)</span>.</p>
+<p>For each <span class="math inline">\(n\)</span>, let <span class="math inline">\(\mathcal T_n\)</span> denote the set of stopping times taking values in</p>
+<p><span class="math display">\[
+\{n,n+1,\ldots,N\}.
+\]</span></p>
+<p>Define the value process by</p>
+<p><span class="math display">\[
+V_n
+=
+\operatorname*{ess\,sup}_{\tau\in\mathcal T_n}
+\operatorname E[U_\tau\mid\mathcal F_n].
+\]</span></p>
+<p>Then</p>
+<p><span class="math display">\[
+V_N=U_N
+\]</span></p>
+<p>and, for <span class="math inline">\(n=N-1,\ldots,1\)</span>,</p>
+<p><span class="math display">\[
+\boxed{
+V_n
+=
+\max\left\{
+U_n,
+\operatorname E[V_{n+1}\mid\mathcal F_n]
+\right\}.
+}
+\]</span></p>
+<p>If the continuation value is defined by</p>
+<p><span class="math display">\[
+W_n
+=
+\operatorname E[V_{n+1}\mid\mathcal F_n],
+\]</span></p>
+<p>then the recursion becomes</p>
+<p><span class="math display">\[
+\boxed{V_n=\max\{U_n,W_n\}}.
+\]</span></p>
+<p>Moreover, subject to forced stopping at time <span class="math inline">\(N\)</span>, the stopping time</p>
+<p><span class="math display">\[
+\boxed{
+\tau^\star
+=
+\inf\{n:U_n\geq W_n\}
+}
+\]</span></p>
+<p>is optimal.</p>
+</section>
+<section id="proof-1" class="level3">
+<h3 class="anchored" data-anchor-id="proof-1">Proof</h3>
+<p>At time <span class="math inline">\(N\)</span>, stopping is mandatory. Therefore,</p>
+<p><span class="math display">\[
+V_N=U_N.
+\]</span></p>
+<p>Suppose that <span class="math inline">\(V_{n+1}\)</span> is the optimal value from time <span class="math inline">\(n+1\)</span> onward.</p>
+<p>At time <span class="math inline">\(n\)</span>, the decision maker has two possible actions:</p>
+<ol type="1">
+<li><p>stop immediately and receive <span class="math inline">\(U_n\)</span>;</p></li>
+<li><p>continue and receive the conditional expected optimal future value</p>
+<p><span class="math display">\[
+W_n
+=
+\operatorname E[V_{n+1}\mid\mathcal F_n].
+\]</span></p></li>
+</ol>
+<p>An optimal decision selects the action with the larger value. Hence,</p>
+<p><span class="math display">\[
+V_n=\max\{U_n,W_n\}.
+\]</span></p>
+<p>Starting from <span class="math inline">\(V_N=U_N\)</span> and repeating this argument for</p>
+<p><span class="math display">\[
+n=N-1,N-2,\ldots,1
+\]</span></p>
+<p>determines the entire value process by backward induction.</p>
+<p>At every time <span class="math inline">\(n\)</span>, stopping when <span class="math inline">\(U_n\geq W_n\)</span> selects an action attaining the value <span class="math inline">\(V_n\)</span>. Therefore, the first time at which this inequality holds is an optimal stopping time:</p>
+<p><span class="math display">\[
+\tau^\star
+=
+\inf\{n:U_n\geq W_n\}.
+\]</span></p>
+<p>This proves the result. <span class="math inline">\(\square\)</span></p>
+</section>
+<section id="application-to-the-classical-secretary-problem" class="level3">
+<h3 class="anchored" data-anchor-id="application-to-the-classical-secretary-problem">Application to the classical secretary problem</h3>
+<p>In the classical secretary problem, a nonrecord candidate cannot be the overall best and therefore has stopping value zero.</p>
+<p>If candidate <span class="math inline">\(n\)</span> is a record, the immediate stopping value is</p>
+<p><span class="math display">\[
+U_n=\frac nN.
+\]</span></p>
+<p>The continuation value is</p>
+<p><span class="math display">\[
+W_n
+=
+\operatorname E[V_{n+1}\mid\mathcal F_n].
+\]</span></p>
+<p>Because</p>
+<p><span class="math display">\[
+\Pr(R_{n+1}=1)=\frac1{n+1},
+\]</span></p>
+<p>we obtain</p>
+<p><span class="math display">\[
+W_n
+=
+\frac1{n+1}V_{n+1}
++
+\frac n{n+1}W_{n+1}.
+\]</span></p>
+<p>Consequently, the secretary-problem recursion</p>
+<p><span class="math display">\[
+V_n=\max\{U_n,W_n\}
+\]</span></p>
+<p>is a direct specialization of the finite-horizon backward-induction theorem.</p>
+<hr>
+</section>
+</section>
+<section id="sources" class="level2">
+<h2 class="anchored" data-anchor-id="sources">Sources</h2>
+<p>The classical secretary problem and its full-information extensions are developed by <span class="citation" data-cites="gilbert1966">Gilbert and Mosteller (<a href="#ref-gilbert1966" role="doc-biblioref">1966</a>)</span>. Historical details are discussed by <span class="citation" data-cites="ferguson1989">Ferguson (<a href="#ref-ferguson1989" role="doc-biblioref">1989</a>)</span>.</p>
+<p>The general theory of finite-horizon optimal stopping and backward induction is treated by <span class="citation" data-cites="chow1971">Chow, Robbins, and Siegmund (<a href="#ref-chow1971" role="doc-biblioref">1971</a>)</span>, <span class="citation" data-cites="ferguson2010">Ferguson (<a href="#ref-ferguson2010" role="doc-biblioref">2010</a>)</span>, and <span class="citation" data-cites="shiryaev2007">Shiryaev (<a href="#ref-shiryaev2007" role="doc-biblioref">2007</a>)</span>.</p>
+<p>The notation and presentation used here follow the optimal-stopping framework employed in the research and dissertation work of José A. Islas.</p>
+</section>
+</div>
+
+
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-chow1971" class="csl-entry" role="listitem">
+Chow, Yuan Shih, Herbert Robbins, and David Siegmund. 1971. <em>Great Expectations: The Theory of Optimal Stopping</em>. Boston: Houghton Mifflin.
+</div>
+<div id="ref-ferguson1989" class="csl-entry" role="listitem">
+Ferguson, Thomas S. 1989. <span>“Who Solved the Secretary Problem?”</span> <em>Statistical Science</em> 4 (3): 282–89. <a href="https://doi.org/10.1214/ss/1177012493">https://doi.org/10.1214/ss/1177012493</a>.
+</div>
+<div id="ref-ferguson2010" class="csl-entry" role="listitem">
+———. 2010. <span>“Optimal Stopping and Applications.”</span> <a href="https://www.math.ucla.edu/~tom/Stopping/Contents.html">https://www.math.ucla.edu/~tom/Stopping/Contents.html</a>.
+</div>
+<div id="ref-gilbert1966" class="csl-entry" role="listitem">
+Gilbert, John P., and Frederick Mosteller. 1966. <span>“Recognizing the Maximum of a Sequence.”</span> <em>Journal of the American Statistical Association</em> 61 (313): 35–73. <a href="https://doi.org/10.1080/01621459.1966.10502008">https://doi.org/10.1080/01621459.1966.10502008</a>.
+</div>
+<div id="ref-shiryaev2007" class="csl-entry" role="listitem">
+Shiryaev, Albert N. 2007. <em>Optimal Stopping Rules</em>. Vol. 8. Stochastic Modelling and Applied Probability. Berlin; Heidelberg: Springer. <a href="https://doi.org/10.1007/978-3-540-74011-7">https://doi.org/10.1007/978-3-540-74011-7</a>.
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/JoseAIA\.github\.io\/secretary-problem-atlas\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 José Ángel Islas Anguiano</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Universidad Autónoma de Sinaloa</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

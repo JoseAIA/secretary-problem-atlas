@@ -1,0 +1,240 @@
+[
+  {
+    "objectID": "timeline.html",
+    "href": "timeline.html",
+    "title": "Research Timeline",
+    "section": "",
+    "text": "From dynamic programming and the (1/e) rule to modern strategic and algorithmic variants.\nThis curated timeline highlights foundational, influential, and especially relevant contributions. It is not intended as an exhaustive bibliography or an exact citation ranking."
+  },
+  {
+    "objectID": "timeline.html#more-than-sixty-years-of-optimal-stopping",
+    "href": "timeline.html#more-than-sixty-years-of-optimal-stopping",
+    "title": "Research Timeline",
+    "section": "More than sixty years of optimal stopping",
+    "text": "More than sixty years of optimal stopping\nThe secretary problem developed from a recreational question into a major model in optimal stopping, applied probability, decision theory, economics, and online algorithms."
+  },
+  {
+    "objectID": "simulations.html",
+    "href": "simulations.html",
+    "title": "Interactive Simulations",
+    "section": "",
+    "text": "Experiment with sequential decisions, test different rejection thresholds, and discover why the classical strategy approaches the (37%) rule."
+  },
+  {
+    "objectID": "simulations.html#play-one-game",
+    "href": "simulations.html#play-one-game",
+    "title": "Interactive Simulations",
+    "section": "Play one game",
+    "text": "Play one game\nYou will observe the candidates sequentially. Smaller relative ranks are better, and relative rank (1) means that the current candidate is the best observed so far.\nThe absolute ranks remain hidden until you hire someone or reach the final candidate.\n\n  \n    \n      PLAY\n      Can you hire the best candidate?\n      \n        Decide whether to reject or hire each candidate using only the\n        information available at that moment.\n      \n    \n\n    \n      New game\n    \n  \n\n  \n    \n      Number of candidates:\n      10\n    \n\n    \n  \n\n  \n    Candidate\n    \n      1\n      /\n      10\n    \n  \n\n  \n    RELATIVE RANK\n    1\n    \n      This candidate is the best observed so far.\n    \n  \n\n  \n    \n      Reject\n    \n\n    \n      Hire\n    \n  \n\n  \n    Observed relative ranks\n    \n  \n\n  \n\n  \n    Complete sequence of absolute ranks\n    Absolute rank \\(1\\) is the overall best."
+  },
+  {
+    "objectID": "simulations.html#simulate-a-threshold-strategy",
+    "href": "simulations.html#simulate-a-threshold-strategy",
+    "title": "Interactive Simulations",
+    "section": "Simulate a threshold strategy",
+    "text": "Simulate a threshold strategy\nChoose a total number of candidates (n), a rejection threshold (r), and the number of simulated repetitions.\nThe strategy rejects the first (r) candidates and then accepts the first subsequent record.\n\n  \n    \n      SIMULATE\n      Can your threshold beat the 37% rule?\n      \n        Compare a Monte Carlo estimate with the exact success\n        probability and the optimal finite-sample threshold.\n      \n    \n\n    \n      Run experiment\n    \n  \n\n  \n    \n      \n        Candidates \\(n\\):\n        50\n      \n\n      \n    \n\n    \n      \n        Rejection threshold \\(r\\):\n        18\n      \n\n      \n    \n\n    \n      \n        Simulated repetitions:\n        5000\n      \n\n      \n    \n  \n\n  \n    \n      Empirical probability\n      —\n    \n\n    \n      Exact probability\n      —\n    \n\n    \n      Optimal threshold\n      —\n    \n\n    \n      Optimal probability\n      —\n    \n  \n\n  \n    Run the experiment to compare simulation and theory."
+  },
+  {
+    "objectID": "simulations.html#understand-the-mathematics",
+    "href": "simulations.html#understand-the-mathematics",
+    "title": "Interactive Simulations",
+    "section": "Understand the mathematics",
+    "text": "Understand the mathematics\nFor (r), the exact probability of selecting the overall best is\n\\[\nP_n(r)\n=\n\\frac{r}{n}\n\\sum_{j=r+1}^{n}\\frac{1}{j-1}.\n\\]\nIf (r=0), the first candidate is selected, so\n\\[\nP_n(0)=\\frac1n.\n\\]\nThe graph below displays (P_n(r)) for every admissible rejection threshold.\n\n  \n    \n      UNDERSTAND\n      The probability curve\n      \n        The blue curve gives the exact probability. The selected\n        threshold is shown in coral and the optimum in gold.\n      \n    \n  \n\n  \n    \n      \n      Exact probability\n    \n\n    \n      \n      Your threshold\n    \n\n    \n      \n      Optimal threshold\n    \n\n    \n      \n      \\(n/e\\)\n    \n  \n\n  \n    \n  \n\n  \n    \n      Selected threshold\n      —\n    \n\n    \n      Finite-\\(n\\) optimum\n      —\n    \n\n    \n      Approximation \\(n/e\\)\n      —"
+  },
+  {
+    "objectID": "simulations.html#what-the-experiments-show",
+    "href": "simulations.html#what-the-experiments-show",
+    "title": "Interactive Simulations",
+    "section": "What the experiments show",
+    "text": "What the experiments show\nThe simulations illustrate three important facts:\n\nA nonrecord candidate cannot be the overall best.\nRejecting too few candidates provides insufficient information.\nRejecting too many candidates leaves too few opportunities to select a later record.\n\nThe optimal threshold balances these competing risks.\nFor large (n),\n\\[\nr^\\star\\approx \\frac{n}{e},\n\\qquad\nP_n(r^\\star)\\approx\\frac1e.\n\\]\nTherefore, both the optimal rejection fraction and the maximum success probability approach approximately (37%).\n\n\n\n\n\n\nNoteSimulation versus proof\n\n\n\nMonte Carlo simulation provides numerical evidence, but it does not prove optimality. The exact probability formula and the backward-induction argument establish the mathematical result."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "The Secretary Problem Atlas",
+    "section": "",
+    "text": "Universidad Autónoma de Sinaloa\nExplore models, optimal policies, exact formulas, simulations, and research questions from the theory of sequential selection.\nExplore the atlas"
+  },
+  {
+    "objectID": "index.html#optimal-stopping-explained-visually",
+    "href": "index.html#optimal-stopping-explained-visually",
+    "title": "The Secretary Problem Atlas",
+    "section": "",
+    "text": "Universidad Autónoma de Sinaloa\nExplore models, optimal policies, exact formulas, simulations, and research questions from the theory of sequential selection.\nExplore the atlas"
+  },
+  {
+    "objectID": "index.html#explore-the-project",
+    "href": "index.html#explore-the-project",
+    "title": "The Secretary Problem Atlas",
+    "section": "Explore the project",
+    "text": "Explore the project\n\n\nProblem Atlas\nCompare classical and modern secretary-problem variants.\nComing next →\n\n\nInteractive Simulations\nExperiment with sample sizes and stopping thresholds.\nComing next →\n\n\nResearch\nRead mathematical notes, computational results, and open questions.\nComing next →"
+  },
+  {
+    "objectID": "index.html#why-an-atlas",
+    "href": "index.html#why-an-atlas",
+    "title": "The Secretary Problem Atlas",
+    "section": "Why an atlas?",
+    "text": "Why an atlas?\nThe secretary problem is not a single problem. It is a family of optimal-stopping models that changes according to the information available, the number of selections allowed, the objective, and the costs involved.\nThis website organizes those variants and makes their mathematical structure easier to compare."
+  },
+  {
+    "objectID": "backward-induction.html",
+    "href": "backward-induction.html",
+    "title": "The Classical Problem by Backward Induction",
+    "section": "",
+    "text": "We derive the optimal stopping rule from the Bellman recursion\n\\[\nV_n=\\max\\{U_n,W_n\\},\n\\]\nwhere \\(U_n\\) is the value of stopping at stage \\(n\\) and \\(W_n\\) is the value of continuing."
+  },
+  {
+    "objectID": "backward-induction.html#a-complete-backward-induction-solution",
+    "href": "backward-induction.html#a-complete-backward-induction-solution",
+    "title": "The Classical Problem by Backward Induction",
+    "section": "",
+    "text": "We derive the optimal stopping rule from the Bellman recursion\n\\[\nV_n=\\max\\{U_n,W_n\\},\n\\]\nwhere \\(U_n\\) is the value of stopping at stage \\(n\\) and \\(W_n\\) is the value of continuing."
+  },
+  {
+    "objectID": "backward-induction.html#the-model",
+    "href": "backward-induction.html#the-model",
+    "title": "The Classical Problem by Backward Induction",
+    "section": "1. The model",
+    "text": "1. The model\nThere are \\(N\\) candidates with distinct absolute ranks\n\\[\n1,2,\\ldots,N,\n\\]\nwhere absolute rank \\(1\\) denotes the best candidate.\nThe candidates arrive in a uniformly random order. After interviewing candidate \\(n\\), the decision maker must either:\n\naccept the candidate and stop, or\nreject the candidate permanently and continue.\n\nThe objective is to maximize the probability of selecting the candidate of absolute rank \\(1\\).\nOnly relative ranks are observed. The absolute ranks of the candidates are not known during the selection process."
+  },
+  {
+    "objectID": "backward-induction.html#relative-ranks",
+    "href": "backward-induction.html#relative-ranks",
+    "title": "The Classical Problem by Backward Induction",
+    "section": "2. Relative ranks",
+    "text": "2. Relative ranks\nLet \\(X_n\\) denote the absolute rank of the candidate interviewed at time \\(n\\). Define the relative rank\n\\[\nR_n\n=\n1+\\sum_{j=1}^{n-1}\\mathbf{1}_{\\{X_j&lt;X_n\\}}.\n\\]\nThus, \\(R_n\\) is the rank of candidate \\(n\\) among the first \\(n\\) candidates.\nIn particular,\n$$\nR_n=1 $$\nmeans that candidate \\(n\\) is better than every candidate observed previouslylkj\nsebelumnya. Such a candidate is called a record.\n\n\n\n\n\n\nImportant\n\n\n\nA candidate can be the overall best only if they are a record when observed. Therefore, it is never optimal to accept a candidate with \\(R_n&gt;1\\)."
+  },
+  {
+    "objectID": "backward-induction.html#uniformity-oflkj-of-relative-ranks",
+    "href": "backward-induction.html#uniformity-oflkj-of-relative-ranks",
+    "title": "The Classical Problem by Backward Induction",
+    "section": "3. Uniformity oflkj of relative ranks",
+    "text": "3. Uniformity oflkj of relative ranks\n\nTheorem\nUnder a uniformly random arrival order,\n\\[\nR_n\\sim \\operatorname{Uniform}\\{1,\\ldots,n\\}.\n\\]\nMoreover, the relative ranks\n\\[\nR_1,R_2,\\ldots,R_N\n\\]\nare mutually independent.\n\n\nProof\nEvery permutation\n\\[\n(X_1,\\ldots,X_N)\n\\]\nof the absolute ranks corresponds uniquely to a sequence of relative ranks satisfying\n\\[\nR_n\\in\\{1,\\ldots,n\\}.\n\\]\nConversely, every sequence\n\\[\n(r_1,\\ldots,r_N),\n\\qquad\nr_n\\in\\{1,\\ldots,n\\},\n\\]\ndetermines a unique permutation.\nThere are\n\\[\n1\\cdot2\\cdots N=N!\n\\]\npossible relative-rank sequences, exactly matching the \\(N!\\) permutations of the absolute ranks.\nSince every permutation is equally likely, every admissible relative-rank sequence has probability \\(1/N!\\). Therefore,\n\\[\n\\Pr(R_1=r_1,\\ldots,R_N=r_N)\n=\n\\prod_{n=1}^{N}\\frac1n.\n\\]\nIt follows that the relative ranks are independent and\n\\[\n\\Pr(R_n=j)=\\frac1n,\n\\qquad\nj=1,\\ldots,n.\n\\]\nIn particular,\n\\[\n\\Pr(R_n=1)=\\frac1n.\n\\]"
+  },
+  {
+    "objectID": "backward-induction.html#the-reward-from-stopping",
+    "href": "backward-induction.html#the-reward-from-stopping",
+    "title": "The Classical Problem by Backward Induction",
+    "section": "4. The reward from stopping",
+    "text": "4. The reward from stopping\nSuppose candidate \\(n\\) is a record. Define\n\\[\nU_n\n=\n\\Pr(X_n=1\\mid R_n=1).\n\\]\nThis is the conditional probability of winning if we stop at stage \\(n\\).\nNow,\n\\[\n\\Pr(X_n=1)=\\frac1N,\n\\]\nbecause the overall best candidate is equally likely to occupy any of the \\(N\\) positions. Also,\n\\[\n\\Pr(R_n=1)=\\frac1n.\n\\]\nSince \\(X_n=1\\) implies \\(R_n=1\\),\n\\[\n\\Pr(X_n=1,R_n=1)\n=\n\\Pr(X_n=1)\n=\n\\frac1N.\n\\]\nTherefore,\n\\[\nU_n\n=\n\\frac{\\Pr(X_n=1,R_n=1)}\n     {\\Pr(R_n=1)}\n=\n\\frac{1/N}{1/n}.\n\\]\nConsequently,\n\\[\n\\boxed{U_n=\\frac nN}.\n\\]\nThus, when candidate \\(n\\) is a record, accepting that candidate succeeds with probability \\(n/N\\).\nIf \\(R_n&gt;1\\), the candidate cannot be the overall best, so the stopping reward is zero."
+  },
+  {
+    "objectID": "backward-induction.html#the-continuation-value",
+    "href": "backward-induction.html#the-continuation-value",
+    "title": "The Classical Problem by Backward Induction",
+    "section": "5. The continuation value",
+    "text": "5. The continuation value\nLet \\(W_n\\) denote the optimal probability of eventually selecting the overall best after candidate \\(n\\) has been rejected.\nWhen candidate \\(n\\) is a record, define\n\\[\nV_n=\\max\\{U_n,W_n\\}.\n\\]\nAt stage \\(n+1\\), two cases are possible.\n\nCase 1: Candidate \\(n+1\\) is a record\nThis occurs with probability\n\\[\n\\Pr(R_{n+1}=1)=\\frac1{n+1}.\n\\]\nThe decision maker may then stop or continue. Therefore, the optimal value is\n\\[\nV_{n+1}.\n\\]\n\n\nCase 2: Candidate \\(n+1\\) is not a record\nThis occurs with probability\n\\[\n\\Pr(R_{n+1}&gt;1)=\\frac n{n+1}.\n\\]\nA nonrecord cannot be the overall best, so it must be rejected. The remaining value is\n\\[\nW_{n+1}.\n\\]\nCombining the two cases gives the Bellman recursion\n\\[\n\\boxed{\nW_n\n=\n\\frac1{n+1}V_{n+1}\n+\n\\frac n{n+1}W_{n+1}\n}.\n\\]\nTogether with\n\\[\nU_n=\\frac nN\n\\]\nand\n\\[\nV_n=\\max\\{U_n,W_n\\},\n\\]\nwe obtain the backward-induction system\n\\[\n\\boxed{\n\\begin{aligned}\nU_n&=\\frac nN,\\\\[4pt]\nV_n&=\\max\\{U_n,W_n\\},\\\\[4pt]\nW_n&=\n\\frac1{n+1}V_{n+1}\n+\n\\frac n{n+1}W_{n+1}.\n\\end{aligned}\n}\n\\]"
+  },
+  {
+    "objectID": "backward-induction.html#terminal-condition",
+    "href": "backward-induction.html#terminal-condition",
+    "title": "The Classical Problem by Backward Induction",
+    "section": "6. Terminal condition",
+    "text": "6. Terminal condition\nAt the final stage, there is no future candidate. Therefore,\n\\[\nW_N=0.\n\\]\nIf candidate \\(N\\) is a record, that candidate must be the overall best. Hence,\n\\[\nU_N=1.\n\\]\nIt follows that\n\\[\nV_N=\\max\\{1,0\\}=1.\n\\]\nThese terminal values allow the recursion to be evaluated backward from \\(n=N\\) to \\(n=1\\)."
+  },
+  {
+    "objectID": "backward-induction.html#the-optimal-decision-rule",
+    "href": "backward-induction.html#the-optimal-decision-rule",
+    "title": "The Classical Problem by Backward Induction",
+    "section": "7. The optimal decision rule",
+    "text": "7. The optimal decision rule\nWhen candidate \\(n\\) is a record, compare\n\\[\nU_n=\\frac nN\n\\]\nwith \\(W_n\\).\nThe optimal decision is\n\\[\n\\begin{cases}\n\\text{stop}, & U_n\\geq W_n,\\\\[4pt]\n\\text{continue}, & U_n&lt;W_n.\n\\end{cases}\n\\]\nEquivalently,\n\\[\n\\boxed{\n\\text{accept candidate }n\n\\iff\nR_n=1\n\\text{ and }\n\\frac nN\\geq W_n.\n}\n\\]\nThe stopping value \\(U_n=n/N\\) increases with \\(n\\). Meanwhile, the value of waiting decreases as the end of the observation horizon approaches. Therefore, the stopping and continuation values cross at a threshold.\nConsequently, there is an integer \\(r\\) such that:\n\nrecord candidates in positions \\(1,\\ldots,r\\) are rejected;\nthe first record after position \\(r\\) is accepted.\n\nThe threshold rule is therefore derived from backward induction; it is not assumed in advance."
+  },
+  {
+    "objectID": "backward-induction.html#complete-example-n10",
+    "href": "backward-induction.html#complete-example-n10",
+    "title": "The Classical Problem by Backward Induction",
+    "section": "8. Complete example: \\(N=10\\)",
+    "text": "8. Complete example: \\(N=10\\)\nWe now solve the problem recursively for ten candidates.\nThe terminal values are\n\\[\nW_{10}=0,\n\\qquad\nU_{10}=1,\n\\qquad\nV_{10}=1.\n\\]\nAt stage \\(9\\),\n\\[\nW_9\n=\n\\frac1{10}V_{10}\n+\n\\frac9{10}W_{10}\n=\n\\frac1{10}.\n\\]\nSince\n\\[\nU_9=\\frac9{10}&gt;\\frac1{10}=W_9,\n\\]\nwe stop at a record in position \\(9\\).\nContinuing backward gives the following table.\n\n\n\n\n\n\n\n\n\n\nStage \\(n\\)\nStop value \\(U_n=n/10\\)\nContinue value \\(W_n\\)\nValue \\(V_n\\)\nDecision at a record\n\n\n\n\n\\(10\\)\n\\(1\\)\n\\(0\\)\n\\(1\\)\nStop\n\n\n\\(9\\)\n\\(9/10\\)\n\\(1/10\\)\n\\(9/10\\)\nStop\n\n\n\\(8\\)\n\\(4/5\\)\n\\(17/90\\)\n\\(4/5\\)\nStop\n\n\n\\(7\\)\n\\(7/10\\)\n\\(191/720\\)\n\\(7/10\\)\nStop\n\n\n\\(6\\)\n\\(3/5\\)\n\\(55/168\\)\n\\(3/5\\)\nStop\n\n\n\\(5\\)\n\\(1/2\\)\n\\(1879/5040\\)\n\\(1/2\\)\nStop\n\n\n\\(4\\)\n\\(2/5\\)\n\\(2509/6300\\)\n\\(2/5\\)\nStop\n\n\n\\(3\\)\n\\(3/10\\)\n\\(3349/8400\\)\n\\(3349/8400\\)\nContinue\n\n\n\\(2\\)\n\\(1/5\\)\n\\(3349/8400\\)\n\\(3349/8400\\)\nContinue\n\n\n\\(1\\)\n\\(1/10\\)\n\\(3349/8400\\)\n\\(3349/8400\\)\nContinue\n\n\n\nThe first stage at which stopping becomes optimal is \\(n=4\\). Therefore, the optimal policy is\n\\[\n\\boxed{\n\\text{reject candidates }1,2,3\n\\text{ and accept the first later record.}\n}\n\\]\nThus, the optimal rejection threshold is\n\\[\n\\boxed{r^\\star=3}.\n\\]\nThe optimal success probability is\n\\[\n\\boxed{\nV_1\n=\n\\frac{3349}{8400}\n\\approx 0.3986904762.\n}\n\\]"
+  },
+  {
+    "objectID": "backward-induction.html#recovering-the-exact-threshold-formula",
+    "href": "backward-induction.html#recovering-the-exact-threshold-formula",
+    "title": "The Classical Problem by Backward Induction",
+    "section": "9. Recovering the exact threshold formula",
+    "text": "9. Recovering the exact threshold formula\nSuppose the first \\(r\\) candidates have been rejected. Under the threshold strategy, the overall best is selected if:\n\nthe overall best occurs at some position \\(k&gt;r\\); and\nthe best among the first \\(k-1\\) candidates occurs among the first \\(r\\).\n\nFor a fixed \\(k&gt;r\\),\n\\[\n\\Pr(X_k=1)=\\frac1N.\n\\]\nConditional on the overall best appearing at position \\(k\\), the best candidate among positions \\(1,\\ldots,k-1\\) is equally likely to occupy any of those \\(k-1\\) positions. Therefore,\n\\[\n\\Pr\\left(\n\\text{best of the first }k-1\n\\text{ lies among the first }r\n\\right)\n=\n\\frac r{k-1}.\n\\]\nHence,\n\\[\n\\Pr(\\text{win with the best at }k)\n=\n\\frac1N\\frac r{k-1}.\n\\]\nSumming over \\(k=r+1,\\ldots,N\\) gives\n\\[\n\\boxed{\nP_N(r)\n=\n\\frac rN\n\\sum_{k=r+1}^{N}\\frac1{k-1}\n}.\n\\]\nEquivalently,\n\\[\n\\boxed{\nP_N(r)\n=\n\\frac rN\n\\sum_{j=r}^{N-1}\\frac1j\n}.\n\\]\nThis is precisely the continuation value \\(W_r\\) obtained after rejecting the first \\(r\\) candidates:\n\\[\n\\boxed{W_r=P_N(r)}.\n\\]"
+  },
+  {
+    "objectID": "backward-induction.html#characterization-of-the-optimal-threshold",
+    "href": "backward-induction.html#characterization-of-the-optimal-threshold",
+    "title": "The Classical Problem by Backward Induction",
+    "section": "10. Characterization of the optimal threshold",
+    "text": "10. Characterization of the optimal threshold\nThe optimal threshold is the integer \\(r^\\star\\) for which it is optimal to continue at \\(r^\\star\\) but stop at the next record.\nContinuing at stage \\(r\\) requires\n\\[\nW_r\\geq U_r.\n\\]\nUsing\n\\[\nW_r\n=\n\\frac rN\\sum_{j=r}^{N-1}\\frac1j\n\\]\nand\n\\[\nU_r=\\frac rN,\n\\]\nthis condition becomes\n\\[\n\\sum_{j=r}^{N-1}\\frac1j\\geq 1.\n\\]\nStopping at a record in position \\(r+1\\) requires\n\\[\nU_{r+1}\\geq W_{r+1},\n\\]\nwhich is equivalent to\n\\[\n\\sum_{j=r+1}^{N-1}\\frac1j\\leq 1.\n\\]\nTherefore, the optimal threshold is characterized by\n\\[\n\\boxed{\n\\sum_{j=r^\\star+1}^{N-1}\\frac1j\n\\leq 1\n\\leq\n\\sum_{j=r^\\star}^{N-1}\\frac1j\n}.\n\\]\nEquivalently,\n\\[\n\\boxed{\nr^\\star\n=\n\\min\\left\\{\nr:\n\\sum_{j=r+1}^{N-1}\\frac1j\\leq 1\n\\right\\}.\n}\n\\]\nFor \\(N=10\\),\n\\[\n\\sum_{j=4}^{9}\\frac1j&lt;1\n\\]\nbut\n\\[\n\\sum_{j=3}^{9}\\frac1j&gt;1.\n\\]\nTherefore,\n\\[\nr^\\star=3.\n\\]"
+  },
+  {
+    "objectID": "backward-induction.html#the-asymptotic-1e-rule",
+    "href": "backward-induction.html#the-asymptotic-1e-rule",
+    "title": "The Classical Problem by Backward Induction",
+    "section": "11. The asymptotic \\(1/e\\) rule",
+    "text": "11. The asymptotic \\(1/e\\) rule\nFor large \\(N\\), the harmonic sum satisfies\n\\[\n\\sum_{j=r}^{N-1}\\frac1j\n\\approx\n\\int_r^N\\frac{dx}{x}\n=\n\\log\\left(\\frac Nr\\right).\n\\]\nAt the optimal threshold, this quantity is approximately \\(1\\). Thus,\n\\[\n\\log\\left(\\frac{N}{r^\\star}\\right)\\approx 1.\n\\]\nExponentiating gives\n\\[\n\\frac{N}{r^\\star}\\approx e,\n\\]\nand therefore\n\\[\n\\boxed{\n\\frac{r^\\star}{N}\\longrightarrow\\frac1e\n}.\n\\]\nThe optimal success probability satisfies\n\\[\nP_N(r^\\star)\n=\n\\frac{r^\\star}{N}\n\\sum_{j=r^\\star}^{N-1}\\frac1j.\n\\]\nSince\n\\[\n\\frac{r^\\star}{N}\\longrightarrow\\frac1e\n\\]\nand the harmonic sum converges to \\(1\\),\n\\[\n\\boxed{\nP_N(r^\\star)\\longrightarrow\\frac1e\n}.\n\\]\nThus, for a large number of candidates, the optimal strategy is approximately:\n\nreject the first \\(N/e\\) candidates;\naccept the first subsequent record.\n\nBoth the optimal rejection proportion and the limiting success probability approach\n\\[\n\\boxed{\\frac1e\\approx 0.367879}.\n\\]"
+  },
+  {
+    "objectID": "backward-induction.html#final-result",
+    "href": "backward-induction.html#final-result",
+    "title": "The Classical Problem by Backward Induction",
+    "section": "12. Final result",
+    "text": "12. Final result\n\n\n\n\n\n\nTipOptimal classical secretary rule\n\n\n\nFor \\(N\\) candidates arriving in uniformly random order:\n\nDetermine the threshold \\(r^\\star\\) from\n\\[\n\\sum_{j=r^\\star+1}^{N-1}\\frac1j\n\\leq 1\n\\leq\n\\sum_{j=r^\\star}^{N-1}\\frac1j.\n\\]\nReject the first \\(r^\\star\\) candidates.\nAccept the first later candidate whose relative rank is \\(1\\).\n\nThe rule follows from the recursion\n\\[\nV_n=\\max\\{U_n,W_n\\},\n\\]\nwhere\n\\[\nU_n=\\frac nN\n\\]\nand\n\\[\nW_n\n=\n\\frac1{n+1}V_{n+1}\n+\n\\frac n{n+1}W_{n+1}.\n\\]\nAs \\(N\\to\\infty\\),\n\\[\n\\frac{r^\\star}{N}\\longrightarrow\\frac1e,\n\\qquad\nP_N(r^\\star)\\longrightarrow\\frac1e.\n\\]"
+  },
+  {
+    "objectID": "backward-induction.html#the-backward-induction-theorem",
+    "href": "backward-induction.html#the-backward-induction-theorem",
+    "title": "The Classical Problem by Backward Induction",
+    "section": "13. The backward-induction theorem",
+    "text": "13. The backward-induction theorem\nThe preceding solution is an application of the general finite-horizon optimal stopping theorem (Chow, Robbins, and Siegmund 1971; Ferguson 2010; Shiryaev 2007).\n\nTheorem\nLet\n\\[\n(\\Omega,\\mathcal F,\\{\\mathcal F_n\\}_{n=1}^{N},\\Pr)\n\\]\nbe a filtered probability space. Let\n\\[\nU_1,U_2,\\ldots,U_N\n\\]\nbe an integrable adapted reward process, where \\(U_n\\) is the reward obtained by stopping at time \\(n\\).\nFor each \\(n\\), let \\(\\mathcal T_n\\) denote the set of stopping times taking values in\n\\[\n\\{n,n+1,\\ldots,N\\}.\n\\]\nDefine the value process by\n\\[\nV_n\n=\n\\operatorname*{ess\\,sup}_{\\tau\\in\\mathcal T_n}\n\\operatorname E[U_\\tau\\mid\\mathcal F_n].\n\\]\nThen\n\\[\nV_N=U_N\n\\]\nand, for \\(n=N-1,\\ldots,1\\),\n\\[\n\\boxed{\nV_n\n=\n\\max\\left\\{\nU_n,\n\\operatorname E[V_{n+1}\\mid\\mathcal F_n]\n\\right\\}.\n}\n\\]\nIf the continuation value is defined by\n\\[\nW_n\n=\n\\operatorname E[V_{n+1}\\mid\\mathcal F_n],\n\\]\nthen the recursion becomes\n\\[\n\\boxed{V_n=\\max\\{U_n,W_n\\}}.\n\\]\nMoreover, subject to forced stopping at time \\(N\\), the stopping time\n\\[\n\\boxed{\n\\tau^\\star\n=\n\\inf\\{n:U_n\\geq W_n\\}\n}\n\\]\nis optimal.\n\n\nProof\nAt time \\(N\\), stopping is mandatory. Therefore,\n\\[\nV_N=U_N.\n\\]\nSuppose that \\(V_{n+1}\\) is the optimal value from time \\(n+1\\) onward.\nAt time \\(n\\), the decision maker has two possible actions:\n\nstop immediately and receive \\(U_n\\);\ncontinue and receive the conditional expected optimal future value\n\\[\nW_n\n=\n\\operatorname E[V_{n+1}\\mid\\mathcal F_n].\n\\]\n\nAn optimal decision selects the action with the larger value. Hence,\n\\[\nV_n=\\max\\{U_n,W_n\\}.\n\\]\nStarting from \\(V_N=U_N\\) and repeating this argument for\n\\[\nn=N-1,N-2,\\ldots,1\n\\]\ndetermines the entire value process by backward induction.\nAt every time \\(n\\), stopping when \\(U_n\\geq W_n\\) selects an action attaining the value \\(V_n\\). Therefore, the first time at which this inequality holds is an optimal stopping time:\n\\[\n\\tau^\\star\n=\n\\inf\\{n:U_n\\geq W_n\\}.\n\\]\nThis proves the result. \\(\\square\\)\n\n\nApplication to the classical secretary problem\nIn the classical secretary problem, a nonrecord candidate cannot be the overall best and therefore has stopping value zero.\nIf candidate \\(n\\) is a record, the immediate stopping value is\n\\[\nU_n=\\frac nN.\n\\]\nThe continuation value is\n\\[\nW_n\n=\n\\operatorname E[V_{n+1}\\mid\\mathcal F_n].\n\\]\nBecause\n\\[\n\\Pr(R_{n+1}=1)=\\frac1{n+1},\n\\]\nwe obtain\n\\[\nW_n\n=\n\\frac1{n+1}V_{n+1}\n+\n\\frac n{n+1}W_{n+1}.\n\\]\nConsequently, the secretary-problem recursion\n\\[\nV_n=\\max\\{U_n,W_n\\}\n\\]\nis a direct specialization of the finite-horizon backward-induction theorem."
+  },
+  {
+    "objectID": "backward-induction.html#sources",
+    "href": "backward-induction.html#sources",
+    "title": "The Classical Problem by Backward Induction",
+    "section": "Sources",
+    "text": "Sources\nThe classical secretary problem and its full-information extensions are developed by Gilbert and Mosteller (1966). Historical details are discussed by Ferguson (1989).\nThe general theory of finite-horizon optimal stopping and backward induction is treated by Chow, Robbins, and Siegmund (1971), Ferguson (2010), and Shiryaev (2007).\nThe notation and presentation used here follow the optimal-stopping framework employed in the research and dissertation work of José A. Islas."
+  },
+  {
+    "objectID": "classical.html",
+    "href": "classical.html",
+    "title": "The Classical Secretary Problem",
+    "section": "",
+    "text": "Observe candidates sequentially, reject an initial sample, and then select the first candidate who is better than everyone previously observed.\nThe classical model and its principal extensions are treated by (Gilbert and Mosteller 1966; Freeman 1983), while its historical development is discussed by Ferguson (1989)."
+  },
+  {
+    "objectID": "classical.html#the-decision-problem",
+    "href": "classical.html#the-decision-problem",
+    "title": "The Classical Secretary Problem",
+    "section": "The decision problem",
+    "text": "The decision problem\nSuppose (n) candidates arrive in a uniformly random order.\nAfter observing each candidate, you must either:\n\naccept the candidate and stop, or\nreject the candidate permanently and continue.\n\nThe objective is to select the best candidate among all (n) candidates."
+  },
+  {
+    "objectID": "classical.html#the-threshold-strategy",
+    "href": "classical.html#the-threshold-strategy",
+    "title": "The Classical Secretary Problem",
+    "section": "The threshold strategy",
+    "text": "The threshold strategy\nChoose an integer (r) with (0 r &lt; n).\n\nReject the first (r) candidates.\nRecord the best candidate observed during that period.\nAccept the first later candidate who is better than that recorded candidate.\nIf nobody exceeds the recorded candidate, the selection fails."
+  },
+  {
+    "objectID": "classical.html#exact-success-probability",
+    "href": "classical.html#exact-success-probability",
+    "title": "The Classical Secretary Problem",
+    "section": "Exact success probability",
+    "text": "Exact success probability\nFor (r ), the probability of selecting the best candidate is\n\\[\nP_n(r)\n=\n\\frac{r}{n}\n\\sum_{k=r+1}^{n}\\frac{1}{k-1}.\n\\]\nThe optimal threshold is the integer (r) that maximizes (P_n(r)).\nFor large (n),\n\\[\nr^\\star \\approx \\frac{n}{e},\n\\qquad\nP_n(r^\\star)\\approx \\frac{1}{e}.\n\\]\nThus, approximately (37%) of the candidates are observed and rejected before selection begins."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "The Secretary Problem Atlas is a free, open-access educational and science-communication project created by José Ángel Islas Anguiano at Universidad Autónoma de Sinaloa. Its purpose is to make the mathematics, history, and applications of optimal stopping and secretary problems accessible to students, educators, researchers, and the general public.\nThe Atlas combines intuitive explanations, mathematical derivations, interactive visualizations, historical context, and research references. No registration or payment is required."
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "This bibliography supports the mathematical explanations, historical notes, and interactive experiments presented in The Secretary Problem Atlas.\n\n\nThe initial collection includes foundational work on the classical secretary problem, full-information models, historical development, extensions, and related optimal-stopping principles.\nAs the Atlas grows, this database will be expanded to include literature on:\n\nmultiple-choice secretary problems,\nselecting the second-best candidate,\ngeneralized top-(m) objectives,\nfull-information best-choice models,\nduration problems,\ninterview costs and rewards,\nunknown numbers of candidates,\nrank-dependent payoffs."
+  },
+  {
+    "objectID": "references.html#foundational-literature",
+    "href": "references.html#foundational-literature",
+    "title": "References",
+    "section": "",
+    "text": "The initial collection includes foundational work on the classical secretary problem, full-information models, historical development, extensions, and related optimal-stopping principles.\nAs the Atlas grows, this database will be expanded to include literature on:\n\nmultiple-choice secretary problems,\nselecting the second-best candidate,\ngeneralized top-(m) objectives,\nfull-information best-choice models,\nduration problems,\ninterview costs and rewards,\nunknown numbers of candidates,\nrank-dependent payoffs."
+  }
+]
