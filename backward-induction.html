@@ -218,378 +218,335 @@ window.Quarto = {
 <h1>The Classical Secretary Problem</h1>
 <section id="a-complete-backward-induction-solution" class="level2">
 <h2 class="anchored" data-anchor-id="a-complete-backward-induction-solution">A complete backward-induction solution</h2>
-<p>We derive the optimal stopping rule from the Bellman recursion</p>
+<p>This page derives the optimal policy from first principles using the value equation</p>
 <p><span class="math display">\[
-V_n=\max\{U_n,W_n\},
+V_n=\max\{U_n,W_n\}.
 \]</span></p>
-<p>where <span class="math inline">\(U_n\)</span> is the value of stopping at stage <span class="math inline">\(n\)</span> and <span class="math inline">\(W_n\)</span> is the value of continuing.</p>
+<p>Here, <span class="math inline">\(U_n\)</span> is the value of stopping at a record, <span class="math inline">\(W_n\)</span> is the value of continuing, and <span class="math inline">\(V_n\)</span> is the optimal value.</p>
 </section>
 </section>
 <div class="atlas-section">
-<section id="the-model" class="level2">
-<h2 class="anchored" data-anchor-id="the-model">1. The model</h2>
-<p>There are <span class="math inline">\(N\)</span> candidates with distinct absolute ranks</p>
+<section id="model-and-objective" class="level2">
+<h2 class="anchored" data-anchor-id="model-and-objective">1. Model and objective</h2>
+<p>There are <span class="math inline">\(N\ge3\)</span> candidates arriving in a uniformly random order. Their absolute ranks are</p>
 <p><span class="math display">\[
 1,2,\ldots,N,
 \]</span></p>
-<p>where absolute rank <span class="math inline">\(1\)</span> denotes the best candidate.</p>
-<p>The candidates arrive in a uniformly random order. After interviewing candidate <span class="math inline">\(n\)</span>, the decision maker must either:</p>
-<ul>
-<li>accept the candidate and stop, or</li>
-<li>reject the candidate permanently and continue.</li>
-</ul>
-<p>The objective is to maximize the probability of selecting the candidate of absolute rank <span class="math inline">\(1\)</span>.</p>
-<p>Only relative ranks are observed. The absolute ranks of the candidates are not known during the selection process.</p>
-<hr>
+<p>where rank <span class="math inline">\(1\)</span> is best.</p>
+<p>After interviewing a candidate, we observe only that candidate’s rank relative to those already seen. An accepted candidate ends the process, and a rejected candidate cannot be recalled.</p>
+<p>Let <span class="math inline">\(X_k\)</span> be the absolute rank of the candidate in position <span class="math inline">\(k\)</span>. We seek a stopping time <span class="math inline">\(\tau\)</span> maximizing</p>
+<p><span class="math display">\[
+\mathbb P(X_\tau=1).
+\]</span></p>
+<p>Thus, the reward is <span class="math inline">\(1\)</span> if the selected candidate is the overall best and <span class="math inline">\(0\)</span> otherwise.</p>
 </section>
-<section id="relative-ranks" class="level2">
-<h2 class="anchored" data-anchor-id="relative-ranks">2. Relative ranks</h2>
-<p>Let <span class="math inline">\(X_n\)</span> denote the absolute rank of the candidate interviewed at time <span class="math inline">\(n\)</span>. Define the relative rank</p>
+<section id="relative-ranks-and-records" class="level2">
+<h2 class="anchored" data-anchor-id="relative-ranks-and-records">2. Relative ranks and records</h2>
+<p>Define the relative rank of the candidate in position <span class="math inline">\(n\)</span> by</p>
 <p><span class="math display">\[
 R_n
 =
-1+\sum_{j=1}^{n-1}\mathbf{1}_{\{X_j&lt;X_n\}}.
+1+\sum_{j=1}^{n-1}
+\mathbf 1_{\{X_j&lt;X_n\}}.
 \]</span></p>
-<p>Thus, <span class="math inline">\(R_n\)</span> is the rank of candidate <span class="math inline">\(n\)</span> among the first <span class="math inline">\(n\)</span> candidates.</p>
-<p>In particular,</p>
-<p>$$</p>
-<p>R_n=1 $$</p>
-<p>means that candidate <span class="math inline">\(n\)</span> is better than every candidate observed previouslylkj</p>
-<p>sebelumnya. Such a candidate is called a <strong>record</strong>.</p>
-<div class="callout callout-style-default callout-important callout-titled">
+<p>The event <span class="math inline">\(R_n=1\)</span> means that the candidate at time <span class="math inline">\(n\)</span> is better than every candidate previously observed.</p>
+<p>Such a candidate is called a <strong>record</strong>.</p>
+<p>A non-record cannot be the overall best. Therefore, every optimal policy rejects non-records. A genuine stop-or-continue decision occurs only when <span class="math inline">\(R_n=1\)</span>.</p>
+</section>
+<section id="uniformity-of-relative-ranks" class="level2">
+<h2 class="anchored" data-anchor-id="uniformity-of-relative-ranks">3. Uniformity of relative ranks</h2>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Important
+<span class="screen-reader-only">Note</span>Relative-rank theorem
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>A candidate can be the overall best only if they are a record when observed. Therefore, it is never optimal to accept a candidate with <span class="math inline">\(R_n&gt;1\)</span>.</p>
-</div>
-</div>
-</section>
-<section id="uniformity-oflkj-of-relative-ranks" class="level2">
-<h2 class="anchored" data-anchor-id="uniformity-oflkj-of-relative-ranks">3. Uniformity oflkj of relative ranks</h2>
-<section id="theorem" class="level3">
-<h3 class="anchored" data-anchor-id="theorem">Theorem</h3>
-<p>Under a uniformly random arrival order,</p>
-<p><span class="math display">\[
-R_n\sim \operatorname{Uniform}\{1,\ldots,n\}.
-\]</span></p>
-<p>Moreover, the relative ranks</p>
+<p>For a uniformly random permutation, the relative ranks</p>
 <p><span class="math display">\[
 R_1,R_2,\ldots,R_N
 \]</span></p>
-<p>are mutually independent.</p>
-</section>
-<section id="proof" class="level3">
-<h3 class="anchored" data-anchor-id="proof">Proof</h3>
-<p>Every permutation</p>
+<p>are independent. Moreover,</p>
 <p><span class="math display">\[
-(X_1,\ldots,X_N)
-\]</span></p>
-<p>of the absolute ranks corresponds uniquely to a sequence of relative ranks satisfying</p>
-<p><span class="math display">\[
-R_n\in\{1,\ldots,n\}.
-\]</span></p>
-<p>Conversely, every sequence</p>
-<p><span class="math display">\[
-(r_1,\ldots,r_N),
-\qquad
-r_n\in\{1,\ldots,n\},
-\]</span></p>
-<p>determines a unique permutation.</p>
-<p>There are</p>
-<p><span class="math display">\[
-1\cdot2\cdots N=N!
-\]</span></p>
-<p>possible relative-rank sequences, exactly matching the <span class="math inline">\(N!\)</span> permutations of the absolute ranks.</p>
-<p>Since every permutation is equally likely, every admissible relative-rank sequence has probability <span class="math inline">\(1/N!\)</span>. Therefore,</p>
-<p><span class="math display">\[
-\Pr(R_1=r_1,\ldots,R_N=r_N)
-=
-\prod_{n=1}^{N}\frac1n.
-\]</span></p>
-<p>It follows that the relative ranks are independent and</p>
-<p><span class="math display">\[
-\Pr(R_n=j)=\frac1n,
+\mathbb P(R_n=j)=\frac1n,
 \qquad
 j=1,\ldots,n.
 \]</span></p>
 <p>In particular,</p>
 <p><span class="math display">\[
-\Pr(R_n=1)=\frac1n.
+\mathbb P(R_n=1)=\frac1n.
 \]</span></p>
-<hr>
+</div>
+</div>
+<section id="proof" class="level3">
+<h3 class="anchored" data-anchor-id="proof">Proof</h3>
+<p>The transformation from the absolute-rank permutation</p>
+<p><span class="math display">\[
+(X_1,\ldots,X_N)
+\]</span></p>
+<p>to the relative-rank sequence</p>
+<p><span class="math display">\[
+(R_1,\ldots,R_N)
+\]</span></p>
+<p>is a bijection.</p>
+<p>Every admissible relative-rank sequence satisfies</p>
+<p><span class="math display">\[
+R_n\in\{1,\ldots,n\}.
+\]</span></p>
+<p>The number of such sequences is</p>
+<p><span class="math display">\[
+1\cdot2\cdots N=N!,
+\]</span></p>
+<p>which equals the number of absolute-rank permutations.</p>
+<p>Because all absolute-rank permutations are equally likely, every admissible relative-rank sequence has probability <span class="math inline">\(1/N!\)</span>. Therefore,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbb P(R_1=r_1,\ldots,R_N=r_N)
+&amp;=\frac1{N!}\\
+&amp;=\prod_{n=1}^{N}\frac1n.
+\end{aligned}
+\]</span></p>
+<p>This factorization proves that the relative ranks are independent and that each <span class="math inline">\(R_n\)</span> is uniform on <span class="math inline">\(\{1,\ldots,n\}\)</span>. <span class="math inline">\(\square\)</span></p>
 </section>
 </section>
-<section id="the-reward-from-stopping" class="level2">
-<h2 class="anchored" data-anchor-id="the-reward-from-stopping">4. The reward from stopping</h2>
-<p>Suppose candidate <span class="math inline">\(n\)</span> is a record. Define</p>
+<section id="the-value-of-stopping" class="level2">
+<h2 class="anchored" data-anchor-id="the-value-of-stopping">4. The value of stopping</h2>
+<p>Suppose the candidate at time <span class="math inline">\(n\)</span> is a record.</p>
+<p>Since the overall best candidate is necessarily a record,</p>
 <p><span class="math display">\[
-U_n
+\mathbb P(X_n=1,\ R_n=1)
 =
-\Pr(X_n=1\mid R_n=1).
-\]</span></p>
-<p>This is the conditional probability of winning if we stop at stage <span class="math inline">\(n\)</span>.</p>
-<p>Now,</p>
-<p><span class="math display">\[
-\Pr(X_n=1)=\frac1N,
-\]</span></p>
-<p>because the overall best candidate is equally likely to occupy any of the <span class="math inline">\(N\)</span> positions. Also,</p>
-<p><span class="math display">\[
-\Pr(R_n=1)=\frac1n.
-\]</span></p>
-<p>Since <span class="math inline">\(X_n=1\)</span> implies <span class="math inline">\(R_n=1\)</span>,</p>
-<p><span class="math display">\[
-\Pr(X_n=1,R_n=1)
-=
-\Pr(X_n=1)
+\mathbb P(X_n=1)
 =
 \frac1N.
 \]</span></p>
-<p>Therefore,</p>
+<p>By the relative-rank theorem,</p>
 <p><span class="math display">\[
-U_n
-=
-\frac{\Pr(X_n=1,R_n=1)}
-     {\Pr(R_n=1)}
-=
-\frac{1/N}{1/n}.
+\mathbb P(R_n=1)=\frac1n.
 \]</span></p>
-<p>Consequently,</p>
+<p>Therefore, the probability of success from stopping at a record at time <span class="math inline">\(n\)</span> is</p>
+<p><span class="math display">\[
+\begin{aligned}
+U_n
+&amp;=
+\mathbb P(X_n=1\mid R_n=1)\\
+&amp;=
+\frac{\mathbb P(X_n=1,\ R_n=1)}
+     {\mathbb P(R_n=1)}\\
+&amp;=
+\frac{1/N}{1/n}\\
+&amp;=
+\frac nN.
+\end{aligned}
+\]</span></p>
+<p>Hence,</p>
 <p><span class="math display">\[
 \boxed{U_n=\frac nN}.
 \]</span></p>
-<p>Thus, when candidate <span class="math inline">\(n\)</span> is a record, accepting that candidate succeeds with probability <span class="math inline">\(n/N\)</span>.</p>
-<p>If <span class="math inline">\(R_n&gt;1\)</span>, the candidate cannot be the overall best, so the stopping reward is zero.</p>
-<hr>
+<p>The stopping value is strictly increasing in <span class="math inline">\(n\)</span>.</p>
 </section>
 <section id="the-continuation-value" class="level2">
 <h2 class="anchored" data-anchor-id="the-continuation-value">5. The continuation value</h2>
-<p>Let <span class="math inline">\(W_n\)</span> denote the optimal probability of eventually selecting the overall best after candidate <span class="math inline">\(n\)</span> has been rejected.</p>
-<p>When candidate <span class="math inline">\(n\)</span> is a record, define</p>
+<p>Let <span class="math inline">\(W_n\)</span> be the optimal probability of eventual success after rejecting the candidate at time <span class="math inline">\(n\)</span>.</p>
+<p>At a record time, define</p>
 <p><span class="math display">\[
-V_n=\max\{U_n,W_n\}.
+\boxed{V_n=\max\{U_n,W_n\}}.
 \]</span></p>
-<p>At stage <span class="math inline">\(n+1\)</span>, two cases are possible.</p>
-<section id="case-1-candidate-n1-is-a-record" class="level3">
-<h3 class="anchored" data-anchor-id="case-1-candidate-n1-is-a-record">Case 1: Candidate <span class="math inline">\(n+1\)</span> is a record</h3>
-<p>This occurs with probability</p>
+<p>At time <span class="math inline">\(n+1\)</span>, the next candidate is a record with probability</p>
 <p><span class="math display">\[
-\Pr(R_{n+1}=1)=\frac1{n+1}.
+\frac1{n+1}.
 \]</span></p>
-<p>The decision maker may then stop or continue. Therefore, the optimal value is</p>
+<p>If a new record appears, another stop-or-continue decision is available and the value is <span class="math inline">\(V_{n+1}\)</span>.</p>
+<p>With probability</p>
 <p><span class="math display">\[
-V_{n+1}.
+\frac n{n+1},
 \]</span></p>
-</section>
-<section id="case-2-candidate-n1-is-not-a-record" class="level3">
-<h3 class="anchored" data-anchor-id="case-2-candidate-n1-is-not-a-record">Case 2: Candidate <span class="math inline">\(n+1\)</span> is not a record</h3>
-<p>This occurs with probability</p>
-<p><span class="math display">\[
-\Pr(R_{n+1}&gt;1)=\frac n{n+1}.
-\]</span></p>
-<p>A nonrecord cannot be the overall best, so it must be rejected. The remaining value is</p>
-<p><span class="math display">\[
-W_{n+1}.
-\]</span></p>
-<p>Combining the two cases gives the Bellman recursion</p>
+<p>the candidate is not a record. Stopping cannot then produce success, so the process continues with value <span class="math inline">\(W_{n+1}\)</span>.</p>
+<p>Consequently,</p>
 <p><span class="math display">\[
 \boxed{
 W_n
 =
-\frac1{n+1}V_{n+1}
+\frac{1}{n+1}V_{n+1}
 +
-\frac n{n+1}W_{n+1}
+\frac{n}{n+1}W_{n+1}
 }.
 \]</span></p>
-<p>Together with</p>
-<p><span class="math display">\[
-U_n=\frac nN
-\]</span></p>
-<p>and</p>
-<p><span class="math display">\[
-V_n=\max\{U_n,W_n\},
-\]</span></p>
-<p>we obtain the backward-induction system</p>
+<p>The Bellman equations are therefore</p>
 <p><span class="math display">\[
 \boxed{
 \begin{aligned}
-U_n&amp;=\frac nN,\\[4pt]
-V_n&amp;=\max\{U_n,W_n\},\\[4pt]
+U_n&amp;=\frac nN,\\
+V_n&amp;=\max\{U_n,W_n\},\\
 W_n&amp;=
-\frac1{n+1}V_{n+1}
+\frac{1}{n+1}V_{n+1}
 +
-\frac n{n+1}W_{n+1}.
+\frac{n}{n+1}W_{n+1}.
 \end{aligned}
 }
 \]</span></p>
-<hr>
-</section>
 </section>
 <section id="terminal-condition" class="level2">
 <h2 class="anchored" data-anchor-id="terminal-condition">6. Terminal condition</h2>
-<p>At the final stage, there is no future candidate. Therefore,</p>
+<p>At time <span class="math inline">\(N\)</span>, a record must be accepted because no future candidates remain.</p>
+<p>Therefore,</p>
 <p><span class="math display">\[
+U_N=1,
+\qquad
+V_N=1,
+\qquad
 W_N=0.
 \]</span></p>
-<p>If candidate <span class="math inline">\(N\)</span> is a record, that candidate must be the overall best. Hence,</p>
-<p><span class="math display">\[
-U_N=1.
-\]</span></p>
-<p>It follows that</p>
-<p><span class="math display">\[
-V_N=\max\{1,0\}=1.
-\]</span></p>
-<p>These terminal values allow the recursion to be evaluated backward from <span class="math inline">\(n=N\)</span> to <span class="math inline">\(n=1\)</span>.</p>
-<hr>
+<p>Starting with these terminal values, all preceding values are determined by backward induction.</p>
 </section>
-<section id="the-optimal-decision-rule" class="level2">
-<h2 class="anchored" data-anchor-id="the-optimal-decision-rule">7. The optimal decision rule</h2>
-<p>When candidate <span class="math inline">\(n\)</span> is a record, compare</p>
+<section id="why-the-optimal-policy-has-one-threshold" class="level2">
+<h2 class="anchored" data-anchor-id="why-the-optimal-policy-has-one-threshold">7. Why the optimal policy has one threshold</h2>
+<p>From the continuation recurrence,</p>
 <p><span class="math display">\[
-U_n=\frac nN
-\]</span></p>
-<p>with <span class="math inline">\(W_n\)</span>.</p>
-<p>The optimal decision is</p>
-<p><span class="math display">\[
-\begin{cases}
-\text{stop}, &amp; U_n\geq W_n,\\[4pt]
-\text{continue}, &amp; U_n&lt;W_n.
-\end{cases}
-\]</span></p>
-<p>Equivalently,</p>
-<p><span class="math display">\[
-\boxed{
-\text{accept candidate }n
-\iff
-R_n=1
-\text{ and }
-\frac nN\geq W_n.
-}
-\]</span></p>
-<p>The stopping value <span class="math inline">\(U_n=n/N\)</span> increases with <span class="math inline">\(n\)</span>. Meanwhile, the value of waiting decreases as the end of the observation horizon approaches. Therefore, the stopping and continuation values cross at a threshold.</p>
-<p>Consequently, there is an integer <span class="math inline">\(r\)</span> such that:</p>
-<ul>
-<li>record candidates in positions <span class="math inline">\(1,\ldots,r\)</span> are rejected;</li>
-<li>the first record after position <span class="math inline">\(r\)</span> is accepted.</li>
-</ul>
-<p>The threshold rule is therefore derived from backward induction; it is not assumed in advance.</p>
-<hr>
-</section>
-<section id="complete-example-n10" class="level2">
-<h2 class="anchored" data-anchor-id="complete-example-n10">8. Complete example: <span class="math inline">\(N=10\)</span></h2>
-<p>We now solve the problem recursively for ten candidates.</p>
-<p>The terminal values are</p>
-<p><span class="math display">\[
-W_{10}=0,
-\qquad
-U_{10}=1,
-\qquad
-V_{10}=1.
-\]</span></p>
-<p>At stage <span class="math inline">\(9\)</span>,</p>
-<p><span class="math display">\[
-W_9
+W_n
 =
-\frac1{10}V_{10}
+\frac{1}{n+1}V_{n+1}
 +
-\frac9{10}W_{10}
+\frac{n}{n+1}W_{n+1}.
+\]</span></p>
+<p>Subtracting <span class="math inline">\(W_{n+1}\)</span> gives</p>
+<p><span class="math display">\[
+W_n-W_{n+1}
 =
-\frac1{10}.
+\frac{V_{n+1}-W_{n+1}}{n+1}.
 \]</span></p>
 <p>Since</p>
 <p><span class="math display">\[
-U_9=\frac9{10}&gt;\frac1{10}=W_9,
+V_{n+1}
+=
+\max\{U_{n+1},W_{n+1}\}
+\ge W_{n+1},
 \]</span></p>
-<p>we stop at a record in position <span class="math inline">\(9\)</span>.</p>
-<p>Continuing backward gives the following table.</p>
+<p>we obtain</p>
+<p><span class="math display">\[
+W_n-W_{n+1}\ge0.
+\]</span></p>
+<p>Thus,</p>
+<p><span class="math display">\[
+W_1\ge W_2\ge\cdots\ge W_N.
+\]</span></p>
+<p>The continuation value <span class="math inline">\(W_n\)</span> is nonincreasing, while the stopping value</p>
+<p><span class="math display">\[
+U_n=\frac nN
+\]</span></p>
+<p>is strictly increasing.</p>
+<p>Therefore, the two values can cross at most once. This proves that the optimal policy has a threshold form.</p>
+<p>There is an integer <span class="math inline">\(r^*\)</span> such that the optimal policy is:</p>
+<ol type="1">
+<li>Reject the first <span class="math inline">\(r^*\)</span> candidates.</li>
+<li>Beginning at position <span class="math inline">\(r^*+1\)</span>, accept the first record.</li>
+<li>If no later record appears, the selection fails.</li>
+</ol>
+<p>At a record time <span class="math inline">\(n\)</span>, stopping is optimal whenever</p>
+<p><span class="math display">\[
+U_n\ge W_n.
+\]</span></p>
+<p>If equality holds, either stopping or continuing is optimal. We break ties in favor of stopping.</p>
+</section>
+<section id="complete-example-n10" class="level2">
+<h2 class="anchored" data-anchor-id="complete-example-n10">8. Complete example: (N=10)</h2>
+<p>We now solve the problem for <span class="math inline">\(N=10\)</span> without assuming the threshold in advance.</p>
+<p>Begin with</p>
+<p><span class="math display">\[
+U_{10}=1,
+\qquad
+V_{10}=1,
+\qquad
+W_{10}=0.
+\]</span></p>
+<p>Then work backward using</p>
+<p><span class="math display">\[
+W_n
+=
+\frac{1}{n+1}V_{n+1}
++
+\frac{n}{n+1}W_{n+1}.
+\]</span></p>
+<p>The resulting values are:</p>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: right;">Stage <span class="math inline">\(n\)</span></th>
-<th style="text-align: right;">Stop value <span class="math inline">\(U_n=n/10\)</span></th>
-<th style="text-align: right;">Continue value <span class="math inline">\(W_n\)</span></th>
-<th style="text-align: right;">Value <span class="math inline">\(V_n\)</span></th>
-<th style="text-align: left;">Decision at a record</th>
+<th style="text-align: right;"><span class="math inline">\(n\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(U_n\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(W_n\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(V_n\)</span></th>
+<th style="text-align: left;">Optimal action</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;"><span class="math inline">\(10\)</span></td>
+<td style="text-align: right;">10</td>
 <td style="text-align: right;"><span class="math inline">\(1\)</span></td>
 <td style="text-align: right;"><span class="math inline">\(0\)</span></td>
 <td style="text-align: right;"><span class="math inline">\(1\)</span></td>
 <td style="text-align: left;">Stop</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;"><span class="math inline">\(9\)</span></td>
+<td style="text-align: right;">9</td>
 <td style="text-align: right;"><span class="math inline">\(9/10\)</span></td>
 <td style="text-align: right;"><span class="math inline">\(1/10\)</span></td>
 <td style="text-align: right;"><span class="math inline">\(9/10\)</span></td>
 <td style="text-align: left;">Stop</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;"><span class="math inline">\(8\)</span></td>
+<td style="text-align: right;">8</td>
 <td style="text-align: right;"><span class="math inline">\(4/5\)</span></td>
 <td style="text-align: right;"><span class="math inline">\(17/90\)</span></td>
 <td style="text-align: right;"><span class="math inline">\(4/5\)</span></td>
 <td style="text-align: left;">Stop</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;"><span class="math inline">\(7\)</span></td>
+<td style="text-align: right;">7</td>
 <td style="text-align: right;"><span class="math inline">\(7/10\)</span></td>
 <td style="text-align: right;"><span class="math inline">\(191/720\)</span></td>
 <td style="text-align: right;"><span class="math inline">\(7/10\)</span></td>
 <td style="text-align: left;">Stop</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;"><span class="math inline">\(6\)</span></td>
+<td style="text-align: right;">6</td>
 <td style="text-align: right;"><span class="math inline">\(3/5\)</span></td>
 <td style="text-align: right;"><span class="math inline">\(55/168\)</span></td>
 <td style="text-align: right;"><span class="math inline">\(3/5\)</span></td>
 <td style="text-align: left;">Stop</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;"><span class="math inline">\(5\)</span></td>
+<td style="text-align: right;">5</td>
 <td style="text-align: right;"><span class="math inline">\(1/2\)</span></td>
 <td style="text-align: right;"><span class="math inline">\(1879/5040\)</span></td>
 <td style="text-align: right;"><span class="math inline">\(1/2\)</span></td>
 <td style="text-align: left;">Stop</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;"><span class="math inline">\(4\)</span></td>
+<td style="text-align: right;">4</td>
 <td style="text-align: right;"><span class="math inline">\(2/5\)</span></td>
 <td style="text-align: right;"><span class="math inline">\(2509/6300\)</span></td>
 <td style="text-align: right;"><span class="math inline">\(2/5\)</span></td>
 <td style="text-align: left;">Stop</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;"><span class="math inline">\(3\)</span></td>
+<td style="text-align: right;">3</td>
 <td style="text-align: right;"><span class="math inline">\(3/10\)</span></td>
 <td style="text-align: right;"><span class="math inline">\(3349/8400\)</span></td>
 <td style="text-align: right;"><span class="math inline">\(3349/8400\)</span></td>
 <td style="text-align: left;">Continue</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;"><span class="math inline">\(2\)</span></td>
+<td style="text-align: right;">2</td>
 <td style="text-align: right;"><span class="math inline">\(1/5\)</span></td>
 <td style="text-align: right;"><span class="math inline">\(3349/8400\)</span></td>
 <td style="text-align: right;"><span class="math inline">\(3349/8400\)</span></td>
 <td style="text-align: left;">Continue</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: right;">1</td>
 <td style="text-align: right;"><span class="math inline">\(1/10\)</span></td>
 <td style="text-align: right;"><span class="math inline">\(3349/8400\)</span></td>
 <td style="text-align: right;"><span class="math inline">\(3349/8400\)</span></td>
@@ -597,16 +554,27 @@ U_9=\frac9{10}&gt;\frac1{10}=W_9,
 </tr>
 </tbody>
 </table>
-<p>The first stage at which stopping becomes optimal is <span class="math inline">\(n=4\)</span>. Therefore, the optimal policy is</p>
+<p>At time <span class="math inline">\(3\)</span>,</p>
 <p><span class="math display">\[
-\boxed{
-\text{reject candidates }1,2,3
-\text{ and accept the first later record.}
-}
+U_3=\frac3{10}
+&lt;
+\frac{3349}{8400}
+=
+W_3,
 \]</span></p>
-<p>Thus, the optimal rejection threshold is</p>
+<p>so continuing is optimal.</p>
+<p>At time <span class="math inline">\(4\)</span>,</p>
 <p><span class="math display">\[
-\boxed{r^\star=3}.
+U_4=\frac25
+&gt;
+\frac{2509}{6300}
+=
+W_4,
+\]</span></p>
+<p>so stopping at a record is optimal.</p>
+<p>The crossing occurs between times <span class="math inline">\(3\)</span> and <span class="math inline">\(4\)</span>. Therefore, the optimal strategy rejects the first three candidates and accepts the next record:</p>
+<p><span class="math display">\[
+\boxed{r^*=3}.
 \]</span></p>
 <p>The optimal success probability is</p>
 <p><span class="math display">\[
@@ -614,47 +582,39 @@ U_9=\frac9{10}&gt;\frac1{10}=W_9,
 V_1
 =
 \frac{3349}{8400}
-\approx 0.3986904762.
-}
-\]</span></p>
-<hr>
-</section>
-<section id="recovering-the-exact-threshold-formula" class="level2">
-<h2 class="anchored" data-anchor-id="recovering-the-exact-threshold-formula">9. Recovering the exact threshold formula</h2>
-<p>Suppose the first <span class="math inline">\(r\)</span> candidates have been rejected. Under the threshold strategy, the overall best is selected if:</p>
-<ol type="1">
-<li>the overall best occurs at some position <span class="math inline">\(k&gt;r\)</span>; and</li>
-<li>the best among the first <span class="math inline">\(k-1\)</span> candidates occurs among the first <span class="math inline">\(r\)</span>.</li>
-</ol>
-<p>For a fixed <span class="math inline">\(k&gt;r\)</span>,</p>
-<p><span class="math display">\[
-\Pr(X_k=1)=\frac1N.
-\]</span></p>
-<p>Conditional on the overall best appearing at position <span class="math inline">\(k\)</span>, the best candidate among positions <span class="math inline">\(1,\ldots,k-1\)</span> is equally likely to occupy any of those <span class="math inline">\(k-1\)</span> positions. Therefore,</p>
-<p><span class="math display">\[
-\Pr\left(
-\text{best of the first }k-1
-\text{ lies among the first }r
-\right)
-=
-\frac r{k-1}.
-\]</span></p>
-<p>Hence,</p>
-<p><span class="math display">\[
-\Pr(\text{win with the best at }k)
-=
-\frac1N\frac r{k-1}.
-\]</span></p>
-<p>Summing over <span class="math inline">\(k=r+1,\ldots,N\)</span> gives</p>
-<p><span class="math display">\[
-\boxed{
-P_N(r)
-=
-\frac rN
-\sum_{k=r+1}^{N}\frac1{k-1}
+\approx0.398690
 }.
 \]</span></p>
-<p>Equivalently,</p>
+</section>
+<section id="success-probability-of-a-fixed-threshold" class="level2">
+<h2 class="anchored" data-anchor-id="success-probability-of-a-fixed-threshold">9. Success probability of a fixed threshold</h2>
+<p>Fix</p>
+<p><span class="math display">\[
+r\in\{1,\ldots,N-1\}.
+\]</span></p>
+<p>Consider the policy that rejects the first <span class="math inline">\(r\)</span> candidates and accepts the first subsequent record.</p>
+<p>Suppose the overall best candidate occurs at position <span class="math inline">\(k&gt;r\)</span>. The strategy selects that candidate precisely when the best among the first <span class="math inline">\(k-1\)</span> candidates occurs during the initial rejection period.</p>
+<p>The overall best is equally likely to occupy any position, so</p>
+<p><span class="math display">\[
+\mathbb P(X_k=1)=\frac1N.
+\]</span></p>
+<p>Conditional on <span class="math inline">\(X_k=1\)</span>, the best candidate among the first <span class="math inline">\(k-1\)</span> positions is equally likely to occupy any of those positions. Therefore, the probability that it occurs among the first <span class="math inline">\(r\)</span> positions is</p>
+<p><span class="math display">\[
+\frac{r}{k-1}.
+\]</span></p>
+<p>Summing over the possible positions of the overall best gives</p>
+<p><span class="math display">\[
+\begin{aligned}
+P_N(r)
+&amp;=
+\sum_{k=r+1}^{N}
+\frac1N\frac{r}{k-1}\\
+&amp;=
+\frac rN
+\sum_{k=r+1}^{N}\frac1{k-1}.
+\end{aligned}
+\]</span></p>
+<p>Changing the summation index yields</p>
 <p><span class="math display">\[
 \boxed{
 P_N(r)
@@ -663,309 +623,273 @@ P_N(r)
 \sum_{j=r}^{N-1}\frac1j
 }.
 \]</span></p>
-<p>This is precisely the continuation value <span class="math inline">\(W_r\)</span> obtained after rejecting the first <span class="math inline">\(r\)</span> candidates:</p>
+<p>If <span class="math inline">\(r=0\)</span>, the first candidate is accepted immediately, and</p>
 <p><span class="math display">\[
-\boxed{W_r=P_N(r)}.
+P_N(0)=\frac1N.
 \]</span></p>
-<hr>
-</section>
-<section id="characterization-of-the-optimal-threshold" class="level2">
-<h2 class="anchored" data-anchor-id="characterization-of-the-optimal-threshold">10. Characterization of the optimal threshold</h2>
-<p>The optimal threshold is the integer <span class="math inline">\(r^\star\)</span> for which it is optimal to continue at <span class="math inline">\(r^\star\)</span> but stop at the next record.</p>
-<p>Continuing at stage <span class="math inline">\(r\)</span> requires</p>
-<p><span class="math display">\[
-W_r\geq U_r.
-\]</span></p>
-<p>Using</p>
-<p><span class="math display">\[
-W_r
-=
-\frac rN\sum_{j=r}^{N-1}\frac1j
-\]</span></p>
-<p>and</p>
-<p><span class="math display">\[
-U_r=\frac rN,
-\]</span></p>
-<p>this condition becomes</p>
-<p><span class="math display">\[
-\sum_{j=r}^{N-1}\frac1j\geq 1.
-\]</span></p>
-<p>Stopping at a record in position <span class="math inline">\(r+1\)</span> requires</p>
-<p><span class="math display">\[
-U_{r+1}\geq W_{r+1},
-\]</span></p>
-<p>which is equivalent to</p>
-<p><span class="math display">\[
-\sum_{j=r+1}^{N-1}\frac1j\leq 1.
-\]</span></p>
-<p>Therefore, the optimal threshold is characterized by</p>
-<p><span class="math display">\[
-\boxed{
-\sum_{j=r^\star+1}^{N-1}\frac1j
-\leq 1
-\leq
-\sum_{j=r^\star}^{N-1}\frac1j
-}.
-\]</span></p>
-<p>Equivalently,</p>
-<p><span class="math display">\[
-\boxed{
-r^\star
-=
-\min\left\{
-r:
-\sum_{j=r+1}^{N-1}\frac1j\leq 1
-\right\}.
-}
-\]</span></p>
-<p>For <span class="math inline">\(N=10\)</span>,</p>
-<p><span class="math display">\[
-\sum_{j=4}^{9}\frac1j&lt;1
-\]</span></p>
-<p>but</p>
-<p><span class="math display">\[
-\sum_{j=3}^{9}\frac1j&gt;1.
-\]</span></p>
-<p>Therefore,</p>
-<p><span class="math display">\[
-r^\star=3.
-\]</span></p>
-<hr>
-</section>
-<section id="the-asymptotic-1e-rule" class="level2">
-<h2 class="anchored" data-anchor-id="the-asymptotic-1e-rule">11. The asymptotic <span class="math inline">\(1/e\)</span> rule</h2>
-<p>For large <span class="math inline">\(N\)</span>, the harmonic sum satisfies</p>
-<p><span class="math display">\[
-\sum_{j=r}^{N-1}\frac1j
-\approx
-\int_r^N\frac{dx}{x}
-=
-\log\left(\frac Nr\right).
-\]</span></p>
-<p>At the optimal threshold, this quantity is approximately <span class="math inline">\(1\)</span>. Thus,</p>
-<p><span class="math display">\[
-\log\left(\frac{N}{r^\star}\right)\approx 1.
-\]</span></p>
-<p>Exponentiating gives</p>
-<p><span class="math display">\[
-\frac{N}{r^\star}\approx e,
-\]</span></p>
-<p>and therefore</p>
-<p><span class="math display">\[
-\boxed{
-\frac{r^\star}{N}\longrightarrow\frac1e
-}.
-\]</span></p>
-<p>The optimal success probability satisfies</p>
-<p><span class="math display">\[
-P_N(r^\star)
-=
-\frac{r^\star}{N}
-\sum_{j=r^\star}^{N-1}\frac1j.
-\]</span></p>
-<p>Since</p>
-<p><span class="math display">\[
-\frac{r^\star}{N}\longrightarrow\frac1e
-\]</span></p>
-<p>and the harmonic sum converges to <span class="math inline">\(1\)</span>,</p>
-<p><span class="math display">\[
-\boxed{
-P_N(r^\star)\longrightarrow\frac1e
-}.
-\]</span></p>
-<p>Thus, for a large number of candidates, the optimal strategy is approximately:</p>
-<ol type="1">
-<li>reject the first <span class="math inline">\(N/e\)</span> candidates;</li>
-<li>accept the first subsequent record.</li>
-</ol>
-<p>Both the optimal rejection proportion and the limiting success probability approach</p>
-<p><span class="math display">\[
-\boxed{\frac1e\approx 0.367879}.
-\]</span></p>
-<hr>
-</section>
-<section id="final-result" class="level2">
-<h2 class="anchored" data-anchor-id="final-result">12. Final result</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Optimal classical secretary rule
+<span class="screen-reader-only">Warning</span>Distinguishing (W_r) from (P_N(r))
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>For <span class="math inline">\(N\)</span> candidates arriving in uniformly random order:</p>
-<ol type="1">
-<li><p>Determine the threshold <span class="math inline">\(r^\star\)</span> from</p>
+<p>The quantities <span class="math inline">\(W_r\)</span> and <span class="math inline">\(P_N(r)\)</span> have different meanings.</p>
+<p>The value <span class="math inline">\(W_r\)</span> is the probability of eventual success when all future decisions are made optimally after time <span class="math inline">\(r\)</span>.</p>
+<p>In contrast, <span class="math inline">\(P_N(r)\)</span> is the success probability of the fixed threshold-<span class="math inline">\(r\)</span> strategy.</p>
+<p>They are not necessarily equal.</p>
+<p>For example, when <span class="math inline">\(N=10\)</span>,</p>
 <p><span class="math display">\[
-\sum_{j=r^\star+1}^{N-1}\frac1j
-\leq 1
-\leq
-\sum_{j=r^\star}^{N-1}\frac1j.
-\]</span></p></li>
-<li><p>Reject the first <span class="math inline">\(r^\star\)</span> candidates.</p></li>
-<li><p>Accept the first later candidate whose relative rank is <span class="math inline">\(1\)</span>.</p></li>
-</ol>
-<p>The rule follows from the recursion</p>
-<p><span class="math display">\[
-V_n=\max\{U_n,W_n\},
+P_{10}(1)
+=
+\frac1{10}\sum_{j=1}^{9}\frac1j
+\approx0.2829,
 \]</span></p>
-<p>where</p>
+<p>whereas</p>
 <p><span class="math display">\[
-U_n=\frac nN
+W_1
+=
+\frac{3349}{8400}
+\approx0.3987.
+\]</span></p>
+<p>At the optimal threshold,</p>
+<p><span class="math display">\[
+\boxed{
+W_{r^*}=P_N(r^*)=V_1
+}.
+\]</span></p>
+</div>
+</div>
+</section>
+<section id="exact-characterization-of-the-threshold" class="level2">
+<h2 class="anchored" data-anchor-id="exact-characterization-of-the-threshold">10. Exact characterization of the threshold</h2>
+<p>For <span class="math inline">\(r=1,\ldots,N-2\)</span>,</p>
+<p><span class="math display">\[
+P_N(r)
+=
+\frac rN
+\sum_{j=r}^{N-1}\frac1j
 \]</span></p>
 <p>and</p>
 <p><span class="math display">\[
-W_n
+P_N(r+1)
 =
-\frac1{n+1}V_{n+1}
-+
-\frac n{n+1}W_{n+1}.
+\frac{r+1}{N}
+\sum_{j=r+1}^{N-1}\frac1j.
 \]</span></p>
-<p>As <span class="math inline">\(N\to\infty\)</span>,</p>
+<p>Since</p>
 <p><span class="math display">\[
-\frac{r^\star}{N}\longrightarrow\frac1e,
-\qquad
-P_N(r^\star)\longrightarrow\frac1e.
-\]</span></p>
-</div>
-</div>
-<hr>
-</section>
-<section id="the-backward-induction-theorem" class="level2">
-<h2 class="anchored" data-anchor-id="the-backward-induction-theorem">13. The backward-induction theorem</h2>
-<p>The preceding solution is an application of the general finite-horizon optimal stopping theorem <span class="citation" data-cites="chow1971 ferguson2010 shiryaev2007">(<a href="#ref-chow1971" role="doc-biblioref">Chow, Robbins, and Siegmund 1971</a>; <a href="#ref-ferguson2010" role="doc-biblioref">Ferguson 2010</a>; <a href="#ref-shiryaev2007" role="doc-biblioref">Shiryaev 2007</a>)</span>.</p>
-<section id="theorem-1" class="level3">
-<h3 class="anchored" data-anchor-id="theorem-1">Theorem</h3>
-<p>Let</p>
-<p><span class="math display">\[
-(\Omega,\mathcal F,\{\mathcal F_n\}_{n=1}^{N},\Pr)
-\]</span></p>
-<p>be a filtered probability space. Let</p>
-<p><span class="math display">\[
-U_1,U_2,\ldots,U_N
-\]</span></p>
-<p>be an integrable adapted reward process, where <span class="math inline">\(U_n\)</span> is the reward obtained by stopping at time <span class="math inline">\(n\)</span>.</p>
-<p>For each <span class="math inline">\(n\)</span>, let <span class="math inline">\(\mathcal T_n\)</span> denote the set of stopping times taking values in</p>
-<p><span class="math display">\[
-\{n,n+1,\ldots,N\}.
-\]</span></p>
-<p>Define the value process by</p>
-<p><span class="math display">\[
-V_n
+P_N(r)
 =
-\operatorname*{ess\,sup}_{\tau\in\mathcal T_n}
-\operatorname E[U_\tau\mid\mathcal F_n].
+\frac rN
+\left(
+\frac1r+
+\sum_{j=r+1}^{N-1}\frac1j
+\right),
 \]</span></p>
-<p>Then</p>
-<p><span class="math display">\[
-V_N=U_N
-\]</span></p>
-<p>and, for <span class="math inline">\(n=N-1,\ldots,1\)</span>,</p>
+<p>subtraction gives</p>
 <p><span class="math display">\[
 \boxed{
-V_n
+P_N(r+1)-P_N(r)
 =
-\max\left\{
-U_n,
-\operatorname E[V_{n+1}\mid\mathcal F_n]
+\frac1N
+\left(
+\sum_{j=r+1}^{N-1}\frac1j-1
+\right)
+}.
+\]</span></p>
+<p>It follows that <span class="math inline">\(P_N(r)\)</span> increases while</p>
+<p><span class="math display">\[
+\sum_{j=r+1}^{N-1}\frac1j&gt;1
+\]</span></p>
+<p>and decreases after this sum becomes smaller than <span class="math inline">\(1\)</span>.</p>
+<p>The smallest optimal threshold is</p>
+<p><span class="math display">\[
+\boxed{
+r^*
+=
+\min
+\left\{
+r\in\{1,\ldots,N-1\}:
+\sum_{j=r+1}^{N-1}\frac1j\le1
 \right\}.
 }
 \]</span></p>
-<p>If the continuation value is defined by</p>
-<p><span class="math display">\[
-W_n
-=
-\operatorname E[V_{n+1}\mid\mathcal F_n],
-\]</span></p>
-<p>then the recursion becomes</p>
-<p><span class="math display">\[
-\boxed{V_n=\max\{U_n,W_n\}}.
-\]</span></p>
-<p>Moreover, subject to forced stopping at time <span class="math inline">\(N\)</span>, the stopping time</p>
+<p>Equivalently,</p>
 <p><span class="math display">\[
 \boxed{
-\tau^\star
-=
-\inf\{n:U_n\geq W_n\}
+\sum_{j=r^*+1}^{N-1}\frac1j
+\le1
+\le
+\sum_{j=r^*}^{N-1}\frac1j.
 }
 \]</span></p>
-<p>is optimal.</p>
+<p>If equality occurs, two adjacent thresholds are optimal. The definition above selects the smaller rejection threshold, consistent with breaking a decision tie in favor of stopping.</p>
 </section>
+<section id="the-asymptotic-1e-rule" class="level2">
+<h2 class="anchored" data-anchor-id="the-asymptotic-1e-rule">11. The asymptotic (1/e) rule</h2>
+<p>For large <span class="math inline">\(N\)</span>, the harmonic sum can be approximated by an integral:</p>
+<p><span class="math display">\[
+\sum_{j=r+1}^{N-1}\frac1j
+\approx
+\int_r^N\frac{dx}{x}
+=
+\log\frac Nr.
+\]</span></p>
+<p>The threshold condition is therefore approximately</p>
+<p><span class="math display">\[
+\log\frac N{r^*}=1.
+\]</span></p>
+<p>Solving for <span class="math inline">\(r^*\)</span> gives</p>
+<p><span class="math display">\[
+\boxed{
+\frac{r^*}{N}\longrightarrow\frac1e
+}.
+\]</span></p>
+<p>Using the exact probability formula,</p>
+<p><span class="math display">\[
+P_N(r^*)
+=
+\frac{r^*}{N}
+\sum_{j=r^*}^{N-1}\frac1j.
+\]</span></p>
+<p>The first factor approaches <span class="math inline">\(1/e\)</span>, while the harmonic sum approaches <span class="math inline">\(1\)</span>. Therefore,</p>
+<p><span class="math display">\[
+\boxed{
+P_N(r^*)\longrightarrow\frac1e
+}.
+\]</span></p>
+<p>Numerically,</p>
+<p><span class="math display">\[
+\frac1e\approx0.367879.
+\]</span></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Final result
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For a large number of candidates:</p>
+<ol type="1">
+<li>Reject approximately the first <span class="math inline">\(N/e\)</span> candidates.</li>
+<li>Record the best candidate observed during that period.</li>
+<li>Accept the first later candidate who is better than every previously observed candidate.</li>
+</ol>
+<p>Both the optimal rejection fraction and the optimal success probability approach approximately <span class="math inline">\(37\%\)</span>.</p>
+</div>
+</div>
+</section>
+<section id="general-backward-induction-theorem" class="level2">
+<h2 class="anchored" data-anchor-id="general-backward-induction-theorem">12. General backward-induction theorem</h2>
+<p>The preceding calculation is a finite-horizon instance of the Snell-envelope theorem.</p>
+<p>To distinguish the general theory from the secretary-specific notation, let <span class="math inline">\(G_n\)</span> denote a general reward process and let <span class="math inline">\(Z_n\)</span> denote its value process.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Theorem: finite-horizon optimal stopping
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let</p>
+<p><span class="math display">\[
+G_1,G_2,\ldots,G_N
+\]</span></p>
+<p>be an integrable process adapted to a filtration</p>
+<p><span class="math display">\[
+\mathcal F_1,\mathcal F_2,\ldots,\mathcal F_N.
+\]</span></p>
+<p>Define</p>
+<p><span class="math display">\[
+Z_N=G_N
+\]</span></p>
+<p>and, for <span class="math inline">\(n=N-1,\ldots,1\)</span>, define</p>
+<p><span class="math display">\[
+\boxed{
+Z_n
+=
+\max
+\left\{
+G_n,
+\mathbb E[Z_{n+1}\mid\mathcal F_n]
+\right\}.
+}
+\]</span></p>
+<p>Then</p>
+<p><span class="math display">\[
+Z_n
+=
+\mathop{\mathrm{ess\,sup}}_{\tau\in\mathcal T_{n,N}}
+\mathbb E[G_\tau\mid\mathcal F_n],
+\]</span></p>
+<p>where <span class="math inline">\(\mathcal T_{n,N}\)</span> is the collection of stopping times taking values in</p>
+<p><span class="math display">\[
+\{n,\ldots,N\}.
+\]</span></p>
+<p>An optimal stopping time beginning at time <span class="math inline">\(n\)</span> is</p>
+<p><span class="math display">\[
+\boxed{
+\tau_n^*
+=
+\inf
+\{k\ge n:G_k=Z_k\}.
+}
+\]</span></p>
+</div>
+</div>
 <section id="proof-1" class="level3">
 <h3 class="anchored" data-anchor-id="proof-1">Proof</h3>
-<p>At time <span class="math inline">\(N\)</span>, stopping is mandatory. Therefore,</p>
+<p>At time <span class="math inline">\(N\)</span>, stopping is compulsory. Therefore,</p>
 <p><span class="math display">\[
-V_N=U_N.
+Z_N=G_N.
 \]</span></p>
-<p>Suppose that <span class="math inline">\(V_{n+1}\)</span> is the optimal value from time <span class="math inline">\(n+1\)</span> onward.</p>
-<p>At time <span class="math inline">\(n\)</span>, the decision maker has two possible actions:</p>
-<ol type="1">
-<li><p>stop immediately and receive <span class="math inline">\(U_n\)</span>;</p></li>
-<li><p>continue and receive the conditional expected optimal future value</p>
+<p>Assume that <span class="math inline">\(Z_{n+1}\)</span> is the optimal value beginning at time <span class="math inline">\(n+1\)</span>.</p>
+<p>At time <span class="math inline">\(n\)</span>, there are two alternatives.</p>
+<p>If we stop, the reward is <span class="math inline">\(G_n\)</span>.</p>
+<p>If we continue, the best attainable conditional value is</p>
 <p><span class="math display">\[
-W_n
+\mathbb E[Z_{n+1}\mid\mathcal F_n].
+\]</span></p>
+<p>The optimal value is therefore</p>
+<p><span class="math display">\[
+Z_n
 =
-\operatorname E[V_{n+1}\mid\mathcal F_n].
-\]</span></p></li>
-</ol>
-<p>An optimal decision selects the action with the larger value. Hence,</p>
+\max
+\left\{
+G_n,
+\mathbb E[Z_{n+1}\mid\mathcal F_n]
+\right\}.
+\]</span></p>
+<p>Backward induction proves the value formula at every time. Stopping at the first time when the immediate reward equals the value process attains this value. <span class="math inline">\(\square\)</span></p>
+</section>
+<section id="connection-with-the-secretary-problem" class="level3">
+<h3 class="anchored" data-anchor-id="connection-with-the-secretary-problem">Connection with the secretary problem</h3>
+<p>At a record time in the secretary problem, the immediate reward is</p>
 <p><span class="math display">\[
+G_n=U_n=\frac nN.
+\]</span></p>
+<p>The conditional value of continuing is <span class="math inline">\(W_n\)</span>. Therefore, the general backward-induction equation becomes</p>
+<p><span class="math display">\[
+\boxed{
 V_n=\max\{U_n,W_n\}.
+}
 \]</span></p>
-<p>Starting from <span class="math inline">\(V_N=U_N\)</span> and repeating this argument for</p>
-<p><span class="math display">\[
-n=N-1,N-2,\ldots,1
-\]</span></p>
-<p>determines the entire value process by backward induction.</p>
-<p>At every time <span class="math inline">\(n\)</span>, stopping when <span class="math inline">\(U_n\geq W_n\)</span> selects an action attaining the value <span class="math inline">\(V_n\)</span>. Therefore, the first time at which this inequality holds is an optimal stopping time:</p>
-<p><span class="math display">\[
-\tau^\star
-=
-\inf\{n:U_n\geq W_n\}.
-\]</span></p>
-<p>This proves the result. <span class="math inline">\(\square\)</span></p>
-</section>
-<section id="application-to-the-classical-secretary-problem" class="level3">
-<h3 class="anchored" data-anchor-id="application-to-the-classical-secretary-problem">Application to the classical secretary problem</h3>
-<p>In the classical secretary problem, a nonrecord candidate cannot be the overall best and therefore has stopping value zero.</p>
-<p>If candidate <span class="math inline">\(n\)</span> is a record, the immediate stopping value is</p>
-<p><span class="math display">\[
-U_n=\frac nN.
-\]</span></p>
-<p>The continuation value is</p>
-<p><span class="math display">\[
-W_n
-=
-\operatorname E[V_{n+1}\mid\mathcal F_n].
-\]</span></p>
-<p>Because</p>
-<p><span class="math display">\[
-\Pr(R_{n+1}=1)=\frac1{n+1},
-\]</span></p>
-<p>we obtain</p>
-<p><span class="math display">\[
-W_n
-=
-\frac1{n+1}V_{n+1}
-+
-\frac n{n+1}W_{n+1}.
-\]</span></p>
-<p>Consequently, the secretary-problem recursion</p>
-<p><span class="math display">\[
-V_n=\max\{U_n,W_n\}
-\]</span></p>
-<p>is a direct specialization of the finite-horizon backward-induction theorem.</p>
-<hr>
+<p>This is the value equation used throughout the solution.</p>
 </section>
 </section>
-<section id="sources" class="level2">
-<h2 class="anchored" data-anchor-id="sources">Sources</h2>
-<p>The classical secretary problem and its full-information extensions are developed by <span class="citation" data-cites="gilbert1966">Gilbert and Mosteller (<a href="#ref-gilbert1966" role="doc-biblioref">1966</a>)</span>. Historical details are discussed by <span class="citation" data-cites="ferguson1989">Ferguson (<a href="#ref-ferguson1989" role="doc-biblioref">1989</a>)</span>.</p>
-<p>The general theory of finite-horizon optimal stopping and backward induction is treated by <span class="citation" data-cites="chow1971">Chow, Robbins, and Siegmund (<a href="#ref-chow1971" role="doc-biblioref">1971</a>)</span>, <span class="citation" data-cites="ferguson2010">Ferguson (<a href="#ref-ferguson2010" role="doc-biblioref">2010</a>)</span>, and <span class="citation" data-cites="shiryaev2007">Shiryaev (<a href="#ref-shiryaev2007" role="doc-biblioref">2007</a>)</span>.</p>
-<p>The notation and presentation used here follow the optimal-stopping framework employed in the research and dissertation work of José A. Islas.</p>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>The general theory of backward induction and optimal stopping is developed by <span class="citation" data-cites="chow1971">Chow, Robbins, and Siegmund (<a href="#ref-chow1971" role="doc-biblioref">1971</a>)</span>, <span class="citation" data-cites="shiryaev2007">Shiryaev (<a href="#ref-shiryaev2007" role="doc-biblioref">2007</a>)</span>, and <span class="citation" data-cites="ferguson2010">Ferguson (<a href="#ref-ferguson2010" role="doc-biblioref">2010</a>)</span>.</p>
+<p>Historical and foundational treatments of the secretary problem include <span class="citation" data-cites="ferguson1989">Ferguson (<a href="#ref-ferguson1989" role="doc-biblioref">1989</a>)</span> and <span class="citation" data-cites="gilbert1966">Gilbert and Mosteller (<a href="#ref-gilbert1966" role="doc-biblioref">1966</a>)</span>.</p>
 </section>
 </div>
 
@@ -1062,7 +986,7 @@ Shiryaev, Albert N. 2007. <em>Optimal Stopping Rules</em>. Vol. 8. Stochastic Mo
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/JoseAIA\.github\.io\/secretary-problem-atlas\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -1396,8 +1320,8 @@ Shiryaev, Albert N. 2007. <em>Optimal Stopping Rules</em>. Vol. 8. Stochastic Mo
 <p>© 2026 José Ángel Islas Anguiano</p>
 </div>   
     <div class="nav-footer-center">
-      &nbsp;
-    </div>
+<p>© 2026 José Ángel Islas. All rights reserved.</p>
+</div>
     <div class="nav-footer-right">
 <p>Universidad Autónoma de Sinaloa</p>
 </div>
