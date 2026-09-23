@@ -1249,3 +1249,173 @@ body {
     width: 100%;
   }
 }
+
+/* =========================================================
+   VARIANTS — SECRETARY PROBLEM FAMILY MAP
+   ========================================================= */
+
+.variant-map {
+  max-width: 1100px;
+  margin: 2.5rem auto 3rem auto;
+}
+
+.variant-map-root {
+  width: fit-content;
+  margin: 0 auto 2.5rem auto;
+  padding: 1rem 2rem;
+  border: 2px solid #d99a24;
+  border-radius: 14px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+  background: rgba(217, 154, 36, 0.08);
+}
+
+.variant-map-branches {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.variant-branch {
+  border: 1px solid rgba(80, 90, 110, 0.22);
+  border-radius: 12px;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.variant-branch-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 2px solid #d99a24;
+}
+
+.variant-branch-item {
+  padding: 0.55rem 0.4rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(80, 90, 110, 0.13);
+}
+
+.variant-branch-item:last-child {
+  border-bottom: none;
+}
+
+.variant-formula {
+  max-width: 760px;
+  margin: 1.75rem auto;
+  padding: 1.1rem 1.5rem;
+  text-align: center;
+  border-radius: 10px;
+  border: 1px solid rgba(80, 90, 110, 0.22);
+  font-size: 1.1rem;
+}
+
+
+/* Responsive layout */
+
+@media (max-width: 900px) {
+
+  .variant-map-branches {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .variant-map-branches {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+/* =========================================================
+   VARIANTS — SECRETARY PROBLEM FAMILY MAP
+   ========================================================= */
+
+.variant-map {
+  max-width: 1100px;
+  margin: 2.5rem auto 3rem auto;
+}
+
+.variant-map-root {
+  width: fit-content;
+  margin: 0 auto 2.5rem auto;
+  padding: 1rem 2rem;
+  border: 2px solid #d99a24;
+  border-radius: 14px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+  background: rgba(217, 154, 36, 0.08);
+}
+
+.variant-map-branches {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.variant-branch {
+  min-width: 0;
+  border: 1px solid rgba(80, 90, 110, 0.22);
+  border-radius: 12px;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.variant-branch-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.7rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 2px solid #d99a24;
+}
+
+.variant-branch-item {
+  padding: 0.55rem 0.4rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(80, 90, 110, 0.13);
+}
+
+.variant-branch-item:last-child {
+  border-bottom: none;
+}
+
+.variant-formula {
+  max-width: 850px;
+  margin: 1.75rem auto;
+  padding: 1.1rem 1.5rem;
+  text-align: center;
+  border-radius: 10px;
+  border: 1px solid rgba(80, 90, 110, 0.22);
+  font-size: 1.05rem;
+}
+
+.variant-plus {
+  display: inline-block;
+  margin: 0 0.75rem;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .variant-map-branches {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .variant-map-branches {
+    grid-template-columns: 1fr;
+  }
+
+  .variant-formula strong,
+  .variant-plus {
+    display: block;
+    margin: 0.35rem 0;
+  }
+}

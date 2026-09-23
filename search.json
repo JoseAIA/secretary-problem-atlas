@@ -14,6 +14,90 @@
     "text": "More than sixty years of optimal stopping\nThe secretary problem developed from a recreational question into a major model in optimal stopping, applied probability, decision theory, economics, and online algorithms."
   },
   {
+    "objectID": "variants_fixed.html",
+    "href": "variants_fixed.html",
+    "title": "Variants & Extensions",
+    "section": "",
+    "text": "The classical secretary problem is only the starting point.\nChanging the information available, the objective, the number of choices, or the horizon leads to genuinely different optimal-stopping problems."
+  },
+  {
+    "objectID": "variants_fixed.html#the-classical-benchmark",
+    "href": "variants_fixed.html#the-classical-benchmark",
+    "title": "Variants & Extensions",
+    "section": "The classical benchmark",
+    "text": "The classical benchmark\nThere are \\(n\\) candidates whose absolute ranks form a uniformly random permutation of\n\\[\n1,2,\\ldots,n,\n\\]\nwith rank \\(1\\) best.\nCandidates are observed sequentially. At time \\(k\\), only the candidate’s relative rank among the first \\(k\\) observations is known. Decisions are irrevocable, and only one candidate may be selected.\nThe objective is\n\\[\n\\max_{\\tau}\\Pr(R_\\tau=1).\n\\]\nFor a threshold \\(r\\), reject the first \\(r\\) candidates and then accept the first subsequent record. Its success probability is\n\\[\nP_n(r)\n=\n\\frac{r}{n}\n\\sum_{j=r+1}^{n}\\frac{1}{j-1}.\n\\]\nAs \\(n\\to\\infty\\), the optimal threshold satisfies\n\\[\n\\frac{r_n}{n}\\to \\frac1e,\n\\]\nand the optimal success probability also converges to \\(1/e\\).\nThe extensions below can be organized by asking which part of this benchmark is changed."
+  },
+  {
+    "objectID": "variants_fixed.html#full-information-secretary-problem",
+    "href": "variants_fixed.html#full-information-secretary-problem",
+    "title": "Variants & Extensions",
+    "section": "1. Full-information secretary problem",
+    "text": "1. Full-information secretary problem\n\nProblem\nInstead of seeing only relative ranks, suppose the actual observations\n\\[\nX_1,\\ldots,X_n\n\\]\nare revealed sequentially, typically as independent observations from a known continuous distribution \\(F\\).\nThe objective remains\n\\[\n\\Pr\\!\\left(X_\\tau=\\max_{1\\le j\\le n}X_j\\right).\n\\]\n\n\nWhat changes?\nThe numerical value of the current observation contains information about how likely future observations are to exceed it.\nThe optimal decision therefore depends not only on whether the current observation is a record, but also on how large that record is.\n\n\nOptimal-strategy structure\nUsing the probability-integral transform,\n\\[\nU_i=F(X_i),\n\\]\nthe problem can be reduced to independent \\(U(0,1)\\) observations.\nThe optimal rule is described by time-dependent critical values: a record is accepted only when its value is sufficiently large relative to the number of observations remaining.\n\n\nConnection to the classical model\nBoth problems seek the overall maximum.\nThe difference is informational:\n\nno information: only relative ranks are observed;\nfull information: the actual values are observed.\n\nGilbert and Mosteller developed the foundational analysis of both settings."
+  },
+  {
+    "objectID": "variants_fixed.html#the-postdoc-problem-selecting-the-second-best",
+    "href": "variants_fixed.html#the-postdoc-problem-selecting-the-second-best",
+    "title": "Variants & Extensions",
+    "section": "2. The postdoc problem: selecting the second best",
+    "text": "2. The postdoc problem: selecting the second best\n\nProblem\nChange the reward from selecting absolute rank \\(1\\) to selecting absolute rank \\(2\\):\n\\[\n\\max_{\\tau}\\Pr(R_\\tau=2).\n\\]\nThe arrival order is still uniformly random, decisions remain irrevocable, and only relative ranks are observed.\n\n\nWhat changes?\nThe current record is no longer the only potentially relevant candidate. A candidate with current relative rank \\(2\\) may also be strategically important.\nThus a small change in the terminal reward changes the state space of the stopping problem.\n\n\nConnection to the classical model\nThe information structure is unchanged. Only the reward changes:\n\\[\n\\mathbf 1_{\\{R_\\tau=1\\}}\n\\quad\\longrightarrow\\quad\n\\mathbf 1_{\\{R_\\tau=2\\}}.\n\\]\nThis makes the postdoc problem a particularly useful example of how the optimal rule can change when the target rank changes."
+  },
+  {
+    "objectID": "variants_fixed.html#multiple-choice-and-dowry-problems",
+    "href": "variants_fixed.html#multiple-choice-and-dowry-problems",
+    "title": "Variants & Extensions",
+    "section": "3. Multiple-choice and dowry problems",
+    "text": "3. Multiple-choice and dowry problems\n\nProblem\nSuppose the decision maker is allowed more than one selection.\nWith \\(m\\) available choices, the decision maker chooses stopping times\n\\[\n\\tau_1&lt;\\tau_2&lt;\\cdots&lt;\\tau_m.\n\\]\nThe success event depends on the particular model—for example, whether one of the selected observations is the overall best, or whether several top ranks must be captured.\n\n\nSakaguchi’s contribution\nSakaguchi’s work is an important early part of this branch of the literature.\nHis 1978 paper\nDowry Problems and OLA Policies\nstudied secretary-type stopping rules in a dowry formulation and belongs to the early development of multiple-stopping extensions.\nSakaguchi also studied generalized secretary models with uncertain employment, showing that changing the selection mechanism itself can produce new optimal-stopping structures.\n\n\nTamaki’s double-choice problems\nTamaki subsequently analyzed explicit two-choice secretary problems.\nIn one formulation, the decision maker is allowed two choices and seeks to select either the best or the second-best candidate. In another, the objective is to recognize both the maximum and the second maximum.\nThese problems illustrate why multiple-choice secretary models require more state information than the classical one-choice problem.\n\n\nDynamic-programming structure\nIf \\(j\\) selections remain at time \\(k\\), the state must record both the information observed so far and the remaining number of choices.\nSchematically,\n\\[\nV_{k,j}(s)\n=\n\\max\\{\n\\text{value of selecting now},\n\\text{value of continuing}\n\\}.\n\\]\nSelecting now changes the state from \\(j\\) remaining choices to \\(j-1\\).\n\n\nConnection to the classical model\nThe classical secretary problem is recovered when\n\\[\nm=1.\n\\]\nThus multiple-choice models enlarge the stopping problem by adding a resource variable: the number of selections still available."
+  },
+  {
+    "objectID": "variants_fixed.html#unknown-or-random-horizon",
+    "href": "variants_fixed.html#unknown-or-random-horizon",
+    "title": "Variants & Extensions",
+    "section": "4. Unknown or random horizon",
+    "text": "4. Unknown or random horizon\n\nProblem\nThe classical model assumes that the total number \\(n\\) of observations is known.\nSuppose instead that the number of observations is a random variable\n\\[\nN.\n\\]\nThe distribution of \\(N\\) may be known even though its realized value is not.\n\n\nWhat changes?\nWith a fixed horizon, the decision maker knows exactly how many observations remain.\nWith a random horizon, the continuation value must also account for the probability that the sequence ends.\nThis produces stopping rules that depend on both relative rank information and uncertainty about the remaining horizon.\n\n\nConnection to the \\(1/e\\) phenomenon\nRandom-horizon best-choice models are one of the settings in which \\(1/e\\)-type laws appear beyond the classical fixed-\\(n\\) problem."
+  },
+  {
+    "objectID": "variants_fixed.html#last-success-problems-and-the-odds-theorem",
+    "href": "variants_fixed.html#last-success-problems-and-the-odds-theorem",
+    "title": "Variants & Extensions",
+    "section": "5. Last-success problems and the odds theorem",
+    "text": "5. Last-success problems and the odds theorem\n\nProblem\nLet\n\\[\nI_1,\\ldots,I_n\n\\]\nbe independent Bernoulli random variables with\n\\[\n\\Pr(I_k=1)=p_k.\n\\]\nThe objective is to stop on the last success.\nDefine\n\\[\nq_k=1-p_k,\n\\qquad\nr_k=\\frac{p_k}{q_k}.\n\\]\nBruss’s odds theorem provides an elegant optimal rule based on summing the odds backward from the end of the sequence.\n\n\nConnection to secretary problems\nThe odds theorem is not the classical secretary problem itself.\nIt belongs to the same broader optimal-stopping family: the decision maker must act without knowing whether a future event will supersede the current one."
+  },
+  {
+    "objectID": "variants_fixed.html#applicant-side-secretary-problems",
+    "href": "variants_fixed.html#applicant-side-secretary-problems",
+    "title": "Variants & Extensions",
+    "section": "6. Applicant-side secretary problems",
+    "text": "6. Applicant-side secretary problems\n\nProblem\nThe classical problem is posed from the employer’s perspective:\n\nWhen should the employer stop?\n\nGlass reversed the perspective.\nSuppose the employer follows a known stopping rule and an applicant may choose an interview position \\(i\\).\nThe applicant seeks to maximize\n\\[\n\\Pr(\\text{selected}\\mid\\text{position }i).\n\\]\n\n\nWhat changes?\nThe decision variable is no longer a stopping time.\nInstead,\n\\[\n\\tau\n\\quad\\longrightarrow\\quad\ni.\n\\]\nThe employer’s stopping rule becomes part of the environment faced by the applicant.\n\n\nKnown self-rank\nIf the applicant knows their own absolute rank, the best position can depend strongly on that rank.\nThis produces a strategic positioning problem built on top of a classical secretary stopping rule."
+  },
+  {
+    "objectID": "variants_fixed.html#uncertain-self-rank",
+    "href": "variants_fixed.html#uncertain-self-rank",
+    "title": "Variants & Extensions",
+    "section": "7. Uncertain self-rank",
+    "text": "7. Uncertain self-rank\nSuppose the applicant does not know their absolute rank.\nLet\n\\[\nR\\in\\{1,\\ldots,n\\}\n\\]\nbe random with a prior distribution. For example, a truncated geometric prior is\n\\[\n\\Pr(R=j)\n=\n\\frac{(1-q)q^{j-1}}{1-q^n},\n\\qquad 0&lt;q&lt;1.\n\\]\nThe applicant’s value from position \\(i\\) becomes\n\\[\nV(i)\n=\n\\sum_{j=1}^{n}\n\\Pr(R=j)\n\\Pr(\\text{selected}\\mid R=j,\\text{position }i).\n\\]\nThis turns applicant positioning into a Bayesian decision problem."
+  },
+  {
+    "objectID": "variants_fixed.html#comparing-the-main-variants",
+    "href": "variants_fixed.html#comparing-the-main-variants",
+    "title": "Variants & Extensions",
+    "section": "Comparing the main variants",
+    "text": "Comparing the main variants\n\n\n\n\n\n\n\n\n\nVariant\nInformation\nObjective\nDecision\n\n\n\n\nClassical secretary\nRelative ranks\nSelect rank \\(1\\)\nOne stopping time\n\n\nFull information\nNumerical values\nSelect maximum\nOne stopping time\n\n\nPostdoc\nRelative ranks\nSelect rank \\(2\\)\nOne stopping time\n\n\nMultiple choice / dowry\nRelative ranks\nCapture target using several choices\nMultiple stopping times\n\n\nRandom horizon\nRelative ranks or events\nBest choice with uncertain \\(N\\)\nStopping time\n\n\nOdds theorem\nBernoulli successes\nStop on last success\nStopping time\n\n\nApplicant perspective\nEmployer rule + self-rank\nBe selected\nInterview position\n\n\nUncertain self-rank\nPrior over own rank\nBe selected\nInterview position"
+  },
+  {
+    "objectID": "variants_fixed.html#a-map-of-the-secretary-problem-family",
+    "href": "variants_fixed.html#a-map-of-the-secretary-problem-family",
+    "title": "Variants & Extensions",
+    "section": "A map of the secretary-problem family",
+    "text": "A map of the secretary-problem family\nThe main extensions can be classified according to which component of the classical model is changed.\n\n\n  \n    Secretary Problem\n  \n\n  \n\n    \n      Information\n      Relative ranks\n      Full values\n      Partial information\n      Uncertain self-rank\n    \n\n    \n      Objective\n      Best candidate\n      Second best\n      Top k\n      Last success\n    \n\n    \n      Choice structure\n      One choice\n      Multiple choices\n      Dowry problems\n      Strategic positioning\n    \n\n    \n      Horizon\n      Fixed\n      Random\n      Unknown\n    \n\n  \n\n\nA useful way to generate new secretary problems is therefore to modify one or more components of the classical model:\n\n  Information\n  +\n  Objective\n  +\n  Choice structure\n  +\n  Horizon\n\nEach modification can produce a genuinely different optimal-stopping problem."
+  },
+  {
+    "objectID": "variants_fixed.html#where-to-go-next",
+    "href": "variants_fixed.html#where-to-go-next",
+    "title": "Variants & Extensions",
+    "section": "Where to go next",
+    "text": "Where to go next\nThe Atlas develops these ideas from several complementary viewpoints.\n\nBackward Induction shows how finite stopping problems can be solved state by state.\nSimulations lets you experiment with threshold strategies.\nResearch Timeline places the major developments in historical context.\nSelected variants will be developed later with complete finite-\\(n\\) derivations."
+  },
+  {
     "objectID": "simulations.html",
     "href": "simulations.html",
     "title": "Interactive Simulations",
@@ -49,32 +133,53 @@
     "text": "What the experiments show\nThe simulations illustrate three important facts:\n\nA nonrecord candidate cannot be the overall best.\nRejecting too few candidates provides insufficient information.\nRejecting too many candidates leaves too few opportunities to select a later record.\n\nThe optimal threshold balances these competing risks.\nFor large (n),\n\\[\nr^\\star\\approx \\frac{n}{e},\n\\qquad\nP_n(r^\\star)\\approx\\frac1e.\n\\]\nTherefore, both the optimal rejection fraction and the maximum success probability approach approximately (37%).\n\n\n\n\n\n\nNoteSimulation versus proof\n\n\n\nMonte Carlo simulation provides numerical evidence, but it does not prove optimality. The exact probability formula and the backward-induction argument establish the mathematical result."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "The Secretary Problem Atlas",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
     "section": "",
-    "text": "Universidad Autónoma de Sinaloa\nExplore models, optimal policies, exact formulas, simulations, and research questions from the theory of sequential selection.\nExplore the atlas"
+    "text": "The Secretary Problem Atlas is a free, open-access educational and science-communication project created by José Ángel Islas Anguiano at Universidad Autónoma de Sinaloa. Its purpose is to make the mathematics, history, and applications of optimal stopping and secretary problems accessible to students, educators, researchers, and the general public.\nThe Atlas combines intuitive explanations, mathematical derivations, interactive visualizations, historical context, and research references. No registration or payment is required."
   },
   {
-    "objectID": "index.html#optimal-stopping-explained-visually",
-    "href": "index.html#optimal-stopping-explained-visually",
-    "title": "The Secretary Problem Atlas",
+    "objectID": "classical.html",
+    "href": "classical.html",
+    "title": "The Classical Secretary Problem",
     "section": "",
-    "text": "Universidad Autónoma de Sinaloa\nExplore models, optimal policies, exact formulas, simulations, and research questions from the theory of sequential selection.\nExplore the atlas"
+    "text": "Observe candidates sequentially, reject an initial sample, and then select the first candidate who is better than everyone previously observed.\nThe classical model and its principal extensions are treated by (Gilbert and Mosteller 1966; Freeman 1983), while its historical development is discussed by Ferguson (1989)."
   },
   {
-    "objectID": "index.html#explore-the-project",
-    "href": "index.html#explore-the-project",
-    "title": "The Secretary Problem Atlas",
-    "section": "Explore the project",
-    "text": "Explore the project\n\n\nProblem Atlas\nCompare classical and modern secretary-problem variants.\nComing next →\n\n\nInteractive Simulations\nExperiment with sample sizes and stopping thresholds.\nComing next →\n\n\nResearch\nRead mathematical notes, computational results, and open questions.\nComing next →"
+    "objectID": "classical.html#the-decision-problem",
+    "href": "classical.html#the-decision-problem",
+    "title": "The Classical Secretary Problem",
+    "section": "The decision problem",
+    "text": "The decision problem\nSuppose (n) candidates arrive in a uniformly random order.\nAfter observing each candidate, you must either:\n\naccept the candidate and stop, or\nreject the candidate permanently and continue.\n\nThe objective is to select the best candidate among all (n) candidates."
   },
   {
-    "objectID": "index.html#why-an-atlas",
-    "href": "index.html#why-an-atlas",
-    "title": "The Secretary Problem Atlas",
-    "section": "Why an atlas?",
-    "text": "Why an atlas?\nThe secretary problem is not a single problem. It is a family of optimal-stopping models that changes according to the information available, the number of selections allowed, the objective, and the costs involved.\nThis website organizes those variants and makes their mathematical structure easier to compare."
+    "objectID": "classical.html#the-threshold-strategy",
+    "href": "classical.html#the-threshold-strategy",
+    "title": "The Classical Secretary Problem",
+    "section": "The threshold strategy",
+    "text": "The threshold strategy\nChoose an integer (r) with (0 r &lt; n).\n\nReject the first (r) candidates.\nRecord the best candidate observed during that period.\nAccept the first later candidate who is better than that recorded candidate.\nIf nobody exceeds the recorded candidate, the selection fails."
+  },
+  {
+    "objectID": "classical.html#exact-success-probability",
+    "href": "classical.html#exact-success-probability",
+    "title": "The Classical Secretary Problem",
+    "section": "Exact success probability",
+    "text": "Exact success probability\nFor (r ), the probability of selecting the best candidate is\n\\[\nP_n(r)\n=\n\\frac{r}{n}\n\\sum_{k=r+1}^{n}\\frac{1}{k-1}.\n\\]\nThe optimal threshold is the integer (r) that maximizes (P_n(r)).\nFor large (n),\n\\[\nr^\\star \\approx \\frac{n}{e},\n\\qquad\nP_n(r^\\star)\\approx \\frac{1}{e}.\n\\]\nThus, approximately (37%) of the candidates are observed and rejected before selection begins."
+  },
+  {
+    "objectID": "timeline_with_sakaguchi.html",
+    "href": "timeline_with_sakaguchi.html",
+    "title": "Research Timeline",
+    "section": "",
+    "text": "From dynamic programming and the (1/e) rule to modern strategic and algorithmic variants.\nThis curated timeline highlights foundational, influential, and especially relevant contributions. It is not intended as an exhaustive bibliography or an exact citation ranking."
+  },
+  {
+    "objectID": "timeline_with_sakaguchi.html#more-than-sixty-years-of-optimal-stopping",
+    "href": "timeline_with_sakaguchi.html#more-than-sixty-years-of-optimal-stopping",
+    "title": "Research Timeline",
+    "section": "More than sixty years of optimal stopping",
+    "text": "More than sixty years of optimal stopping\nThe secretary problem developed from a recreational question into a major model in optimal stopping, applied probability, decision theory, economics, and online algorithms."
   },
   {
     "objectID": "backward-induction.html",
@@ -182,39 +287,200 @@
     "text": "References\nThe general theory of backward induction and optimal stopping is developed by Chow, Robbins, and Siegmund (1971), Shiryaev (2007), and Ferguson (2010).\nHistorical and foundational treatments of the secretary problem include Ferguson (1989) and Gilbert and Mosteller (1966)."
   },
   {
-    "objectID": "classical.html",
-    "href": "classical.html",
-    "title": "The Classical Secretary Problem",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "The Secretary Problem Atlas",
     "section": "",
-    "text": "Observe candidates sequentially, reject an initial sample, and then select the first candidate who is better than everyone previously observed.\nThe classical model and its principal extensions are treated by (Gilbert and Mosteller 1966; Freeman 1983), while its historical development is discussed by Ferguson (1989)."
+    "text": "Universidad Autónoma de Sinaloa\nExplore models, optimal policies, exact formulas, simulations, and research questions from the theory of sequential selection.\nExplore the atlas"
   },
   {
-    "objectID": "classical.html#the-decision-problem",
-    "href": "classical.html#the-decision-problem",
-    "title": "The Classical Secretary Problem",
-    "section": "The decision problem",
-    "text": "The decision problem\nSuppose (n) candidates arrive in a uniformly random order.\nAfter observing each candidate, you must either:\n\naccept the candidate and stop, or\nreject the candidate permanently and continue.\n\nThe objective is to select the best candidate among all (n) candidates."
-  },
-  {
-    "objectID": "classical.html#the-threshold-strategy",
-    "href": "classical.html#the-threshold-strategy",
-    "title": "The Classical Secretary Problem",
-    "section": "The threshold strategy",
-    "text": "The threshold strategy\nChoose an integer (r) with (0 r &lt; n).\n\nReject the first (r) candidates.\nRecord the best candidate observed during that period.\nAccept the first later candidate who is better than that recorded candidate.\nIf nobody exceeds the recorded candidate, the selection fails."
-  },
-  {
-    "objectID": "classical.html#exact-success-probability",
-    "href": "classical.html#exact-success-probability",
-    "title": "The Classical Secretary Problem",
-    "section": "Exact success probability",
-    "text": "Exact success probability\nFor (r ), the probability of selecting the best candidate is\n\\[\nP_n(r)\n=\n\\frac{r}{n}\n\\sum_{k=r+1}^{n}\\frac{1}{k-1}.\n\\]\nThe optimal threshold is the integer (r) that maximizes (P_n(r)).\nFor large (n),\n\\[\nr^\\star \\approx \\frac{n}{e},\n\\qquad\nP_n(r^\\star)\\approx \\frac{1}{e}.\n\\]\nThus, approximately (37%) of the candidates are observed and rejected before selection begins."
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "index.html#optimal-stopping-explained-visually",
+    "href": "index.html#optimal-stopping-explained-visually",
+    "title": "The Secretary Problem Atlas",
     "section": "",
-    "text": "The Secretary Problem Atlas is a free, open-access educational and science-communication project created by José Ángel Islas Anguiano at Universidad Autónoma de Sinaloa. Its purpose is to make the mathematics, history, and applications of optimal stopping and secretary problems accessible to students, educators, researchers, and the general public.\nThe Atlas combines intuitive explanations, mathematical derivations, interactive visualizations, historical context, and research references. No registration or payment is required."
+    "text": "Universidad Autónoma de Sinaloa\nExplore models, optimal policies, exact formulas, simulations, and research questions from the theory of sequential selection.\nExplore the atlas"
+  },
+  {
+    "objectID": "index.html#explore-the-project",
+    "href": "index.html#explore-the-project",
+    "title": "The Secretary Problem Atlas",
+    "section": "Explore the project",
+    "text": "Explore the project\n\n\nProblem Atlas\nCompare classical and modern secretary-problem variants.\nComing next →\n\n\nInteractive Simulations\nExperiment with sample sizes and stopping thresholds.\nComing next →\n\n\nResearch\nRead mathematical notes, computational results, and open questions.\nComing next →"
+  },
+  {
+    "objectID": "index.html#why-an-atlas",
+    "href": "index.html#why-an-atlas",
+    "title": "The Secretary Problem Atlas",
+    "section": "Why an atlas?",
+    "text": "Why an atlas?\nThe secretary problem is not a single problem. It is a family of optimal-stopping models that changes according to the information available, the number of selections allowed, the objective, and the costs involved.\nThis website organizes those variants and makes their mathematical structure easier to compare."
+  },
+  {
+    "objectID": "variants.html",
+    "href": "variants.html",
+    "title": "Variants & Extensions",
+    "section": "",
+    "text": "The classical secretary problem is only the starting point.\nChanging the information available, the objective, the number of choices, or the horizon leads to genuinely different optimal-stopping problems."
+  },
+  {
+    "objectID": "variants.html#the-classical-benchmark",
+    "href": "variants.html#the-classical-benchmark",
+    "title": "Variants & Extensions",
+    "section": "The classical benchmark",
+    "text": "The classical benchmark\nThere are \\(n\\) candidates whose absolute ranks form a uniformly random permutation of\n\\[\n1,2,\\ldots,n,\n\\]\nwith rank \\(1\\) best.\nCandidates are observed sequentially. At time \\(k\\), only the candidate’s relative rank among the first \\(k\\) observations is known. Decisions are irrevocable, and only one candidate may be selected.\nThe objective is\n\\[\n\\max_{\\tau}\\Pr(R_\\tau=1).\n\\]\nFor a threshold \\(r\\), reject the first \\(r\\) candidates and then accept the first subsequent record. Its success probability is\n\\[\nP_n(r)\n=\n\\frac{r}{n}\n\\sum_{j=r+1}^{n}\\frac{1}{j-1}.\n\\]\nAs \\(n\\to\\infty\\), the optimal threshold satisfies\n\\[\n\\frac{r_n}{n}\\to \\frac1e,\n\\]\nand the optimal success probability also converges to \\(1/e\\).\nThe extensions below can be organized by asking which part of this benchmark is changed."
+  },
+  {
+    "objectID": "variants.html#full-information-secretary-problem",
+    "href": "variants.html#full-information-secretary-problem",
+    "title": "Variants & Extensions",
+    "section": "1. Full-information secretary problem",
+    "text": "1. Full-information secretary problem\n\nProblem\nInstead of seeing only relative ranks, suppose the actual observations\n\\[\nX_1,\\ldots,X_n\n\\]\nare revealed sequentially, typically as independent observations from a known continuous distribution \\(F\\).\nThe objective remains\n\\[\n\\Pr\\!\\left(X_\\tau=\\max_{1\\le j\\le n}X_j\\right).\n\\]\n\n\nWhat changes?\nThe numerical value of the current observation contains information about how likely future observations are to exceed it.\nThe optimal decision therefore depends not only on whether the current observation is a record, but also on how large that record is.\n\n\nOptimal-strategy structure\nUsing the probability-integral transform,\n\\[\nU_i=F(X_i),\n\\]\nthe problem can be reduced to independent \\(U(0,1)\\) observations.\nThe optimal rule is described by time-dependent critical values: a record is accepted only when its value is sufficiently large relative to the number of observations remaining.\n\n\nConnection to the classical model\nBoth problems seek the overall maximum.\nThe difference is informational:\n\nno information: only relative ranks are observed;\nfull information: the actual values are observed.\n\nGilbert and Mosteller developed the foundational analysis of both settings."
+  },
+  {
+    "objectID": "variants.html#the-postdoc-problem-selecting-the-second-best",
+    "href": "variants.html#the-postdoc-problem-selecting-the-second-best",
+    "title": "Variants & Extensions",
+    "section": "2. The postdoc problem: selecting the second best",
+    "text": "2. The postdoc problem: selecting the second best\n\nProblem\nChange the reward from selecting absolute rank \\(1\\) to selecting absolute rank \\(2\\):\n\\[\n\\max_{\\tau}\\Pr(R_\\tau=2).\n\\]\nThe arrival order is still uniformly random, decisions remain irrevocable, and only relative ranks are observed.\n\n\nWhat changes?\nThe current record is no longer the only potentially relevant candidate. A candidate with current relative rank \\(2\\) may also be strategically important.\nThus a small change in the terminal reward changes the state space of the stopping problem.\n\n\nConnection to the classical model\nThe information structure is unchanged. Only the reward changes:\n\\[\n\\mathbf 1_{\\{R_\\tau=1\\}}\n\\quad\\longrightarrow\\quad\n\\mathbf 1_{\\{R_\\tau=2\\}}.\n\\]\nThis makes the postdoc problem a particularly useful example of how the optimal rule can change when the target rank changes."
+  },
+  {
+    "objectID": "variants.html#multiple-choice-and-dowry-problems",
+    "href": "variants.html#multiple-choice-and-dowry-problems",
+    "title": "Variants & Extensions",
+    "section": "3. Multiple-choice and dowry problems",
+    "text": "3. Multiple-choice and dowry problems\n\nProblem\nSuppose the decision maker is allowed more than one selection.\nWith \\(m\\) available choices, the decision maker chooses stopping times\n\\[\n\\tau_1&lt;\\tau_2&lt;\\cdots&lt;\\tau_m.\n\\]\nThe success event depends on the particular model—for example, whether one of the selected observations is the overall best, or whether several top ranks must be captured.\n\n\nSakaguchi’s contribution\nSakaguchi’s work is an important early part of this branch of the literature.\nHis 1978 paper\nDowry Problems and OLA Policies\nstudied secretary-type stopping rules in a dowry formulation and belongs to the early development of multiple-stopping extensions.\nSakaguchi also studied generalized secretary models with uncertain employment, showing that changing the selection mechanism itself can produce new optimal-stopping structures.\n\n\nTamaki’s double-choice problems\nTamaki subsequently analyzed explicit two-choice secretary problems.\nIn one formulation, the decision maker is allowed two choices and seeks to select either the best or the second-best candidate. In another, the objective is to recognize both the maximum and the second maximum.\nThese problems illustrate why multiple-choice secretary models require more state information than the classical one-choice problem.\n\n\nDynamic-programming structure\nIf \\(j\\) selections remain at time \\(k\\), the state must record both the information observed so far and the remaining number of choices.\nSchematically,\n\\[\nV_{k,j}(s)\n=\n\\max\\{\n\\text{value of selecting now},\n\\text{value of continuing}\n\\}.\n\\]\nSelecting now changes the state from \\(j\\) remaining choices to \\(j-1\\).\n\n\nConnection to the classical model\nThe classical secretary problem is recovered when\n\\[\nm=1.\n\\]\nThus multiple-choice models enlarge the stopping problem by adding a resource variable: the number of selections still available."
+  },
+  {
+    "objectID": "variants.html#unknown-or-random-horizon",
+    "href": "variants.html#unknown-or-random-horizon",
+    "title": "Variants & Extensions",
+    "section": "4. Unknown or random horizon",
+    "text": "4. Unknown or random horizon\n\nProblem\nThe classical model assumes that the total number \\(n\\) of observations is known.\nSuppose instead that the number of observations is a random variable\n\\[\nN.\n\\]\nThe distribution of \\(N\\) may be known even though its realized value is not.\n\n\nWhat changes?\nWith a fixed horizon, the decision maker knows exactly how many observations remain.\nWith a random horizon, the continuation value must also account for the probability that the sequence ends.\nThis produces stopping rules that depend on both relative rank information and uncertainty about the remaining horizon.\n\n\nConnection to the \\(1/e\\) phenomenon\nRandom-horizon best-choice models are one of the settings in which \\(1/e\\)-type laws appear beyond the classical fixed-\\(n\\) problem."
+  },
+  {
+    "objectID": "variants.html#last-success-problems-and-the-odds-theorem",
+    "href": "variants.html#last-success-problems-and-the-odds-theorem",
+    "title": "Variants & Extensions",
+    "section": "5. Last-success problems and the odds theorem",
+    "text": "5. Last-success problems and the odds theorem\n\nProblem\nLet\n\\[\nI_1,\\ldots,I_n\n\\]\nbe independent Bernoulli random variables with\n\\[\n\\Pr(I_k=1)=p_k.\n\\]\nThe objective is to stop on the last success.\nDefine\n\\[\nq_k=1-p_k,\n\\qquad\nr_k=\\frac{p_k}{q_k}.\n\\]\nBruss’s odds theorem provides an elegant optimal rule based on summing the odds backward from the end of the sequence.\n\n\nConnection to secretary problems\nThe odds theorem is not the classical secretary problem itself.\nIt belongs to the same broader optimal-stopping family: the decision maker must act without knowing whether a future event will supersede the current one."
+  },
+  {
+    "objectID": "variants.html#applicant-side-secretary-problems",
+    "href": "variants.html#applicant-side-secretary-problems",
+    "title": "Variants & Extensions",
+    "section": "6. Applicant-side secretary problems",
+    "text": "6. Applicant-side secretary problems\n\nProblem\nThe classical problem is posed from the employer’s perspective:\n\nWhen should the employer stop?\n\nGlass reversed the perspective.\nSuppose the employer follows a known stopping rule and an applicant may choose an interview position \\(i\\).\nThe applicant seeks to maximize\n\\[\n\\Pr(\\text{selected}\\mid\\text{position }i).\n\\]\n\n\nWhat changes?\nThe decision variable is no longer a stopping time.\nInstead,\n\\[\n\\tau\n\\quad\\longrightarrow\\quad\ni.\n\\]\nThe employer’s stopping rule becomes part of the environment faced by the applicant.\n\n\nKnown self-rank\nIf the applicant knows their own absolute rank, the best position can depend strongly on that rank.\nThis produces a strategic positioning problem built on top of a classical secretary stopping rule."
+  },
+  {
+    "objectID": "variants.html#uncertain-self-rank",
+    "href": "variants.html#uncertain-self-rank",
+    "title": "Variants & Extensions",
+    "section": "7. Uncertain self-rank",
+    "text": "7. Uncertain self-rank\nSuppose the applicant does not know their absolute rank.\nLet\n\\[\nR\\in\\{1,\\ldots,n\\}\n\\]\nbe random with a prior distribution. For example, a truncated geometric prior is\n\\[\n\\Pr(R=j)\n=\n\\frac{(1-q)q^{j-1}}{1-q^n},\n\\qquad 0&lt;q&lt;1.\n\\]\nThe applicant’s value from position \\(i\\) becomes\n\\[\nV(i)\n=\n\\sum_{j=1}^{n}\n\\Pr(R=j)\n\\Pr(\\text{selected}\\mid R=j,\\text{position }i).\n\\]\nThis turns applicant positioning into a Bayesian decision problem."
+  },
+  {
+    "objectID": "variants.html#comparing-the-main-variants",
+    "href": "variants.html#comparing-the-main-variants",
+    "title": "Variants & Extensions",
+    "section": "Comparing the main variants",
+    "text": "Comparing the main variants\n\n\n\n\n\n\n\n\n\nVariant\nInformation\nObjective\nDecision\n\n\n\n\nClassical secretary\nRelative ranks\nSelect rank \\(1\\)\nOne stopping time\n\n\nFull information\nNumerical values\nSelect maximum\nOne stopping time\n\n\nPostdoc\nRelative ranks\nSelect rank \\(2\\)\nOne stopping time\n\n\nMultiple choice / dowry\nRelative ranks\nCapture target using several choices\nMultiple stopping times\n\n\nRandom horizon\nRelative ranks or events\nBest choice with uncertain \\(N\\)\nStopping time\n\n\nOdds theorem\nBernoulli successes\nStop on last success\nStopping time\n\n\nApplicant perspective\nEmployer rule + self-rank\nBe selected\nInterview position\n\n\nUncertain self-rank\nPrior over own rank\nBe selected\nInterview position"
+  },
+  {
+    "objectID": "variants.html#a-map-of-the-secretary-problem-family",
+    "href": "variants.html#a-map-of-the-secretary-problem-family",
+    "title": "Variants & Extensions",
+    "section": "A map of the secretary-problem family",
+    "text": "A map of the secretary-problem family\nThe main extensions can be classified according to which component of the classical model is changed.\n\n\n  \n    Secretary Problem\n  \n\n  \n\n    \n      Information\n      Relative ranks\n      Full values\n      Partial information\n      Uncertain self-rank\n    \n\n    \n      Objective\n      Best candidate\n      Second best\n      Top k\n      Last success\n    \n\n    \n      Choice structure\n      One choice\n      Multiple choices\n      Dowry problems\n      Strategic positioning\n    \n\n    \n      Horizon\n      Fixed\n      Random\n      Unknown\n    \n\n  \n\n\nA useful way to generate new secretary problems is therefore to modify one or more components of the classical model:\n\n  Information\n  +\n  Objective\n  +\n  Choice structure\n  +\n  Horizon\n\nEach modification can produce a genuinely different optimal-stopping problem."
+  },
+  {
+    "objectID": "variants.html#where-to-go-next",
+    "href": "variants.html#where-to-go-next",
+    "title": "Variants & Extensions",
+    "section": "Where to go next",
+    "text": "Where to go next\nThe Atlas develops these ideas from several complementary viewpoints.\n\nBackward Induction shows how finite stopping problems can be solved state by state.\nSimulations lets you experiment with threshold strategies.\nResearch Timeline places the major developments in historical context.\nSelected variants will be developed later with complete finite-\\(n\\) derivations."
+  },
+  {
+    "objectID": "variants_updated.html",
+    "href": "variants_updated.html",
+    "title": "Variants & Extensions",
+    "section": "",
+    "text": "The classical secretary problem is only the starting point.\nChanging the information available, the objective, the number of choices, or the horizon leads to genuinely different optimal-stopping problems."
+  },
+  {
+    "objectID": "variants_updated.html#the-classical-benchmark",
+    "href": "variants_updated.html#the-classical-benchmark",
+    "title": "Variants & Extensions",
+    "section": "The classical benchmark",
+    "text": "The classical benchmark\nThere are (n) candidates whose absolute ranks form a uniformly random permutation of\n[ 1,2,,n, ]\nwith rank (1) best.\nCandidates are observed sequentially. At time (k), only the candidate’s relative rank among the first (k) observations is known. Decisions are irrevocable, and only one candidate may be selected.\nThe objective is\n[ {}(R). ]\nFor a threshold (r), reject the first (r) candidates and then accept the first subsequent record. Its success probability is\n[ P_n(r) = _{j=r+1}^{n}. ]\nAs (n), the optimal threshold satisfies\n[ 1e, ]\nand the optimal success probability also converges to (1/e).\nThe extensions below can be organized by asking which part of this benchmark is changed."
+  },
+  {
+    "objectID": "variants_updated.html#full-information-secretary-problem",
+    "href": "variants_updated.html#full-information-secretary-problem",
+    "title": "Variants & Extensions",
+    "section": "1. Full-information secretary problem",
+    "text": "1. Full-information secretary problem\n\nProblem\nInstead of seeing only relative ranks, suppose the actual observations\n[ X_1,,X_n ]\nare revealed sequentially, typically as independent observations from a known continuous distribution (F).\nThe objective remains\n[ !(X_=_{1jn}X_j). ]\n\n\nWhat changes?\nThe numerical value of the current observation contains information about how likely future observations are to exceed it.\nThe optimal decision therefore depends not only on whether the current observation is a record, but also on how large that record is.\n\n\nOptimal-strategy structure\nUsing the probability-integral transform,\n[ U_i=F(X_i), ]\nthe problem can be reduced to independent (U(0,1)) observations.\nThe optimal rule is described by time-dependent critical values: a record is accepted only when its value is sufficiently large relative to the number of observations remaining.\n\n\nConnection to the classical model\nBoth problems seek the overall maximum.\nThe difference is informational:\n\nno information: only relative ranks are observed;\nfull information: the actual values are observed.\n\nGilbert and Mosteller developed the foundational analysis of both settings."
+  },
+  {
+    "objectID": "variants_updated.html#the-postdoc-problem-selecting-the-second-best",
+    "href": "variants_updated.html#the-postdoc-problem-selecting-the-second-best",
+    "title": "Variants & Extensions",
+    "section": "2. The postdoc problem: selecting the second best",
+    "text": "2. The postdoc problem: selecting the second best\n\nProblem\nChange the reward from selecting absolute rank (1) to selecting absolute rank (2):\n[ {}(R). ]\nThe arrival order is still uniformly random, decisions remain irrevocable, and only relative ranks are observed.\n\n\nWhat changes?\nThe current record is no longer the only potentially relevant candidate. A candidate with current relative rank (2) may also be strategically important.\nThus a small change in the terminal reward changes the state space of the stopping problem.\n\n\nConnection to the classical model\nThe information structure is unchanged. Only the reward changes:\n[ {{R}} {{R}}. ]\nThis makes the postdoc problem a particularly useful example of how the optimal rule can change when the target rank changes."
+  },
+  {
+    "objectID": "variants_updated.html#multiple-choice-and-dowry-problems",
+    "href": "variants_updated.html#multiple-choice-and-dowry-problems",
+    "title": "Variants & Extensions",
+    "section": "3. Multiple-choice and dowry problems",
+    "text": "3. Multiple-choice and dowry problems\n\nProblem\nSuppose the decision maker is allowed more than one selection.\nWith (m) available choices, the decision maker chooses stopping times\n[ _1&lt;_2&lt;&lt;_m. ]\nThe success event depends on the particular model—for example, whether one of the selected observations is the overall best, or whether several top ranks must be captured.\n\n\nSakaguchi’s contribution\nSakaguchi’s work is an important early part of this branch of the literature.\nHis 1978 paper\nDowry Problems and OLA Policies\nstudied secretary-type stopping rules in a dowry formulation and belongs to the early development of multiple-stopping extensions.\nSakaguchi also studied generalized secretary models with uncertain employment, showing that changing the selection mechanism itself can produce new optimal-stopping structures.\n\n\nTamaki’s double-choice problems\nTamaki subsequently analyzed explicit two-choice secretary problems.\nIn one formulation, the decision maker is allowed two choices and seeks to select either the best or the second-best candidate. In another, the objective is to recognize both the maximum and the second maximum.\nThese problems illustrate why multiple-choice secretary models require more state information than the classical one-choice problem.\n\n\nDynamic-programming structure\nIf (j) selections remain at time (k), the state must record both the information observed so far and the remaining number of choices.\nSchematically,\n[ V_{k,j}(s) = { , }. ]\nSelecting now changes the state from (j) remaining choices to (j-1).\n\n\nConnection to the classical model\nThe classical secretary problem is recovered when\n[ m=1. ]\nThus multiple-choice models enlarge the stopping problem by adding a resource variable: the number of selections still available."
+  },
+  {
+    "objectID": "variants_updated.html#unknown-or-random-horizon",
+    "href": "variants_updated.html#unknown-or-random-horizon",
+    "title": "Variants & Extensions",
+    "section": "4. Unknown or random horizon",
+    "text": "4. Unknown or random horizon\n\nProblem\nThe classical model assumes that the total number (n) of observations is known.\nSuppose instead that the number of observations is a random variable\n[ N. ]\nThe distribution of (N) may be known even though its realized value is not.\n\n\nWhat changes?\nWith a fixed horizon, the decision maker knows exactly how many observations remain.\nWith a random horizon, the continuation value must also account for the probability that the sequence ends.\nThis produces stopping rules that depend on both relative rank information and uncertainty about the remaining horizon.\n\n\nConnection to the (1/e) phenomenon\nRandom-horizon best-choice models are one of the settings in which (1/e)-type laws appear beyond the classical fixed-(n) problem."
+  },
+  {
+    "objectID": "variants_updated.html#last-success-problems-and-the-odds-theorem",
+    "href": "variants_updated.html#last-success-problems-and-the-odds-theorem",
+    "title": "Variants & Extensions",
+    "section": "5. Last-success problems and the odds theorem",
+    "text": "5. Last-success problems and the odds theorem\n\nProblem\nLet\n[ I_1,,I_n ]\nbe independent Bernoulli random variables with\n[ (I_k=1)=p_k. ]\nThe objective is to stop on the last success.\nDefine\n[ q_k=1-p_k, r_k=. ]\nBruss’s odds theorem provides an elegant optimal rule based on summing the odds backward from the end of the sequence.\n\n\nConnection to secretary problems\nThe odds theorem is not the classical secretary problem itself.\nIt belongs to the same broader optimal-stopping family: the decision maker must act without knowing whether a future event will supersede the current one."
+  },
+  {
+    "objectID": "variants_updated.html#applicant-side-secretary-problems",
+    "href": "variants_updated.html#applicant-side-secretary-problems",
+    "title": "Variants & Extensions",
+    "section": "6. Applicant-side secretary problems",
+    "text": "6. Applicant-side secretary problems\n\nProblem\nThe classical problem is posed from the employer’s perspective:\n\nWhen should the employer stop?\n\nGlass reversed the perspective.\nSuppose the employer follows a known stopping rule and an applicant may choose an interview position (i).\nThe applicant seeks to maximize\n[ (i). ]\n\n\nWhat changes?\nThe decision variable is no longer a stopping time.\nInstead,\n[ i. ]\nThe employer’s stopping rule becomes part of the environment faced by the applicant.\n\n\nKnown self-rank\nIf the applicant knows their own absolute rank, the best position can depend strongly on that rank.\nThis produces a strategic positioning problem built on top of a classical secretary stopping rule."
+  },
+  {
+    "objectID": "variants_updated.html#uncertain-self-rank",
+    "href": "variants_updated.html#uncertain-self-rank",
+    "title": "Variants & Extensions",
+    "section": "7. Uncertain self-rank",
+    "text": "7. Uncertain self-rank\nSuppose the applicant does not know their absolute rank.\nLet\n[ R{1,,n} ]\nbe random with a prior distribution. For example, a truncated geometric prior is\n[ (R=j) = , &lt;q&lt;1. ]\nThe applicant’s value from position (i) becomes\n[ V(i) = _{j=1}^{n} (R=j) (R=j,i). ]\nThis turns applicant positioning into a Bayesian decision problem."
+  },
+  {
+    "objectID": "variants_updated.html#comparing-the-main-variants",
+    "href": "variants_updated.html#comparing-the-main-variants",
+    "title": "Variants & Extensions",
+    "section": "Comparing the main variants",
+    "text": "Comparing the main variants\n\n\n\n\n\n\n\n\n\nVariant\nInformation\nObjective\nDecision\n\n\n\n\nClassical secretary\nRelative ranks\nSelect rank (1)\nOne stopping time\n\n\nFull information\nNumerical values\nSelect maximum\nOne stopping time\n\n\nPostdoc\nRelative ranks\nSelect rank (2)\nOne stopping time\n\n\nMultiple choice / dowry\nRelative ranks\nCapture target using several choices\nMultiple stopping times\n\n\nRandom horizon\nRelative ranks or events\nBest choice with uncertain (N)\nStopping time\n\n\nOdds theorem\nBernoulli successes\nStop on last success\nStopping time\n\n\nApplicant perspective\nEmployer rule + self-rank\nBe selected\nInterview position\n\n\nUncertain self-rank\nPrior over own rank\nBe selected\nInterview position"
+  },
+  {
+    "objectID": "variants_updated.html#a-map-of-the-secretary-problem-family",
+    "href": "variants_updated.html#a-map-of-the-secretary-problem-family",
+    "title": "Variants & Extensions",
+    "section": "A map of the secretary-problem family",
+    "text": "A map of the secretary-problem family\nThe main extensions can be classified according to which component of the classical model is changed.\n\n\nSecretary Problem\n\n\n&lt;div class=\"variant-branch\"&gt;\n\n  &lt;div class=\"variant-branch-title\"&gt;\n    Information\n  &lt;/div&gt;\n\n  &lt;div class=\"variant-branch-item\"&gt;\n    Relative ranks\n  &lt;/div&gt;\n\n  &lt;div class=\"variant-branch-item\"&gt;\n    Full values\n  &lt;/div&gt;\n\n  &lt;div class=\"variant-branch-item\"&gt;\n    Partial information\n  &lt;/div&gt;\n\n  &lt;div class=\"variant-branch-item\"&gt;\n    Uncertain self-rank\n  &lt;/div&gt;\n\n&lt;/div&gt;\n\n\n&lt;div class=\"variant-branch\"&gt;\n\n  &lt;div class=\"variant-branch-title\"&gt;\n    Objective\n  &lt;/div&gt;\n\n  &lt;div class=\"variant-branch-item\"&gt;\n    Best candidate\n  &lt;/div&gt;\n\n  &lt;div class=\"variant-branch-item\"&gt;\n    Second best\n  &lt;/div&gt;\n\n  &lt;div class=\"variant-branch-item\"&gt;\n    Top \\(k\\)\n  &lt;/div&gt;\n\n  &lt;div class=\"variant-branch-item\"&gt;\n    Last success\n  &lt;/div&gt;\n\n&lt;/div&gt;\n\n\n&lt;div class=\"variant-branch\"&gt;\n\n  &lt;div class=\"variant-branch-title\"&gt;\n    Choice structure\n  &lt;/div&gt;\n\n  &lt;div class=\"variant-branch-item\"&gt;\n    One choice\n  &lt;/div&gt;\n\n  &lt;div class=\"variant-branch-item\"&gt;\n    Multiple choices\n  &lt;/div&gt;\n\n  &lt;div class=\"variant-branch-item\"&gt;\n    Dowry problems\n  &lt;/div&gt;\n\n  &lt;div class=\"variant-branch-item\"&gt;\n    Strategic positioning\n  &lt;/div&gt;\n\n&lt;/div&gt;\n\n\n&lt;div class=\"variant-branch\"&gt;\n\n  &lt;div class=\"variant-branch-title\"&gt;\n    Horizon\n  &lt;/div&gt;\n\n  &lt;div class=\"variant-branch-item\"&gt;\n    Fixed\n  &lt;/div&gt;\n\n  &lt;div class=\"variant-branch-item\"&gt;\n    Random\n  &lt;/div&gt;\n\n  &lt;div class=\"variant-branch-item\"&gt;\n    Unknown\n  &lt;/div&gt;\n\n&lt;/div&gt;\n\n\nA useful way to generate new secretary problems is therefore to modify one or more components of the classical model:\n\nInformation + Objective + Choice structure + Horizon\n\nEach modification can produce a genuinely different optimal-stopping problem."
+  },
+  {
+    "objectID": "variants_updated.html#where-to-go-next",
+    "href": "variants_updated.html#where-to-go-next",
+    "title": "Variants & Extensions",
+    "section": "Where to go next",
+    "text": "Where to go next\nThe Atlas develops these ideas from several complementary viewpoints.\n\nBackward Induction shows how finite stopping problems can be solved state by state.\nSimulations lets you experiment with threshold strategies.\nResearch Timeline places the major developments in historical context.\nSelected variants will be developed later with complete finite-(n) derivations."
   },
   {
     "objectID": "references.html",

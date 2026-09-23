@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Variants &amp; Extensions – SECRETARY PROBLEM ATLAS</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">SECRETARY PROBLEM ATLAS</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./classical.html"> 
+<span class="menu-text">Classical Problem</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./simulations.html"> 
+<span class="menu-text">Simulations</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./backward-induction.html"> 
+<span class="menu-text">Backward Induction</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./variants.html" aria-current="page"> 
+<span class="menu-text">Variants</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./timeline.html"> 
+<span class="menu-text">Timeline</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./references.html"> 
+<span class="menu-text">References</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#variants-extensions-of-the-secretary-problem" id="toc-variants-extensions-of-the-secretary-problem" class="nav-link active" data-scroll-target="#variants-extensions-of-the-secretary-problem">Variants &amp; Extensions of the Secretary Problem</a></li>
+  <li><a href="#the-classical-benchmark" id="toc-the-classical-benchmark" class="nav-link" data-scroll-target="#the-classical-benchmark">The classical benchmark</a></li>
+  <li><a href="#full-information-secretary-problem" id="toc-full-information-secretary-problem" class="nav-link" data-scroll-target="#full-information-secretary-problem">1. Full-information secretary problem</a>
+  <ul class="collapse">
+  <li><a href="#problem" id="toc-problem" class="nav-link" data-scroll-target="#problem">Problem</a></li>
+  <li><a href="#what-changes" id="toc-what-changes" class="nav-link" data-scroll-target="#what-changes">What changes?</a></li>
+  <li><a href="#optimal-strategy-structure" id="toc-optimal-strategy-structure" class="nav-link" data-scroll-target="#optimal-strategy-structure">Optimal-strategy structure</a></li>
+  <li><a href="#connection-to-the-classical-model" id="toc-connection-to-the-classical-model" class="nav-link" data-scroll-target="#connection-to-the-classical-model">Connection to the classical model</a></li>
+  </ul></li>
+  <li><a href="#the-postdoc-problem-selecting-the-second-best" id="toc-the-postdoc-problem-selecting-the-second-best" class="nav-link" data-scroll-target="#the-postdoc-problem-selecting-the-second-best">2. The postdoc problem: selecting the second best</a>
+  <ul class="collapse">
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem</a></li>
+  <li><a href="#what-changes-1" id="toc-what-changes-1" class="nav-link" data-scroll-target="#what-changes-1">What changes?</a></li>
+  <li><a href="#connection-to-the-classical-model-1" id="toc-connection-to-the-classical-model-1" class="nav-link" data-scroll-target="#connection-to-the-classical-model-1">Connection to the classical model</a></li>
+  </ul></li>
+  <li><a href="#multiple-choice-and-dowry-problems" id="toc-multiple-choice-and-dowry-problems" class="nav-link" data-scroll-target="#multiple-choice-and-dowry-problems">3. Multiple-choice and dowry problems</a>
+  <ul class="collapse">
+  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem</a></li>
+  <li><a href="#sakaguchis-contribution" id="toc-sakaguchis-contribution" class="nav-link" data-scroll-target="#sakaguchis-contribution">Sakaguchi’s contribution</a></li>
+  <li><a href="#tamakis-double-choice-problems" id="toc-tamakis-double-choice-problems" class="nav-link" data-scroll-target="#tamakis-double-choice-problems">Tamaki’s double-choice problems</a></li>
+  <li><a href="#dynamic-programming-structure" id="toc-dynamic-programming-structure" class="nav-link" data-scroll-target="#dynamic-programming-structure">Dynamic-programming structure</a></li>
+  <li><a href="#connection-to-the-classical-model-2" id="toc-connection-to-the-classical-model-2" class="nav-link" data-scroll-target="#connection-to-the-classical-model-2">Connection to the classical model</a></li>
+  </ul></li>
+  <li><a href="#unknown-or-random-horizon" id="toc-unknown-or-random-horizon" class="nav-link" data-scroll-target="#unknown-or-random-horizon">4. Unknown or random horizon</a>
+  <ul class="collapse">
+  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem</a></li>
+  <li><a href="#what-changes-2" id="toc-what-changes-2" class="nav-link" data-scroll-target="#what-changes-2">What changes?</a></li>
+  <li><a href="#connection-to-the-1e-phenomenon" id="toc-connection-to-the-1e-phenomenon" class="nav-link" data-scroll-target="#connection-to-the-1e-phenomenon">Connection to the <span class="math inline">\(1/e\)</span> phenomenon</a></li>
+  </ul></li>
+  <li><a href="#last-success-problems-and-the-odds-theorem" id="toc-last-success-problems-and-the-odds-theorem" class="nav-link" data-scroll-target="#last-success-problems-and-the-odds-theorem">5. Last-success problems and the odds theorem</a>
+  <ul class="collapse">
+  <li><a href="#problem-4" id="toc-problem-4" class="nav-link" data-scroll-target="#problem-4">Problem</a></li>
+  <li><a href="#connection-to-secretary-problems" id="toc-connection-to-secretary-problems" class="nav-link" data-scroll-target="#connection-to-secretary-problems">Connection to secretary problems</a></li>
+  </ul></li>
+  <li><a href="#applicant-side-secretary-problems" id="toc-applicant-side-secretary-problems" class="nav-link" data-scroll-target="#applicant-side-secretary-problems">6. Applicant-side secretary problems</a>
+  <ul class="collapse">
+  <li><a href="#problem-5" id="toc-problem-5" class="nav-link" data-scroll-target="#problem-5">Problem</a></li>
+  <li><a href="#what-changes-3" id="toc-what-changes-3" class="nav-link" data-scroll-target="#what-changes-3">What changes?</a></li>
+  <li><a href="#known-self-rank" id="toc-known-self-rank" class="nav-link" data-scroll-target="#known-self-rank">Known self-rank</a></li>
+  </ul></li>
+  <li><a href="#uncertain-self-rank" id="toc-uncertain-self-rank" class="nav-link" data-scroll-target="#uncertain-self-rank">7. Uncertain self-rank</a></li>
+  <li><a href="#comparing-the-main-variants" id="toc-comparing-the-main-variants" class="nav-link" data-scroll-target="#comparing-the-main-variants">Comparing the main variants</a></li>
+  <li><a href="#a-map-of-the-secretary-problem-family" id="toc-a-map-of-the-secretary-problem-family" class="nav-link" data-scroll-target="#a-map-of-the-secretary-problem-family">A map of the secretary-problem family</a></li>
+  <li><a href="#where-to-go-next" id="toc-where-to-go-next" class="nav-link" data-scroll-target="#where-to-go-next">Where to go next</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Variants &amp; Extensions</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="variants-extensions-of-the-secretary-problem" class="level1 timeline-hero">
+<h1>Variants &amp; Extensions of the Secretary Problem</h1>
+<p>The classical secretary problem is only the starting point.</p>
+<p>Changing the information available, the objective, the number of choices, or the horizon leads to genuinely different optimal-stopping problems.</p>
+</section>
+<section id="the-classical-benchmark" class="level2">
+<h2 class="anchored" data-anchor-id="the-classical-benchmark">The classical benchmark</h2>
+<p>There are <span class="math inline">\(n\)</span> candidates whose absolute ranks form a uniformly random permutation of</p>
+<p><span class="math display">\[
+1,2,\ldots,n,
+\]</span></p>
+<p>with rank <span class="math inline">\(1\)</span> best.</p>
+<p>Candidates are observed sequentially. At time <span class="math inline">\(k\)</span>, only the candidate’s relative rank among the first <span class="math inline">\(k\)</span> observations is known. Decisions are irrevocable, and only one candidate may be selected.</p>
+<p>The objective is</p>
+<p><span class="math display">\[
+\max_{\tau}\Pr(R_\tau=1).
+\]</span></p>
+<p>For a threshold <span class="math inline">\(r\)</span>, reject the first <span class="math inline">\(r\)</span> candidates and then accept the first subsequent record. Its success probability is</p>
+<p><span class="math display">\[
+P_n(r)
+=
+\frac{r}{n}
+\sum_{j=r+1}^{n}\frac{1}{j-1}.
+\]</span></p>
+<p>As <span class="math inline">\(n\to\infty\)</span>, the optimal threshold satisfies</p>
+<p><span class="math display">\[
+\frac{r_n}{n}\to \frac1e,
+\]</span></p>
+<p>and the optimal success probability also converges to <span class="math inline">\(1/e\)</span>.</p>
+<p>The extensions below can be organized by asking which part of this benchmark is changed.</p>
+<hr>
+</section>
+<section id="full-information-secretary-problem" class="level2">
+<h2 class="anchored" data-anchor-id="full-information-secretary-problem">1. Full-information secretary problem</h2>
+<section id="problem" class="level3">
+<h3 class="anchored" data-anchor-id="problem">Problem</h3>
+<p>Instead of seeing only relative ranks, suppose the actual observations</p>
+<p><span class="math display">\[
+X_1,\ldots,X_n
+\]</span></p>
+<p>are revealed sequentially, typically as independent observations from a known continuous distribution <span class="math inline">\(F\)</span>.</p>
+<p>The objective remains</p>
+<p><span class="math display">\[
+\Pr\!\left(X_\tau=\max_{1\le j\le n}X_j\right).
+\]</span></p>
+</section>
+<section id="what-changes" class="level3">
+<h3 class="anchored" data-anchor-id="what-changes">What changes?</h3>
+<p>The numerical value of the current observation contains information about how likely future observations are to exceed it.</p>
+<p>The optimal decision therefore depends not only on whether the current observation is a record, but also on how large that record is.</p>
+</section>
+<section id="optimal-strategy-structure" class="level3">
+<h3 class="anchored" data-anchor-id="optimal-strategy-structure">Optimal-strategy structure</h3>
+<p>Using the probability-integral transform,</p>
+<p><span class="math display">\[
+U_i=F(X_i),
+\]</span></p>
+<p>the problem can be reduced to independent <span class="math inline">\(U(0,1)\)</span> observations.</p>
+<p>The optimal rule is described by time-dependent critical values: a record is accepted only when its value is sufficiently large relative to the number of observations remaining.</p>
+</section>
+<section id="connection-to-the-classical-model" class="level3">
+<h3 class="anchored" data-anchor-id="connection-to-the-classical-model">Connection to the classical model</h3>
+<p>Both problems seek the overall maximum.</p>
+<p>The difference is informational:</p>
+<ul>
+<li><strong>no information:</strong> only relative ranks are observed;</li>
+<li><strong>full information:</strong> the actual values are observed.</li>
+</ul>
+<p>Gilbert and Mosteller developed the foundational analysis of both settings.</p>
+<hr>
+</section>
+</section>
+<section id="the-postdoc-problem-selecting-the-second-best" class="level2">
+<h2 class="anchored" data-anchor-id="the-postdoc-problem-selecting-the-second-best">2. The postdoc problem: selecting the second best</h2>
+<section id="problem-1" class="level3">
+<h3 class="anchored" data-anchor-id="problem-1">Problem</h3>
+<p>Change the reward from selecting absolute rank <span class="math inline">\(1\)</span> to selecting absolute rank <span class="math inline">\(2\)</span>:</p>
+<p><span class="math display">\[
+\max_{\tau}\Pr(R_\tau=2).
+\]</span></p>
+<p>The arrival order is still uniformly random, decisions remain irrevocable, and only relative ranks are observed.</p>
+</section>
+<section id="what-changes-1" class="level3">
+<h3 class="anchored" data-anchor-id="what-changes-1">What changes?</h3>
+<p>The current record is no longer the only potentially relevant candidate. A candidate with current relative rank <span class="math inline">\(2\)</span> may also be strategically important.</p>
+<p>Thus a small change in the terminal reward changes the state space of the stopping problem.</p>
+</section>
+<section id="connection-to-the-classical-model-1" class="level3">
+<h3 class="anchored" data-anchor-id="connection-to-the-classical-model-1">Connection to the classical model</h3>
+<p>The information structure is unchanged. Only the reward changes:</p>
+<p><span class="math display">\[
+\mathbf 1_{\{R_\tau=1\}}
+\quad\longrightarrow\quad
+\mathbf 1_{\{R_\tau=2\}}.
+\]</span></p>
+<p>This makes the postdoc problem a particularly useful example of how the optimal rule can change when the target rank changes.</p>
+<hr>
+</section>
+</section>
+<section id="multiple-choice-and-dowry-problems" class="level2">
+<h2 class="anchored" data-anchor-id="multiple-choice-and-dowry-problems">3. Multiple-choice and dowry problems</h2>
+<section id="problem-2" class="level3">
+<h3 class="anchored" data-anchor-id="problem-2">Problem</h3>
+<p>Suppose the decision maker is allowed more than one selection.</p>
+<p>With <span class="math inline">\(m\)</span> available choices, the decision maker chooses stopping times</p>
+<p><span class="math display">\[
+\tau_1&lt;\tau_2&lt;\cdots&lt;\tau_m.
+\]</span></p>
+<p>The success event depends on the particular model—for example, whether one of the selected observations is the overall best, or whether several top ranks must be captured.</p>
+</section>
+<section id="sakaguchis-contribution" class="level3">
+<h3 class="anchored" data-anchor-id="sakaguchis-contribution">Sakaguchi’s contribution</h3>
+<p>Sakaguchi’s work is an important early part of this branch of the literature.</p>
+<p>His 1978 paper</p>
+<p><em>Dowry Problems and OLA Policies</em></p>
+<p>studied secretary-type stopping rules in a dowry formulation and belongs to the early development of multiple-stopping extensions.</p>
+<p>Sakaguchi also studied generalized secretary models with uncertain employment, showing that changing the selection mechanism itself can produce new optimal-stopping structures.</p>
+</section>
+<section id="tamakis-double-choice-problems" class="level3">
+<h3 class="anchored" data-anchor-id="tamakis-double-choice-problems">Tamaki’s double-choice problems</h3>
+<p>Tamaki subsequently analyzed explicit two-choice secretary problems.</p>
+<p>In one formulation, the decision maker is allowed two choices and seeks to select either the best or the second-best candidate. In another, the objective is to recognize both the maximum and the second maximum.</p>
+<p>These problems illustrate why multiple-choice secretary models require more state information than the classical one-choice problem.</p>
+</section>
+<section id="dynamic-programming-structure" class="level3">
+<h3 class="anchored" data-anchor-id="dynamic-programming-structure">Dynamic-programming structure</h3>
+<p>If <span class="math inline">\(j\)</span> selections remain at time <span class="math inline">\(k\)</span>, the state must record both the information observed so far and the remaining number of choices.</p>
+<p>Schematically,</p>
+<p><span class="math display">\[
+V_{k,j}(s)
+=
+\max\{
+\text{value of selecting now},
+\text{value of continuing}
+\}.
+\]</span></p>
+<p>Selecting now changes the state from <span class="math inline">\(j\)</span> remaining choices to <span class="math inline">\(j-1\)</span>.</p>
+</section>
+<section id="connection-to-the-classical-model-2" class="level3">
+<h3 class="anchored" data-anchor-id="connection-to-the-classical-model-2">Connection to the classical model</h3>
+<p>The classical secretary problem is recovered when</p>
+<p><span class="math display">\[
+m=1.
+\]</span></p>
+<p>Thus multiple-choice models enlarge the stopping problem by adding a resource variable: the number of selections still available.</p>
+<hr>
+</section>
+</section>
+<section id="unknown-or-random-horizon" class="level2">
+<h2 class="anchored" data-anchor-id="unknown-or-random-horizon">4. Unknown or random horizon</h2>
+<section id="problem-3" class="level3">
+<h3 class="anchored" data-anchor-id="problem-3">Problem</h3>
+<p>The classical model assumes that the total number <span class="math inline">\(n\)</span> of observations is known.</p>
+<p>Suppose instead that the number of observations is a random variable</p>
+<p><span class="math display">\[
+N.
+\]</span></p>
+<p>The distribution of <span class="math inline">\(N\)</span> may be known even though its realized value is not.</p>
+</section>
+<section id="what-changes-2" class="level3">
+<h3 class="anchored" data-anchor-id="what-changes-2">What changes?</h3>
+<p>With a fixed horizon, the decision maker knows exactly how many observations remain.</p>
+<p>With a random horizon, the continuation value must also account for the probability that the sequence ends.</p>
+<p>This produces stopping rules that depend on both relative rank information and uncertainty about the remaining horizon.</p>
+</section>
+<section id="connection-to-the-1e-phenomenon" class="level3">
+<h3 class="anchored" data-anchor-id="connection-to-the-1e-phenomenon">Connection to the <span class="math inline">\(1/e\)</span> phenomenon</h3>
+<p>Random-horizon best-choice models are one of the settings in which <span class="math inline">\(1/e\)</span>-type laws appear beyond the classical fixed-<span class="math inline">\(n\)</span> problem.</p>
+<hr>
+</section>
+</section>
+<section id="last-success-problems-and-the-odds-theorem" class="level2">
+<h2 class="anchored" data-anchor-id="last-success-problems-and-the-odds-theorem">5. Last-success problems and the odds theorem</h2>
+<section id="problem-4" class="level3">
+<h3 class="anchored" data-anchor-id="problem-4">Problem</h3>
+<p>Let</p>
+<p><span class="math display">\[
+I_1,\ldots,I_n
+\]</span></p>
+<p>be independent Bernoulli random variables with</p>
+<p><span class="math display">\[
+\Pr(I_k=1)=p_k.
+\]</span></p>
+<p>The objective is to stop on the last success.</p>
+<p>Define</p>
+<p><span class="math display">\[
+q_k=1-p_k,
+\qquad
+r_k=\frac{p_k}{q_k}.
+\]</span></p>
+<p>Bruss’s odds theorem provides an elegant optimal rule based on summing the odds backward from the end of the sequence.</p>
+</section>
+<section id="connection-to-secretary-problems" class="level3">
+<h3 class="anchored" data-anchor-id="connection-to-secretary-problems">Connection to secretary problems</h3>
+<p>The odds theorem is not the classical secretary problem itself.</p>
+<p>It belongs to the same broader optimal-stopping family: the decision maker must act without knowing whether a future event will supersede the current one.</p>
+<hr>
+</section>
+</section>
+<section id="applicant-side-secretary-problems" class="level2">
+<h2 class="anchored" data-anchor-id="applicant-side-secretary-problems">6. Applicant-side secretary problems</h2>
+<section id="problem-5" class="level3">
+<h3 class="anchored" data-anchor-id="problem-5">Problem</h3>
+<p>The classical problem is posed from the employer’s perspective:</p>
+<blockquote class="blockquote">
+<p>When should the employer stop?</p>
+</blockquote>
+<p>Glass reversed the perspective.</p>
+<p>Suppose the employer follows a known stopping rule and an applicant may choose an interview position <span class="math inline">\(i\)</span>.</p>
+<p>The applicant seeks to maximize</p>
+<p><span class="math display">\[
+\Pr(\text{selected}\mid\text{position }i).
+\]</span></p>
+</section>
+<section id="what-changes-3" class="level3">
+<h3 class="anchored" data-anchor-id="what-changes-3">What changes?</h3>
+<p>The decision variable is no longer a stopping time.</p>
+<p>Instead,</p>
+<p><span class="math display">\[
+\tau
+\quad\longrightarrow\quad
+i.
+\]</span></p>
+<p>The employer’s stopping rule becomes part of the environment faced by the applicant.</p>
+</section>
+<section id="known-self-rank" class="level3">
+<h3 class="anchored" data-anchor-id="known-self-rank">Known self-rank</h3>
+<p>If the applicant knows their own absolute rank, the best position can depend strongly on that rank.</p>
+<p>This produces a strategic positioning problem built on top of a classical secretary stopping rule.</p>
+<hr>
+</section>
+</section>
+<section id="uncertain-self-rank" class="level2">
+<h2 class="anchored" data-anchor-id="uncertain-self-rank">7. Uncertain self-rank</h2>
+<p>Suppose the applicant does not know their absolute rank.</p>
+<p>Let</p>
+<p><span class="math display">\[
+R\in\{1,\ldots,n\}
+\]</span></p>
+<p>be random with a prior distribution. For example, a truncated geometric prior is</p>
+<p><span class="math display">\[
+\Pr(R=j)
+=
+\frac{(1-q)q^{j-1}}{1-q^n},
+\qquad 0&lt;q&lt;1.
+\]</span></p>
+<p>The applicant’s value from position <span class="math inline">\(i\)</span> becomes</p>
+<p><span class="math display">\[
+V(i)
+=
+\sum_{j=1}^{n}
+\Pr(R=j)
+\Pr(\text{selected}\mid R=j,\text{position }i).
+\]</span></p>
+<p>This turns applicant positioning into a Bayesian decision problem.</p>
+<hr>
+</section>
+<section id="comparing-the-main-variants" class="level2">
+<h2 class="anchored" data-anchor-id="comparing-the-main-variants">Comparing the main variants</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variant</th>
+<th>Information</th>
+<th>Objective</th>
+<th>Decision</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Classical secretary</td>
+<td>Relative ranks</td>
+<td>Select rank <span class="math inline">\(1\)</span></td>
+<td>One stopping time</td>
+</tr>
+<tr class="even">
+<td>Full information</td>
+<td>Numerical values</td>
+<td>Select maximum</td>
+<td>One stopping time</td>
+</tr>
+<tr class="odd">
+<td>Postdoc</td>
+<td>Relative ranks</td>
+<td>Select rank <span class="math inline">\(2\)</span></td>
+<td>One stopping time</td>
+</tr>
+<tr class="even">
+<td>Multiple choice / dowry</td>
+<td>Relative ranks</td>
+<td>Capture target using several choices</td>
+<td>Multiple stopping times</td>
+</tr>
+<tr class="odd">
+<td>Random horizon</td>
+<td>Relative ranks or events</td>
+<td>Best choice with uncertain <span class="math inline">\(N\)</span></td>
+<td>Stopping time</td>
+</tr>
+<tr class="even">
+<td>Odds theorem</td>
+<td>Bernoulli successes</td>
+<td>Stop on last success</td>
+<td>Stopping time</td>
+</tr>
+<tr class="odd">
+<td>Applicant perspective</td>
+<td>Employer rule + self-rank</td>
+<td>Be selected</td>
+<td>Interview position</td>
+</tr>
+<tr class="even">
+<td>Uncertain self-rank</td>
+<td>Prior over own rank</td>
+<td>Be selected</td>
+<td>Interview position</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="a-map-of-the-secretary-problem-family" class="level2">
+<h2 class="anchored" data-anchor-id="a-map-of-the-secretary-problem-family">A map of the secretary-problem family</h2>
+<p>The main extensions can be classified according to which component of the classical model is changed.</p>
+<div class="variant-map">
+
+  <div class="variant-map-root">
+    Secretary Problem
+  </div>
+
+  <div class="variant-map-branches">
+
+    <div class="variant-branch">
+      <div class="variant-branch-title">Information</div>
+      <div class="variant-branch-item">Relative ranks</div>
+      <div class="variant-branch-item">Full values</div>
+      <div class="variant-branch-item">Partial information</div>
+      <div class="variant-branch-item">Uncertain self-rank</div>
+    </div>
+
+    <div class="variant-branch">
+      <div class="variant-branch-title">Objective</div>
+      <div class="variant-branch-item">Best candidate</div>
+      <div class="variant-branch-item">Second best</div>
+      <div class="variant-branch-item">Top <em>k</em></div>
+      <div class="variant-branch-item">Last success</div>
+    </div>
+
+    <div class="variant-branch">
+      <div class="variant-branch-title">Choice structure</div>
+      <div class="variant-branch-item">One choice</div>
+      <div class="variant-branch-item">Multiple choices</div>
+      <div class="variant-branch-item">Dowry problems</div>
+      <div class="variant-branch-item">Strategic positioning</div>
+    </div>
+
+    <div class="variant-branch">
+      <div class="variant-branch-title">Horizon</div>
+      <div class="variant-branch-item">Fixed</div>
+      <div class="variant-branch-item">Random</div>
+      <div class="variant-branch-item">Unknown</div>
+    </div>
+
+  </div>
+
+</div>
+<p>A useful way to generate new secretary problems is therefore to modify one or more components of the classical model:</p>
+<div class="variant-formula">
+  <strong>Information</strong>
+  <span class="variant-plus">+</span>
+  <strong>Objective</strong>
+  <span class="variant-plus">+</span>
+  <strong>Choice structure</strong>
+  <span class="variant-plus">+</span>
+  <strong>Horizon</strong>
+</div>
+<p>Each modification can produce a genuinely different optimal-stopping problem.</p>
+<hr>
+</section>
+<section id="where-to-go-next" class="level2">
+<h2 class="anchored" data-anchor-id="where-to-go-next">Where to go next</h2>
+<p>The Atlas develops these ideas from several complementary viewpoints.</p>
+<ul>
+<li><strong>Backward Induction</strong> shows how finite stopping problems can be solved state by state.</li>
+<li><strong>Simulations</strong> lets you experiment with threshold strategies.</li>
+<li><strong>Research Timeline</strong> places the major developments in historical context.</li>
+<li>Selected variants will be developed later with complete finite-<span class="math inline">\(n\)</span> derivations.</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 José Ángel Islas Anguiano</p>
+</div>   
+    <div class="nav-footer-center">
+<p>© 2026 José Ángel Islas. All rights reserved.</p>
+</div>
+    <div class="nav-footer-right">
+<p>Universidad Autónoma de Sinaloa</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
