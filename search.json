@@ -21,11 +21,11 @@
     "text": "Experiment with sequential decisions, test different rejection thresholds, and discover why the classical strategy approaches the (37%) rule."
   },
   {
-    "objectID": "simulations.html#play-one-game",
-    "href": "simulations.html#play-one-game",
+    "objectID": "simulations.html#explore-one-selection",
+    "href": "simulations.html#explore-one-selection",
     "title": "Secretary Problem Simulations",
-    "section": "Play one game",
-    "text": "Play one game\nYou will observe the candidates sequentially. Smaller relative ranks are better, and relative rank (1) means that the current candidate is the best observed so far.\nThe absolute ranks remain hidden until you hire someone or reach the final candidate.\n\n  \n    \n      PLAY\n      Can you hire the best candidate?\n      \n        Decide whether to reject or hire each candidate using only the\n        information available at that moment.\n      \n    \n\n    \n      New game\n    \n  \n\n  \n    \n      Number of candidates:\n      10\n    \n\n    \n  \n\n  \n    Candidate\n    \n      1\n      /\n      10\n    \n  \n\n  \n    RELATIVE RANK\n    1\n    \n      This candidate is the best observed so far.\n    \n  \n\n  \n    \n      Reject\n    \n\n    \n      Hire\n    \n  \n\n  \n    Observed relative ranks\n    \n  \n\n  \n\n  \n    Complete sequence of absolute ranks\n    Absolute rank \\(1\\) is the overall best."
+    "section": "Explore one selection",
+    "text": "Explore one selection\nYou will observe the candidates sequentially. Smaller relative ranks are better, and relative rank (1) means that the current candidate is the best observed so far.\nThe absolute ranks remain hidden until you hire someone or reach the final candidate.\n\n  \n    \n      EXPLORE\n      Can you hire the best candidate?\n      \n        Decide whether to reject or hire each candidate using only the\n        information available at that moment.\n      \n    \n\n    \n      New game\n    \n  \n\n  \n    \n      Number of candidates:\n      10\n    \n\n    \n  \n\n  \n    Candidate\n    \n      1\n      /\n      10\n    \n  \n\n  \n    RELATIVE RANK\n    1\n    \n      This candidate is the best observed so far.\n    \n  \n\n  \n    \n      Reject\n    \n\n    \n      Hire\n    \n  \n\n  \n    Observed relative ranks\n    \n  \n\n  \n\n  \n    Complete sequence of absolute ranks\n    Absolute rank \\(1\\) is the overall best."
   },
   {
     "objectID": "simulations.html#simulate-a-threshold-strategy",
@@ -58,30 +58,51 @@
   {
     "objectID": "classical.html",
     "href": "classical.html",
-    "title": "The Classical Secretary Problem",
+    "title": "Classical Secretary Problem: Proof and the 37% Rule",
     "section": "",
-    "text": "Observe candidates sequentially, reject an initial sample, and then select the first candidate who is better than everyone previously observed.\nThe classical model and its principal extensions are treated by (Gilbert and Mosteller 1966; Freeman 1983), while its historical development is discussed by Ferguson (1989)."
+    "text": "Why should you reject roughly the first 37% of candidates before choosing? The secretary problem is a classical optimal stopping problem: decisions are sequential, rejections are final, and success means selecting the single best candidate.\nThe exact finite-sample solution and its asymptotic 37% rule are derived below; you can also experiment with the rule."
   },
   {
-    "objectID": "classical.html#the-decision-problem",
-    "href": "classical.html#the-decision-problem",
-    "title": "The Classical Secretary Problem",
-    "section": "The decision problem",
-    "text": "The decision problem\nSuppose (n) candidates arrive in a uniformly random order.\nAfter observing each candidate, you must either:\n\naccept the candidate and stop, or\nreject the candidate permanently and continue.\n\nThe objective is to select the best candidate among all (n) candidates."
+    "objectID": "classical.html#model-and-assumptions",
+    "href": "classical.html#model-and-assumptions",
+    "title": "Classical Secretary Problem: Proof and the 37% Rule",
+    "section": "Model and assumptions",
+    "text": "Model and assumptions\nThere are \\(n\\ge 2\\) candidates, ranked absolutely from \\(1\\) (best) to \\(n\\) (worst). The classical no-information model assumes:\n\nThe candidates arrive in a uniformly random order (all \\(n!\\) orders are equally likely).\nYou observe only each candidate’s relative rank among those seen so far, not their absolute rank.\nYou may accept at most one candidate. Every rejection is irrevocable.\nYour objective is to maximize the probability of choosing the single overall best candidate.\n\nA candidate is a record if they are better than all candidates seen before. Since a nonrecord cannot be the overall best, there is no benefit to selecting one when the objective is the overall best."
   },
   {
     "objectID": "classical.html#the-threshold-strategy",
     "href": "classical.html#the-threshold-strategy",
-    "title": "The Classical Secretary Problem",
+    "title": "Classical Secretary Problem: Proof and the 37% Rule",
     "section": "The threshold strategy",
-    "text": "The threshold strategy\nChoose an integer (r) with (0 r &lt; n).\n\nReject the first (r) candidates.\nRecord the best candidate observed during that period.\nAccept the first later candidate who is better than that recorded candidate.\nIf nobody exceeds the recorded candidate, the selection fails."
+    "text": "The threshold strategy\nFix an integer \\(r\\) with \\(0\\le r&lt;n\\):\n\nReject the first \\(r\\) candidates, observing their relative ranks.\nStarting at position \\(r+1\\), accept the first record (a candidate better than every earlier candidate).\nIf there is no subsequent record, no candidate is selected and the attempt fails.\n\nFor \\(r=0\\), the rule accepts the first candidate immediately. This convention is used in the interactive simulation below.\nThe classical theorem establishes that a threshold rule is optimal among all stopping rules based on relative ranks, not merely the best rule within a preselected class of thresholds. A backward-induction proof of this optimal-policy structure is provided on the Backward Induction page."
   },
   {
-    "objectID": "classical.html#exact-success-probability",
-    "href": "classical.html#exact-success-probability",
-    "title": "The Classical Secretary Problem",
-    "section": "Exact success probability",
-    "text": "Exact success probability\nFor (r ), the probability of selecting the best candidate is\n\\[\nP_n(r)\n=\n\\frac{r}{n}\n\\sum_{k=r+1}^{n}\\frac{1}{k-1}.\n\\]\nThe optimal threshold is the integer (r) that maximizes (P_n(r)).\nFor large (n),\n\\[\nr^\\star \\approx \\frac{n}{e},\n\\qquad\nP_n(r^\\star)\\approx \\frac{1}{e}.\n\\]\nThus, approximately (37%) of the candidates are observed and rejected before selection begins."
+    "objectID": "classical.html#exact-success-probability-a-finite-n-derivation",
+    "href": "classical.html#exact-success-probability-a-finite-n-derivation",
+    "title": "Classical Secretary Problem: Proof and the 37% Rule",
+    "section": "Exact success probability: a finite-\\(n\\) derivation",
+    "text": "Exact success probability: a finite-\\(n\\) derivation\nLet \\(P_n(r)\\) denote the probability that the threshold-\\(r\\) strategy selects absolute rank \\(1\\).\nProposition. For \\(1\\le r&lt;n\\),\n\\[\n\\boxed{\nP_n(r)=\\frac{r}{n}\\sum_{k=r+1}^{n}\\frac{1}{k-1}\n=\\frac{r}{n}\\left(H_{n-1}-H_{r-1}\\right),\n}\n\\]\nwhere \\(H_m=\\sum_{j=1}^m 1/j\\) for \\(m\\ge1\\) and \\(H_0=0\\). For \\(r=0\\), \\(P_n(0)=1/n\\).\nProof. Write \\(K\\) for the arrival position of the overall best candidate. Uniform random order gives\n\\[\n\\Pr(K=k)=\\frac1n,\\qquad k=1,\\ldots,n.\n\\]\nIf \\(K\\le r\\), that candidate is rejected, so success is impossible. If \\(K=k&gt;r\\), the strategy selects the overall best precisely when the best candidate among the first \\(k-1\\) arrivals occurred during the initial \\(r\\) positions. Otherwise, a record after position \\(r\\) would have triggered selection earlier.\nConditionally on \\(K=k\\), each of the first \\(k-1\\) positions is equally likely to hold the best among those first \\(k-1\\) candidates. Thus\n\\[\n\\Pr(\\text{success}\\mid K=k)=\\frac{r}{k-1},\\qquad k&gt;r.\n\\]\nSumming over the possible positions of the overall best gives\n\\[\nP_n(r)\n=\\sum_{k=r+1}^{n}\\Pr(K=k)\\Pr(\\text{success}\\mid K=k)\n=\\frac{r}{n}\\sum_{k=r+1}^{n}\\frac{1}{k-1}.\n\\]\nIf \\(r=0\\), the first candidate is accepted, which is the overall best with probability \\(1/n\\). \\(\\square\\)"
+  },
+  {
+    "objectID": "classical.html#which-threshold-is-optimal-for-a-given-n",
+    "href": "classical.html#which-threshold-is-optimal-for-a-given-n",
+    "title": "Classical Secretary Problem: Proof and the 37% Rule",
+    "section": "Which threshold is optimal for a given \\(n\\)?",
+    "text": "Which threshold is optimal for a given \\(n\\)?\nFinite-\\(n\\) criterion. For \\(1\\le r&lt;n-1\\),\n\\[\n\\boxed{\nP_n(r+1)-P_n(r)\n=\\frac1n\\left(\\sum_{j=r+1}^{n-1}\\frac1j-1\\right).\n}\n\\]\nTo see this, subtract the two formulas:\n\\[\n\\begin{aligned}\nnP_n(r+1)&=(r+1)\\sum_{j=r+1}^{n-1}\\frac1j,\\\\\nnP_n(r)&=1+r\\sum_{j=r+1}^{n-1}\\frac1j.\n\\end{aligned}\n\\]\nThe sum in the difference decreases strictly as \\(r\\) increases. Consequently the success probabilities increase until the displayed sum first becomes at most \\(1\\), then decrease. For \\(n\\ge3\\), one optimal threshold is therefore\n\\[\n\\boxed{\nr_n^\\star=\\min\\left\\{r\\in\\{1,\\ldots,n-1\\}:\n\\sum_{j=r+1}^{n-1}\\frac1j\\le1\\right\\}.\n}\n\\]\nAn empty sum is \\(0\\). If the sum equals \\(1\\) at the transition, the adjacent threshold \\(r_n^\\star+1\\) is also optimal. For \\(n=2\\), both \\(r=0\\) and \\(r=1\\) have success probability \\(1/2\\).\nFor example, with \\(n=10\\), the optimal threshold is \\(r^\\star=3\\), and\n$ P_{10}(3)=(+++). $$\nThis exact threshold need not equal the integer obtained by simply rounding \\(n/e\\)."
+  },
+  {
+    "objectID": "classical.html#why-the-37-rule-appears",
+    "href": "classical.html#why-the-37-rule-appears",
+    "title": "Classical Secretary Problem: Proof and the 37% Rule",
+    "section": "Why the 37% rule appears",
+    "text": "Why the 37% rule appears\nSuppose \\(n\\) grows and \\(r/n\\to x\\in(0,1)\\). The harmonic sum satisfies\n\\[\n\\sum_{j=r}^{n-1}\\frac1j\n=\\log\\left(\\frac nr\\right)+o(1),\n\\]\nso\n\\[\nP_n(r)=\\frac rn\\sum_{j=r}^{n-1}\\frac1j\n\\longrightarrow -x\\log x.\n\\]\nDifferentiating yields\n\\[\n\\frac{d}{dx}[-x\\log x]=-\\log x-1.\n\\]\nThis vanishes at \\(x=e^{-1}\\), where the second derivative \\(-1/x\\) is negative. The finite-\\(n\\) optimality criterion above also implies that \\(r_n^\\star/n\\to 1/e\\). Therefore,\n\\[\n\\boxed{\n\\frac{r_n^\\star}{n}\\longrightarrow\\frac1e,\n\\qquad\nP_n(r_n^\\star)\\longrightarrow\\frac1e\n\\approx 0.367879.\n}\n\\]\nInterpretation: for a large pool, reject about 36.8% of candidates, then accept the next record. The limiting probability of choosing the best is also about 36.8%. These are two distinct quantities that happen to share the same limit; for a fixed finite \\(n\\), they generally differ."
+  },
+  {
+    "objectID": "classical.html#explore-further",
+    "href": "classical.html#explore-further",
+    "title": "Classical Secretary Problem: Proof and the 37% Rule",
+    "section": "Explore further",
+    "text": "Explore further\n\nBackward induction: why a threshold strategy is optimal among all admissible stopping rules.\nInteractive simulations: explore stopping decisions and compare empirical success rates with exact probabilities.\nVariants and extensions: what changes when there is full information, a different target rank, or multiple selections.\nResearch timeline and references: foundational work and later developments.\n\nThe classical analysis appears in Gilbert and Mosteller (1966) and the survey Freeman (1983); historical context is given by Ferguson (1989)."
   },
   {
     "objectID": "backward-induction.html",
@@ -207,7 +228,7 @@
     "href": "index.html#explore-the-project",
     "title": "The Secretary Problem Site",
     "section": "Explore the project",
-    "text": "Explore the project\n\n\nProblem Variants\nExplore the full-information problem, choosing the second best, multiple-choice models, and more.\nExplore variants & extensions →\n\n\nInteractive Simulations\nPlay the secretary problem and compare stopping thresholds with the optimal 37% strategy.\nTry interactive simulations →\n\n\nResearch\nExplore the complete backward-induction derivation and the history of optimal stopping research.\nRead the backward-induction proof →\nExplore the research timeline →"
+    "text": "Explore the project\n\n\nProblem Variants\nExplore the full-information problem, choosing the second best, multiple-choice models, and more.\nExplore variants & extensions →\n\n\nInteractive Simulations\nExplore the secretary problem and compare stopping thresholds with the optimal 37% strategy.\nTry interactive simulations →\n\n\nResearch\nExplore the complete backward-induction derivation and the history of optimal stopping research.\nRead the backward-induction proof →\nExplore the research timeline →"
   },
   {
     "objectID": "index.html#why-a-site",

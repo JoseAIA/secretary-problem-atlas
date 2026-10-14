@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Learn the classical secretary problem, derive the exact finite-n success probability, and explore the optimal 37% stopping rule with an interactive experiment.">
+<meta name="description" content="Derive the classical secretary problem’s exact success probability, optimal finite-n threshold, and 1/e rule, with an interactive simulation and sources.">
 
-<title>The Classical Secretary Problem – The Secretary Problem Site</title>
+<title>Classical Secretary Problem: Proof and the 37% Rule – The Secretary Problem Site</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -130,8 +130,8 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="The Classical Secretary Problem – The Secretary Problem Site">
-<meta property="og:description" content="Learn the classical secretary problem, derive the exact finite-n success probability, and explore the optimal 37% stopping rule with an interactive experiment.">
+<meta property="og:title" content="Classical Secretary Problem: Proof and the 37% Rule – The Secretary Problem Site">
+<meta property="og:description" content="Derive the classical secretary problem’s exact success probability, optimal finite-n threshold, and 1/e rule, with an interactive simulation and sources.">
 <meta property="og:site_name" content="The Secretary Problem Site">
 </head>
 
@@ -203,6 +203,7 @@ window.Quarto = {
    
   <ul>
   <li><a href="#the-classical-secretary-problem" id="toc-the-classical-secretary-problem" class="nav-link active" data-scroll-target="#the-classical-secretary-problem">The Classical Secretary Problem</a></li>
+  <li><a href="#explore-further" id="toc-explore-further" class="nav-link" data-scroll-target="#explore-further">Explore further</a></li>
   </ul>
 </nav>
     </div>
@@ -211,12 +212,12 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">The Classical Secretary Problem</h1>
+<h1 class="title">Classical Secretary Problem: Proof and the 37% Rule</h1>
 </div>
 
 <div>
   <div class="description">
-    Learn the classical secretary problem, derive the exact finite-n success probability, and explore the optimal 37% stopping rule with an interactive experiment.
+    Derive the classical secretary problem’s exact success probability, optimal finite-n threshold, and 1/e rule, with an interactive simulation and sources.
   </div>
 </div>
 
@@ -235,49 +236,117 @@ window.Quarto = {
 
 <section id="the-classical-secretary-problem" class="level1 problem-hero">
 <h1>The Classical Secretary Problem</h1>
-<p>Observe candidates sequentially, reject an initial sample, and then select the first candidate who is better than everyone previously observed.</p>
-<p>The classical model and its principal extensions are treated by <span class="citation" data-cites="gilbert1966 freeman1983">(<a href="#ref-gilbert1966" role="doc-biblioref">Gilbert and Mosteller 1966</a>; <a href="#ref-freeman1983" role="doc-biblioref">Freeman 1983</a>)</span>, while its historical development is discussed by <span class="citation" data-cites="ferguson1989">Ferguson (<a href="#ref-ferguson1989" role="doc-biblioref">1989</a>)</span>.</p>
+<p>Why should you reject roughly the first 37% of candidates before choosing? The secretary problem is a classical <strong>optimal stopping</strong> problem: decisions are sequential, rejections are final, and success means selecting the single best candidate.</p>
+<p>The exact finite-sample solution and its asymptotic <strong>37% rule</strong> are derived below; you can also <a href="#interactive-experiment">experiment with the rule</a>.</p>
 </section>
 <div class="atlas-section">
-<section id="the-decision-problem" class="level2">
-<h2 class="anchored" data-anchor-id="the-decision-problem">The decision problem</h2>
-<p>Suppose (n) candidates arrive in a uniformly random order.</p>
-<p>After observing each candidate, you must either:</p>
-<ul>
-<li>accept the candidate and stop, or</li>
-<li>reject the candidate permanently and continue.</li>
-</ul>
-<p>The objective is to select the best candidate among all (n) candidates.</p>
+<section id="model-and-assumptions" class="level2">
+<h2 class="anchored" data-anchor-id="model-and-assumptions">Model and assumptions</h2>
+<p>There are <span class="math inline">\(n\ge 2\)</span> candidates, ranked absolutely from <span class="math inline">\(1\)</span> (best) to <span class="math inline">\(n\)</span> (worst). The classical <em>no-information</em> model assumes:</p>
+<ol type="1">
+<li>The candidates arrive in a uniformly random order (all <span class="math inline">\(n!\)</span> orders are equally likely).</li>
+<li>You observe only each candidate’s <strong>relative rank</strong> among those seen so far, not their absolute rank.</li>
+<li>You may accept at most one candidate. Every rejection is irrevocable.</li>
+<li>Your objective is to maximize the probability of choosing the single overall best candidate.</li>
+</ol>
+<p>A candidate is a <strong>record</strong> if they are better than all candidates seen before. Since a nonrecord cannot be the overall best, there is no benefit to selecting one when the objective is the overall best.</p>
 </section>
 <section id="the-threshold-strategy" class="level2">
 <h2 class="anchored" data-anchor-id="the-threshold-strategy">The threshold strategy</h2>
-<p>Choose an integer (r) with (0 r &lt; n).</p>
+<p>Fix an integer <span class="math inline">\(r\)</span> with <span class="math inline">\(0\le r&lt;n\)</span>:</p>
 <ol type="1">
-<li>Reject the first (r) candidates.</li>
-<li>Record the best candidate observed during that period.</li>
-<li>Accept the first later candidate who is better than that recorded candidate.</li>
-<li>If nobody exceeds the recorded candidate, the selection fails.</li>
+<li>Reject the first <span class="math inline">\(r\)</span> candidates, observing their relative ranks.</li>
+<li>Starting at position <span class="math inline">\(r+1\)</span>, accept the first <strong>record</strong> (a candidate better than every earlier candidate).</li>
+<li>If there is no subsequent record, no candidate is selected and the attempt fails.</li>
 </ol>
+<p>For <span class="math inline">\(r=0\)</span>, the rule accepts the first candidate immediately. This convention is used in the interactive simulation below.</p>
+<p>The classical theorem establishes that a threshold rule is optimal among <em>all</em> stopping rules based on relative ranks, not merely the best rule within a preselected class of thresholds. A backward-induction proof of this optimal-policy structure is provided on the <a href="./backward-induction.html">Backward Induction</a> page.</p>
 </section>
-<section id="exact-success-probability" class="level2">
-<h2 class="anchored" data-anchor-id="exact-success-probability">Exact success probability</h2>
-<p>For (r ), the probability of selecting the best candidate is</p>
+<section id="exact-success-probability-a-finite-n-derivation" class="level2">
+<h2 class="anchored" data-anchor-id="exact-success-probability-a-finite-n-derivation">Exact success probability: a finite-<span class="math inline">\(n\)</span> derivation</h2>
+<p>Let <span class="math inline">\(P_n(r)\)</span> denote the probability that the threshold-<span class="math inline">\(r\)</span> strategy selects absolute rank <span class="math inline">\(1\)</span>.</p>
+<p><strong>Proposition.</strong> For <span class="math inline">\(1\le r&lt;n\)</span>,</p>
+<p><span class="math display">\[
+\boxed{
+P_n(r)=\frac{r}{n}\sum_{k=r+1}^{n}\frac{1}{k-1}
+=\frac{r}{n}\left(H_{n-1}-H_{r-1}\right),
+}
+\]</span></p>
+<p>where <span class="math inline">\(H_m=\sum_{j=1}^m 1/j\)</span> for <span class="math inline">\(m\ge1\)</span> and <span class="math inline">\(H_0=0\)</span>. For <span class="math inline">\(r=0\)</span>, <span class="math inline">\(P_n(0)=1/n\)</span>.</p>
+<p><strong>Proof.</strong> Write <span class="math inline">\(K\)</span> for the arrival position of the overall best candidate. Uniform random order gives</p>
+<p><span class="math display">\[
+\Pr(K=k)=\frac1n,\qquad k=1,\ldots,n.
+\]</span></p>
+<p>If <span class="math inline">\(K\le r\)</span>, that candidate is rejected, so success is impossible. If <span class="math inline">\(K=k&gt;r\)</span>, the strategy selects the overall best precisely when the best candidate among the first <span class="math inline">\(k-1\)</span> arrivals occurred during the initial <span class="math inline">\(r\)</span> positions. Otherwise, a record after position <span class="math inline">\(r\)</span> would have triggered selection earlier.</p>
+<p>Conditionally on <span class="math inline">\(K=k\)</span>, each of the first <span class="math inline">\(k-1\)</span> positions is equally likely to hold the best among those first <span class="math inline">\(k-1\)</span> candidates. Thus</p>
+<p><span class="math display">\[
+\Pr(\text{success}\mid K=k)=\frac{r}{k-1},\qquad k&gt;r.
+\]</span></p>
+<p>Summing over the possible positions of the overall best gives</p>
 <p><span class="math display">\[
 P_n(r)
-=
-\frac{r}{n}
-\sum_{k=r+1}^{n}\frac{1}{k-1}.
+=\sum_{k=r+1}^{n}\Pr(K=k)\Pr(\text{success}\mid K=k)
+=\frac{r}{n}\sum_{k=r+1}^{n}\frac{1}{k-1}.
 \]</span></p>
-<p>The optimal threshold is the integer (r) that maximizes (P_n(r)).</p>
-<p>For large (n),</p>
+<p>If <span class="math inline">\(r=0\)</span>, the first candidate is accepted, which is the overall best with probability <span class="math inline">\(1/n\)</span>. <span class="math inline">\(\square\)</span></p>
+</section>
+<section id="which-threshold-is-optimal-for-a-given-n" class="level2">
+<h2 class="anchored" data-anchor-id="which-threshold-is-optimal-for-a-given-n">Which threshold is optimal for a given <span class="math inline">\(n\)</span>?</h2>
+<p><strong>Finite-<span class="math inline">\(n\)</span> criterion.</strong> For <span class="math inline">\(1\le r&lt;n-1\)</span>,</p>
 <p><span class="math display">\[
-r^\star \approx \frac{n}{e},
-\qquad
-P_n(r^\star)\approx \frac{1}{e}.
+\boxed{
+P_n(r+1)-P_n(r)
+=\frac1n\left(\sum_{j=r+1}^{n-1}\frac1j-1\right).
+}
 \]</span></p>
-<p>Thus, approximately (37%) of the candidates are observed and rejected before selection begins.</p>
+<p>To see this, subtract the two formulas:</p>
+<p><span class="math display">\[
+\begin{aligned}
+nP_n(r+1)&amp;=(r+1)\sum_{j=r+1}^{n-1}\frac1j,\\
+nP_n(r)&amp;=1+r\sum_{j=r+1}^{n-1}\frac1j.
+\end{aligned}
+\]</span></p>
+<p>The sum in the difference decreases strictly as <span class="math inline">\(r\)</span> increases. Consequently the success probabilities increase until the displayed sum first becomes at most <span class="math inline">\(1\)</span>, then decrease. For <span class="math inline">\(n\ge3\)</span>, one optimal threshold is therefore</p>
+<p><span class="math display">\[
+\boxed{
+r_n^\star=\min\left\{r\in\{1,\ldots,n-1\}:
+\sum_{j=r+1}^{n-1}\frac1j\le1\right\}.
+}
+\]</span></p>
+<p>An empty sum is <span class="math inline">\(0\)</span>. If the sum equals <span class="math inline">\(1\)</span> at the transition, the adjacent threshold <span class="math inline">\(r_n^\star+1\)</span> is <em>also</em> optimal. For <span class="math inline">\(n=2\)</span>, both <span class="math inline">\(r=0\)</span> and <span class="math inline">\(r=1\)</span> have success probability <span class="math inline">\(1/2\)</span>.</p>
+<p>For example, with <span class="math inline">\(n=10\)</span>, the optimal threshold is <span class="math inline">\(r^\star=3\)</span>, and</p>
+<p>$ P_{10}(3)=(+++). $$</p>
+<p>This exact threshold need not equal the integer obtained by simply rounding <span class="math inline">\(n/e\)</span>.</p>
+</section>
+<section id="why-the-37-rule-appears" class="level2">
+<h2 class="anchored" data-anchor-id="why-the-37-rule-appears">Why the 37% rule appears</h2>
+<p>Suppose <span class="math inline">\(n\)</span> grows and <span class="math inline">\(r/n\to x\in(0,1)\)</span>. The harmonic sum satisfies</p>
+<p><span class="math display">\[
+\sum_{j=r}^{n-1}\frac1j
+=\log\left(\frac nr\right)+o(1),
+\]</span></p>
+<p>so</p>
+<p><span class="math display">\[
+P_n(r)=\frac rn\sum_{j=r}^{n-1}\frac1j
+\longrightarrow -x\log x.
+\]</span></p>
+<p>Differentiating yields</p>
+<p><span class="math display">\[
+\frac{d}{dx}[-x\log x]=-\log x-1.
+\]</span></p>
+<p>This vanishes at <span class="math inline">\(x=e^{-1}\)</span>, where the second derivative <span class="math inline">\(-1/x\)</span> is negative. The finite-<span class="math inline">\(n\)</span> optimality criterion above also implies that <span class="math inline">\(r_n^\star/n\to 1/e\)</span>. Therefore,</p>
+<p><span class="math display">\[
+\boxed{
+\frac{r_n^\star}{n}\longrightarrow\frac1e,
+\qquad
+P_n(r_n^\star)\longrightarrow\frac1e
+\approx 0.367879.
+}
+\]</span></p>
+<p><strong>Interpretation:</strong> for a large pool, reject about 36.8% of candidates, then accept the next record. The limiting probability of choosing the best is also about 36.8%. These are <em>two distinct quantities</em> that happen to share the same limit; for a fixed finite <span class="math inline">\(n\)</span>, they generally differ.</p>
 </section>
 </div>
+<div id="interactive-experiment">
 <div class="simulation-panel">
   <div class="simulation-heading">
     <div>
@@ -333,15 +402,26 @@ P_n(r^\star)\approx \frac{1}{e}.
 </div>
 
 <script src="classical.js"></script>
+</div>
 <div class="rule-summary">
 <div class="rule-number">
 <p>37%</p>
 </div>
 <section id="observe-then-select" class="level3 rule-text">
 <h3 class="anchored" data-anchor-id="observe-then-select">Observe, then select</h3>
-<p>Reject approximately the first (37%), then accept the next record-breaking candidate.</p>
+<p>For large <span class="math inline">\(n\)</span>, reject approximately the first <span class="math inline">\(37\%\)</span> of candidates and select the next record. The exact finite-<span class="math inline">\(n\)</span> threshold comes from the harmonic-sum criterion above.</p>
 </section>
 </div>
+<section id="explore-further" class="level2 atlas-section">
+<h2 class="anchored" data-anchor-id="explore-further">Explore further</h2>
+<ul>
+<li><a href="./backward-induction.html">Backward induction</a>: why a threshold strategy is optimal among all admissible stopping rules.</li>
+<li><a href="./simulations.html">Interactive simulations</a>: explore stopping decisions and compare empirical success rates with exact probabilities.</li>
+<li><a href="./variants.html">Variants and extensions</a>: what changes when there is full information, a different target rank, or multiple selections.</li>
+<li><a href="./timeline.html">Research timeline</a> and <a href="./references.html">references</a>: foundational work and later developments.</li>
+</ul>
+<p>The classical analysis appears in <span class="citation" data-cites="gilbert1966">Gilbert and Mosteller (<a href="#ref-gilbert1966" role="doc-biblioref">1966</a>)</span> and the survey <span class="citation" data-cites="freeman1983">Freeman (<a href="#ref-freeman1983" role="doc-biblioref">1983</a>)</span>; historical context is given by <span class="citation" data-cites="ferguson1989">Ferguson (<a href="#ref-ferguson1989" role="doc-biblioref">1989</a>)</span>.</p>
+</section>
 
 
 
