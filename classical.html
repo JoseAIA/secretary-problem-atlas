@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Learn the classical secretary problem, derive the exact finite-n success probability, and explore the optimal 37% stopping rule with an interactive experiment.">
 
 <title>The Classical Secretary Problem – The Secretary Problem Site</title>
 <style>
@@ -130,7 +131,7 @@ window.Quarto = {
 
 <link rel="stylesheet" href="styles.css">
 <meta property="og:title" content="The Classical Secretary Problem – The Secretary Problem Site">
-<meta property="og:description" content="Explore the classical secretary problem, optimal stopping, mathematical derivations, interactive simulations, and extensions.">
+<meta property="og:description" content="Learn the classical secretary problem, derive the exact finite-n success probability, and explore the optimal 37% stopping rule with an interactive experiment.">
 <meta property="og:site_name" content="The Secretary Problem Site">
 </head>
 
@@ -213,6 +214,11 @@ window.Quarto = {
 <h1 class="title">The Classical Secretary Problem</h1>
 </div>
 
+<div>
+  <div class="description">
+    Learn the classical secretary problem, derive the exact finite-n success probability, and explore the optimal 37% stopping rule with an interactive experiment.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta column-page-left">
@@ -424,7 +430,7 @@ Gilbert, John P., and Frederick Mosteller. 1966. <span>“Recognizing the Maximu
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/joseaia\.github\.io\/secretary-problem-atlas\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

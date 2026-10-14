@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="A detailed backward-induction derivation of the classical secretary problem, the finite-horizon optimal stopping recursion, and the optimal threshold.">
 
-<title>The Classical Problem by Backward Induction – The Secretary Problem Site</title>
+<title>Secretary Problem by Backward Induction – The Secretary Problem Site</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -129,7 +130,8 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="The Classical Problem by Backward Induction – The Secretary Problem Site">
+<meta property="og:title" content="Secretary Problem by Backward Induction – The Secretary Problem Site">
+<meta property="og:description" content="A detailed backward-induction derivation of the classical secretary problem, the finite-horizon optimal stopping recursion, and the optimal threshold.">
 <meta property="og:site_name" content="The Secretary Problem Site">
 </head>
 
@@ -212,9 +214,14 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">The Classical Problem by Backward Induction</h1>
+<h1 class="title">Secretary Problem by Backward Induction</h1>
 </div>
 
+<div>
+  <div class="description">
+    A detailed backward-induction derivation of the classical secretary problem, the finite-horizon optimal stopping recursion, and the optimal threshold.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -1001,7 +1008,7 @@ Shiryaev, Albert N. 2007. <em>Optimal Stopping Rules</em>. Vol. 8. Stochastic Mo
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/joseaia\.github\.io\/secretary-problem-atlas\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

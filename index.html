@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="The secretary problem explained: learn the 37% rule, explore optimal stopping, try interactive simulations, and study rigorous proofs and extensions.">
 
 <title>The Secretary Problem Site</title>
 <style>
@@ -81,6 +82,7 @@ gtag('config', 'G-35SSF14JG7', { 'anonymize_ip': true});
 
 <link rel="stylesheet" href="styles.css">
 <meta property="og:title" content="The Secretary Problem Site">
+<meta property="og:description" content="The secretary problem explained: learn the 37% rule, explore optimal stopping, try interactive simulations, and study rigorous proofs and extensions.">
 <meta property="og:site_name" content="The Secretary Problem Site">
 </head>
 
@@ -159,7 +161,7 @@ gtag('config', 'G-35SSF14JG7', { 'anonymize_ip': true});
   </ul></li>
   </ul></li>
   <li><a href="#explore-the-project" id="toc-explore-the-project" class="nav-link" data-scroll-target="#explore-the-project">Explore the project</a></li>
-  <li><a href="#why-this-site" id="toc-why-this-site" class="nav-link" data-scroll-target="#why-this-site">Why this site?</a></li>
+  <li><a href="#why-a-site" id="toc-why-a-site" class="nav-link" data-scroll-target="#why-a-site">Why a Site?</a></li>
   </ul>
 </nav>
     </div>
@@ -171,6 +173,11 @@ gtag('config', 'G-35SSF14JG7', { 'anonymize_ip': true});
 <h1 class="title">The Secretary Problem Site</h1>
 </div>
 
+<div>
+  <div class="description">
+    The secretary problem explained: learn the 37% rule, explore optimal stopping, try interactive simulations, and study rigorous proofs and extensions.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta column-page-left">
@@ -192,7 +199,7 @@ gtag('config', 'G-35SSF14JG7', { 'anonymize_ip': true});
 <section id="created-by-josé-ángel-islas-anguiano-ph.d." class="level3">
 <h3 class="anchored" data-anchor-id="created-by-josé-ángel-islas-anguiano-ph.d.">Created by José Ángel Islas Anguiano, Ph.D.</h3>
 <p>Universidad Autónoma de Sinaloa</p>
-<p>Explore models, optimal policies, exact formulas, simulations, and research questions from the theory of sequential selection.</p>
+<p>Learn the <strong>secretary problem</strong> and the famous <strong>37% rule</strong> through exact formulas, optimal stopping proofs, interactive simulations, and research on sequential selection.</p>
 <p><a href="#explore" class="hero-button">Explore the site</a></p>
 </section>
 </section>
@@ -202,26 +209,27 @@ gtag('config', 'G-35SSF14JG7', { 'anonymize_ip': true});
 <div class="atlas-grid">
 <section id="problem-variants" class="level3 atlas-card card-blue">
 <h3 class="anchored" data-anchor-id="problem-variants">Problem Variants</h3>
-<p>Compare classical and modern secretary-problem variants.</p>
-<p><strong>Coming next →</strong></p>
+<p>Explore the full-information problem, choosing the second best, multiple-choice models, and more.</p>
+<p><a href="./variants.html">Explore variants &amp; extensions →</a></p>
 </section>
 <section id="interactive-simulations" class="level3 atlas-card card-coral">
 <h3 class="anchored" data-anchor-id="interactive-simulations">Interactive Simulations</h3>
-<p>Experiment with sample sizes and stopping thresholds.</p>
-<p><strong>Coming next →</strong></p>
+<p>Play the secretary problem and compare stopping thresholds with the optimal 37% strategy.</p>
+<p><a href="./simulations.html">Try interactive simulations →</a></p>
 </section>
 <section id="research" class="level3 atlas-card card-yellow">
 <h3 class="anchored" data-anchor-id="research">Research</h3>
-<p>Read mathematical notes, computational results, and open questions.</p>
-<p><strong>Coming next →</strong></p>
+<p>Explore the complete backward-induction derivation and the history of optimal stopping research.</p>
+<p><a href="./backward-induction.html">Read the backward-induction proof →</a></p>
+<p><a href="./timeline.html">Explore the research timeline →</a></p>
 </section>
 </div>
 </section>
 <div id="explore" class="atlas-section atlas-intro">
-<section id="why-this-site" class="level2">
-<h2 class="anchored" data-anchor-id="why-this-site">Why this site?</h2>
+<section id="why-a-site" class="level2">
+<h2 class="anchored" data-anchor-id="why-a-site">Why a Site?</h2>
 <p>The secretary problem is not a single problem. It is a family of optimal-stopping models that changes according to the information available, the number of selections allowed, the objective, and the costs involved.</p>
-<p>This website organizes those variants and makes their mathematical structure easier to compare.</p>
+<p>Begin with <a href="./classical.html">the classical secretary problem</a>, explore its <a href="./backward-induction.html">exact optimal stopping rule</a>, and experiment with <a href="./simulations.html">interactive simulations</a>. The site connects these ideas to <a href="./variants.html">variants and extensions</a> and the <a href="./references.html">research literature</a>.</p>
 </section>
 </div>
 
@@ -301,7 +309,7 @@ gtag('config', 'G-35SSF14JG7', { 'anonymize_ip': true});
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/joseaia\.github\.io\/secretary-problem-atlas\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

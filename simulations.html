@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Play the secretary problem and compare rejection thresholds, empirical success probabilities, and the optimal 37% rule in interactive simulations.">
 
-<title>Interactive Simulations – The Secretary Problem Site</title>
+<title>Secretary Problem Simulations – The Secretary Problem Site</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -109,8 +110,8 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="Interactive Simulations – The Secretary Problem Site">
-<meta property="og:description" content="Explore the classical secretary problem, optimal stopping, mathematical derivations, interactive simulations, and extensions.">
+<meta property="og:title" content="Secretary Problem Simulations – The Secretary Problem Site">
+<meta property="og:description" content="Play the secretary problem and compare rejection thresholds, empirical success probabilities, and the optimal 37% rule in interactive simulations.">
 <meta property="og:site_name" content="The Secretary Problem Site">
 </head>
 
@@ -190,9 +191,14 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Interactive Simulations</h1>
+<h1 class="title">Secretary Problem Simulations</h1>
 </div>
 
+<div>
+  <div class="description">
+    Play the secretary problem and compare rejection thresholds, empirical success probabilities, and the optimal 37% rule in interactive simulations.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta column-page-left">
@@ -538,7 +544,7 @@ P_n(r^\star)\approx\frac1e.
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/joseaia\.github\.io\/secretary-problem-atlas\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
